@@ -1,0 +1,133 @@
+.hero-section {
+  /* display: none; */
+  width: 100%;
+  margin-top: 120px;
+  position: relative;
+  /* border: 1px solid #E4E4E4; */
+}
+
+.label {
+  margin: auto;
+  cursor: pointer;
+  width: max-content;
+  height: 32px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 11px;
+  font-weight: 500;
+  border-radius: 24px;
+  margin-bottom: -12px;
+  background-color: #F7F7F7;
+}
+
+.label .dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #ff4500;
+}
+
+.label p {
+  font-size: 13px;
+  line-height: 13.5px;
+  font-family: var(--font-plus-jakarta-sans);
+}
+
+.intro-text {
+  width: 100%;
+  text-align: center;
+}
+
+.intro-text h1 {
+  font-size: 48px;
+  font-weight: 500;
+  color: #171717;
+  font-family: var(--font-geist-sans);
+}
+
+.intro-text p {
+  font-weight: 500;
+  margin-top: -8px;
+  color: #2D2D2D;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  font-family: var(--font-geist-sans);
+}
+
+
+.button_w_icon {
+  gap: 6px;
+  margin-top: 72px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  padding: 10px 14px 10px 14px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #FFFFFF;
+  background: #2D2D2D;
+  border: 1px solid #2D2D2D;
+
+  transition: 0.2s ease-in-out;
+  font-family: var(--font-geist-sans);
+
+  img {
+    display: none;
+    aspect-ratio: 1/1;
+  }
+}
+
+.button_w_icon:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.hero-image {
+  display: none;
+  position: absolute;
+  /* top: 48%; */
+  top: 20%;
+  left: 50%;
+  z-index: -100;
+  width: max-content;
+  height: max-content;
+  transform: translateX(-50%);
+
+  img {
+    width: 800px;
+    opacity: 0.16;
+    height: max-content;
+  }
+
+}
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+
+  .hero-section {
+    margin-top: 96px;
+  }
+
+  .intro-text h1 {
+    font-size: 40px;
+  }
+
+  .intro-text p {
+    font-size: 14px;
+  }
+
+}

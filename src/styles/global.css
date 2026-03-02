@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* max-width: 1280px;  */
+  background-color: #FFFFFF;
+}
+
+.flash-message {
+  /* display: none; */
+  height: 8px;
+  width: 100%;
+  text-align: center;
+  z-index: 150;
+  position: relative;
+  background-color: rebeccapurple;
+}
