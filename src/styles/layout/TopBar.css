@@ -192,13 +192,17 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background-color: #111112;
+    /* background-color: #F1F1F1; */
+    /* background-color: #FF591D; */
+    /* background-color: #EE4D83; */
+    background: linear-gradient(180deg, #FF591D 0%, #F1F1F1 100%);
     transform: translateY(100%);
 
     button {
       border: none;
       font-size: 48px;
-      color: #FFFFFF;
+      /* color: #010101; */
+      color: #ffffff;
       margin-bottom: 16px;
       background-color: transparent;
       font-family: var(--font-instrument-serif);
