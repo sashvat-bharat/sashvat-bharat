@@ -1,11 +1,11 @@
 import React from 'react'
-import Topbar from '@/components/Topbar'
 import "@/styles/research.css";
+import TopBar from '@/components/layout/TopBar';
 
 const page = () => {
   return (
     <>
-      <Topbar />
+      <TopBar />
 
       <center><h1 className='heading'>Research</h1></center>
 
