@@ -4,4 +4,9 @@ body {
   width: 100%;
   /* max-width: 1280px;  */
   background-color: #FFFFFF;
+  /* background-image: url(/download.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
 }

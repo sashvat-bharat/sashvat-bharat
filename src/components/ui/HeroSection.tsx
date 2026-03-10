@@ -8,11 +8,11 @@ const HeroSection = () => {
     <>
       <div className="hero-section">
 
-        <div className='label'>
+        {/* <div className='label'>
           <div className='dot'></div>
           <p>Introducing: JIT Tool Spawning Protocol</p>
           <MoveRight strokeWidth={1} />
-        </div>
+        </div> */}
 
 
         <div className='intro-text'>

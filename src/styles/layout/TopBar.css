@@ -14,10 +14,10 @@
   display: flex;
   position: relative;
   align-items: center;
-  background-color: #fff;
   /* margin-top: 0; */
   /* border: 1px solid orangered; */
   justify-content: space-between;
+  background-color: #FFFFFF;
 }
 
 .topbar .topbar-left {
@@ -25,6 +25,7 @@
 
   img {
     height: 40px;
+    cursor: pointer;
     width: max-content;
   }
 
@@ -125,6 +126,10 @@
     padding-bottom: 8px;
   }
 
+  .topbar-left {
+    cursor: default;
+  }
+
 
   .topbar .topbar-middle,
   .topbar .topbar-right {
@@ -192,9 +197,6 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    /* background-color: #F1F1F1; */
-    /* background-color: #FF591D; */
-    /* background-color: #EE4D83; */
     background: linear-gradient(180deg, #FF591D 0%, #F1F1F1 100%);
     transform: translateY(100%);
 

@@ -1,12 +1,15 @@
 .hero-section {
-  /* display: none; */
   width: 100%;
-  margin-top: 120px;
+  margin-top: 180px;
   position: relative;
+  /* display: none; */
+  /* margin-top: 120px; */
   /* border: 1px solid orangered; */
 }
 
-.label {
+
+
+/* .label {
   margin: auto;
   cursor: pointer;
   width: max-content;
@@ -20,20 +23,23 @@
   border-radius: 24px;
   margin-bottom: -12px;
   background-color: #F7F7F7;
-}
 
-.label .dot {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background-color: #FF591D;
-}
+  .dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #FF591D;
+  }
 
-.label p {
-  font-size: 13px;
-  line-height: 13.5px;
-  font-family: var(--font-plus-jakarta-sans);
-}
+  p {
+    font-size: 13px;
+    line-height: 13.5px;
+    font-family: var(--font-plus-jakarta-sans);
+  }
+
+} */
+
+
 
 .intro-text {
   width: 100%;
@@ -52,10 +58,11 @@
 }
 
 .intro-text p {
-  font-weight: 500;
+  /* font-weight: 500; */
   margin-top: -24px;
   color: #2D2D2D;
   line-height: 24px;
+  font-size: 20px;
   letter-spacing: -0.1px;
   font-family: var(--font-geist-sans);
 }
