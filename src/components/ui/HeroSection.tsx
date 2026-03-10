@@ -8,11 +8,17 @@ const HeroSection = () => {
     <>
       <div className="hero-section">
 
-        {/* <div className='label'>
-          <div className='dot'></div>
-          <p>Introducing: JIT Tool Spawning Protocol</p>
-          <MoveRight strokeWidth={1} />
-        </div> */}
+
+        <div className="promo-trigger" role="button" tabIndex={0}>
+          <span className="promo-text">Introducing the JIT Tool Protocol</span>
+
+          <div className="action-button">
+            <svg className="arrow-svg" viewBox="0 0 32 32">
+              <path className="shaft" d="M6 16h20" />
+              <path className="chevron" d="M18 8l8 8-8 8" />
+            </svg>
+          </div>
+        </div>
 
 
         <div className='intro-text'>

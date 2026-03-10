@@ -8,36 +8,116 @@
 }
 
 
+:root {
+  --transition-speed: 0.45s;
+  --easing: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-/* .label {
+/* 1. The Main Pill Container */
+.promo-trigger {
   margin: auto;
   cursor: pointer;
   width: max-content;
   height: 32px;
-  gap: 8px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 11px;
-  font-weight: 500;
-  border-radius: 24px;
-  margin-bottom: -12px;
-  background-color: #F7F7F7;
+  padding: 0 4px 0 12px;
+  gap: 12px;
+  border: 1.5px solid #ececec;
+  border-radius: 52px;
+  background: #ffffff;
+  transition:
+    gap var(--transition-speed) var(--easing),
+    padding var(--transition-speed) var(--easing),
+    border-color var(--transition-speed) var(--easing),
+    box-shadow var(--transition-speed) var(--easing);
 
-  .dot {
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background-color: #FF591D;
-  }
-
-  p {
+  .promo-text {
     font-size: 13px;
     line-height: 13.5px;
     font-family: var(--font-plus-jakarta-sans);
   }
 
-} */
+}
+
+.promo-trigger:hover {
+  border-color: #dcdcdc;
+  padding-right: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.promo-text {
+  font-size: 36px;
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* 2. The Inner Action Button */
+.action-button {
+  position: relative;
+  height: 24px;
+  width: 24px;
+
+  background-color: #111111;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    width var(--transition-speed) var(--easing),
+    background-color var(--transition-speed) var(--easing);
+  overflow: visible;
+}
+
+.promo-trigger:hover .action-button {
+  width: 40px;
+  background-color: #f95015;
+}
+
+/* 3. SVG Precision Styling */
+.arrow-svg {
+  width: 16px;
+  height: 16px;
+  overflow: visible;
+}
+
+.chevron {
+  fill: none;
+  stroke: white;
+  stroke-width: 2.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--transition-speed) var(--easing);
+  transform: translateX(-5px);
+}
+
+.promo-trigger:hover .chevron {
+  transform: translateX(0px);
+}
+
+/* The Shaft (Spawns from the chevron vertex) */
+.shaft {
+  fill: none;
+  stroke: white;
+  stroke-width: 2.75;
+  stroke-linecap: round;
+  transform-origin: 26px 16px;
+  transform: scaleX(0);
+  opacity: 0;
+  transition:
+    transform var(--transition-speed) var(--easing),
+    opacity 0.2s ease;
+}
+
+.promo-trigger:hover .shaft {
+  transform: scaleX(1);
+  opacity: 1;
+}
 
 
 
