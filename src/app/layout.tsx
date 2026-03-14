@@ -19,7 +19,19 @@ const instrumentSerif = Instrument_Serif({ variable: "--font-instrument-serif", 
 
 export const metadata: Metadata = {
   title: "Sashvat Bharat",
-  description: "Blasting of tech in your daily life.",
+  description: "Rule the Horizon. Beyond Limits",
+  keywords: ["Sashvat Bharat", "Rule the Horizon", "Beyond Limits", "Sashvat", "Bharat", "JIT Tool Spawning Protocol"],
+  authors: [{ name: "Sashvat Bharat" }],
+  creator: "Sashvat Bharat",
+  publisher: "Sashvat Bharat",
+  openGraph: {
+    title: "Sashvat Bharat",
+    description: "Rule the Horizon. Beyond Limits",
+    url: "https://sashvat.com",
+    siteName: "Sashvat Bharat",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
