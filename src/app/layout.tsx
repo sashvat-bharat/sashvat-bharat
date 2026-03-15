@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Sashvat Bharat" }],
   creator: "Sashvat Bharat",
   publisher: "Sashvat Bharat",
+  icons: { icon: "/favicon-1.svg" },
   openGraph: {
     title: "Sashvat Bharat",
     description: "Rule the Horizon. Beyond Limits",
@@ -42,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href="/favicon-1.svg" />
       </head>
       <body suppressHydrationWarning={true} className={`${geistSans.variable} ${geistMono.variable} ${rethinkSans.variable} ${spaceGrotesk.variable} ${lexend.variable} ${manrope.variable} ${sourceSerif4.variable} ${urbanist.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable}`} >
         {children}
