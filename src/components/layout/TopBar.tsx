@@ -3,38 +3,29 @@ import Image from 'next/image'
 import "@/styles/global.css"
 import "@/styles/layout/TopBar.css"
 import { useState } from 'react'
-// import { Menu, X } from 'lucide-react'
-import ThemeToggle from '../ui/ThemeToggleButton'
+import { Menu, UserRound } from 'lucide-react'
+import ThemeToggle from '../ui/ThemeToggle'
 
 
 
 const TopBar = () => {
 
-  const [menuState, setMenuState] = useState<'initial' | 'open' | 'closed'>('initial');
-
-  const toggleMenu = () => {
-    setMenuState(prev => prev === 'open' ? 'closed' : 'open');
-  };
+  const iconsize = 16;
 
   return (
     <>
-
       <div className='flash-message-space'></div>
 
       <div className="topbar">
 
-        {/* <div className='topbar-left'>
-          <Image src="/logo.svg" alt="logo" width={100} height={100} />
-        </div> */}
-
         <div className='topbar-left'>
-          <h1>Sashvat</h1>
+          <Image src="/logo-light.svg" alt="logo" width={100} height={100} />
         </div>
 
         <div className='topbar-middle'>
-          <button>Research</button>
-          <button>Articles</button>
           <button>Products</button>
+          <button>Articles</button>
+          <button>Research</button>
           <button>About Us</button>
           <button>Careers</button>
         </div>
@@ -43,32 +34,17 @@ const TopBar = () => {
 
           <ThemeToggle />
 
-          <button className='login-btn'>Log in</button>
-          <button className='signup-btn'>Sign up</button>
-        </div>
-
-        <button
-          className={`menu-toggle ${menuState === 'open' ? 'active' : ''}`}
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          <div className="hamburger-box">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className='menu-n-account'>
+            <div className='menu-toggle'>
+              <Menu size={iconsize} />
+            </div>
+            <div className='user-account'>
+              <UserRound size={iconsize} />
+            </div>
           </div>
-        </button>
 
+        </div>
       </div>
-
-      <div className={`menu-box ${menuState}`}>
-        <button>Research</button>
-        <button>Articles</button>
-        <button>Products</button>
-        <button>About Us</button>
-        <button>Careers</button>
-      </div>
-
     </>
   )
 }

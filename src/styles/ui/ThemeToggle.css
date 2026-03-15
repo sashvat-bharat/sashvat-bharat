@@ -25,6 +25,6 @@
 
 /* Persistent active state — stays styled after click */
 .theme_toggle_container .icon_btn.active {
-  background-color: #F7F7F7;
+  background-color: #F5F5F5;
   color: #000;
 }

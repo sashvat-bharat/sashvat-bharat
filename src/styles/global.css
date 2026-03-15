@@ -1,3 +1,17 @@
+/* base */
+:root {
+  --bg: #FFFFFF;
+  --text: #000000;
+}
+
+/* dark */
+[data-theme="dark"] {
+  --bg: #000000;
+  --text: #FFFFFF;
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
