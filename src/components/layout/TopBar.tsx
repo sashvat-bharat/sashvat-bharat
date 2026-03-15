@@ -3,7 +3,9 @@ import Image from 'next/image'
 import "@/styles/global.css"
 import "@/styles/layout/TopBar.css"
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+// import { Menu, X } from 'lucide-react'
+import ThemeToggle from '../ui/ThemeToggleButton'
+
 
 
 const TopBar = () => {
@@ -20,8 +22,13 @@ const TopBar = () => {
       <div className='flash-message-space'></div>
 
       <div className="topbar">
-        <div className='topbar-left'>
+
+        {/* <div className='topbar-left'>
           <Image src="/logo.svg" alt="logo" width={100} height={100} />
+        </div> */}
+
+        <div className='topbar-left'>
+          <h1>Sashvat</h1>
         </div>
 
         <div className='topbar-middle'>
@@ -33,6 +40,9 @@ const TopBar = () => {
         </div>
 
         <div className='topbar-right'>
+
+          <ThemeToggle />
+
           <button className='login-btn'>Log in</button>
           <button className='signup-btn'>Sign up</button>
         </div>

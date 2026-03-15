@@ -20,7 +20,7 @@
   background-color: #FFFFFF;
 }
 
-.topbar .topbar-left {
+/* .topbar .topbar-left {
   margin-left: 24px;
 
   img {
@@ -29,7 +29,18 @@
     width: max-content;
   }
 
+} */
+
+.topbar .topbar-left {
+  margin-left: 24px;
+  font-size: 16px;
+
+  h1 {
+    font-weight: 400;
+    font-family: var(--font-geist-sans);
+  }
 }
+
 
 .topbar .topbar-middle {
   gap: 8px;

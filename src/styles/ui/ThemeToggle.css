@@ -1,0 +1,30 @@
+.theme_toggle_container {
+  padding: 4px;
+  /* height: 24px; */
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #E4E4E4;
+}
+
+.theme_toggle_container .icon_btn {
+  height: 28px;
+  width: 28px;
+  color: #555;
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+
+}
+
+/* Persistent active state — stays styled after click */
+.theme_toggle_container .icon_btn.active {
+  background-color: #F7F7F7;
+  color: #000;
+}
