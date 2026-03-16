@@ -42,8 +42,12 @@ const TopBar = () => {
               <UserRound size={iconsize} />
             </div>
           </div>
+        </div>
+
+        <div className='menu-box'>
 
         </div>
+
       </div>
     </>
   )

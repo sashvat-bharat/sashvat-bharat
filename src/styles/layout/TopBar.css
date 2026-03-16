@@ -106,9 +106,28 @@
 
   .menu-toggle:hover,
   .user-account:hover {
-    background-color: #F5F5F5;
+    /* background-color: #F5F5F5; */
+    background-color: #F0F0F0;
   }
 
+}
+
+
+.topbar .menu-box {
+  height: 250px;
+  /* width: 200px; */
+  width: 90%;
+  z-index: 100;
+  /* i want it in center Horizontally */
+
+  top: 64px;
+  left: 50%;
+  translate: -50%;
+  /* right: 8px; */
+  position: absolute;
+  backdrop-filter: blur(16px);
+  border: 1px solid #CCCCCC;
+  background-color: transparent;
 }
 
 
