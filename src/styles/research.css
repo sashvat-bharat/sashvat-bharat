@@ -7,7 +7,7 @@ body {
   /* margin-top: 120px; */
   font-size: 42px;
   font-weight: 500;
-  color: #171717;
+  color: var(--text-secondary);
   /* margin: auto; */
   letter-spacing: -1px;
   font-family: var(--font-geist-sans);
@@ -17,20 +17,20 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  border: 1px solid #FF591D;
+  border: 1px solid var(--accent-orange-deep);
 } */
 
 .research_container .research_card {
   padding: 24px;
   margin-bottom: 24px;
   border-radius: 16px;
-  background-color: #F7F7F7;
+  background-color: var(--bg-secondary);
 
   h2 {
     font-family: var(--font-geist-sans);
     font-size: 24px;
     font-weight: 500;
-    color: #171717;
+    color: var(--text-secondary);
     letter-spacing: -0.5px;
   }
 
@@ -38,7 +38,7 @@ body {
     font-family: var(--font-geist-sans);
     font-size: 16px;
     font-weight: 400;
-    color: #171717;
+    color: var(--text-secondary);
     letter-spacing: -0.5px;
   }
 
@@ -55,8 +55,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    color: #FFFFFF;
-    background-color: #010101;
+    color: var(--white);
+    background-color: var(--rich-black);
     font-family: var(--font-geist-sans);
     transition: 0.2s ease-in-out;
   }

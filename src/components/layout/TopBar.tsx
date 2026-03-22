@@ -36,15 +36,21 @@ const TopBar = () => {
 
           <div className='menu-n-account'>
             <div className='menu-toggle'>
-              <Menu size={iconsize} />
+              <Menu size={iconsize} className='icon' />
             </div>
             <div className='user-account'>
-              <UserRound size={iconsize} />
+              <UserRound size={iconsize} className='icon' />
             </div>
           </div>
         </div>
 
         <div className='menu-box'>
+
+          <button>Products</button>
+          <button>Articles</button>
+          <button>Research</button>
+          <button>About Us</button>
+          <button>Careers</button>
 
         </div>
 

@@ -4,7 +4,7 @@
   z-index: 150;
   position: relative;
   margin-bottom: 0;
-  background-color: #FFFFFF;
+  background-color: var(--bg-primary);
 }
 
 .topbar {
@@ -15,8 +15,8 @@
   display: flex;
   position: relative;
   align-items: center;
-  background-color: #FFFFFF;
-  /* border: 1px solid #000; */
+  background-color: var(--bg-primary);
+  /* border: 1px solid var(--black); */
 }
 
 .topbar .topbar-left {
@@ -27,7 +27,7 @@
     height: 36px;
     cursor: pointer;
     width: max-content;
-    color: #ffffff;
+    color: var(--white);
   }
 
 }
@@ -55,7 +55,7 @@
   border: none;
   display: flex;
   cursor: pointer;
-  color: #28343F;
+  color: var(--text-deep-gray);
   align-items: center;
   justify-content: center;
   font-size: 14px;
@@ -69,8 +69,8 @@
 }
 
 .topbar .topbar-middle button:hover {
-  color: #121212;
-  background-color: #F5F5F5;
+  color: var(--text-almost-black);
+  background-color: var(--bg-tertiary);
 }
 
 
@@ -90,7 +90,7 @@
   justify-content: center;
   border-radius: 50px;
   padding: 4px;
-  border: 1px solid #E4E4E4;
+  border: 1px solid var(--border-light);
 
   .menu-toggle,
   .user-account {
@@ -102,31 +102,39 @@
     border-radius: 50px;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+
+    .icon {
+      color: var(--text-muted);
+    }
   }
 
   .menu-toggle:hover,
   .user-account:hover {
-    /* background-color: #F5F5F5; */
-    background-color: #F0F0F0;
+    /* background-color: var(--bg-tertiary); */
+    background-color: var(--bg-hover);
+
+    .icon {
+      color: var(--black);
+    }
   }
 
 }
 
 
 .topbar .menu-box {
+  display: none;
   height: 250px;
   /* width: 200px; */
   width: 90%;
   z-index: 100;
-  /* i want it in center Horizontally */
-
   top: 64px;
   left: 50%;
   translate: -50%;
-  /* right: 8px; */
+
+
   position: absolute;
-  backdrop-filter: blur(16px);
-  border: 1px solid #CCCCCC;
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border-medium);
   background-color: transparent;
 }
 

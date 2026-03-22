@@ -9,7 +9,7 @@ type Theme = "system" | "light" | "dark";
 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState<Theme>("system");
-  const icons_size = 15;
+  const icons_size = 16;
 
   // Load saved theme on mount
   useEffect(() => {
