@@ -14,7 +14,7 @@ const HeroSection = () => {
 
           <div className="action-button">
             <svg className="arrow-svg" viewBox="0 0 32 32">
-              <path className="shaft" d="M6 16h20" />
+              <path className="shaft" d="M3 16h20" />
               <path className="chevron" d="M18 8l8 8-8 8" />
             </svg>
           </div>

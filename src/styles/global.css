@@ -69,7 +69,7 @@
   --text-secondary: var(--gray-50);
   --bg-secondary: #111111;
   --border-light: var(--text-dim);
-  
+
   /* Legacy compatibility */
   --bg: var(--bg-primary);
   --text: var(--text-primary);
@@ -78,10 +78,27 @@
 
 
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: transparent;
+}
+
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.home-container {
+  margin: auto;
+  max-width: 1376px;
+  min-height: 100vh;
+  border: 1px solid var(--border-light);
 }

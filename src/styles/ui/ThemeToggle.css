@@ -1,5 +1,6 @@
 .theme_toggle_container {
   padding: 4px;
+  width: min-content;
   /* height: 24px; */
   border-radius: 50px;
   display: flex;

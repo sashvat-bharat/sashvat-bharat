@@ -10,6 +10,14 @@ import ThemeToggle from '../ui/ThemeToggle'
 
 const TopBar = () => {
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setMenuOpen(!menuOpen);
+  }
+
+
+
   const iconsize = 16;
 
   return (
@@ -32,10 +40,12 @@ const TopBar = () => {
 
         <div className='topbar-right'>
 
-          <ThemeToggle />
+          <div className='theme-toggle-container'>
+            <ThemeToggle />
+          </div>
 
           <div className='menu-n-account'>
-            <div className='menu-toggle'>
+            <div className='menu-toggle' onClick={handleMenuToggle}>
               <Menu size={iconsize} className='icon' />
             </div>
             <div className='user-account'>
@@ -44,13 +54,19 @@ const TopBar = () => {
           </div>
         </div>
 
-        <div className='menu-box'>
+        <div className={`menu-box ${menuOpen ? 'open' : 'closed'}`}>
 
           <button>Products</button>
           <button>Articles</button>
           <button>Research</button>
           <button>About Us</button>
           <button>Careers</button>
+
+          <div className='line-separator'></div>
+
+          <div className='theme-toggle-container-under-menubox'>
+            <ThemeToggle />
+          </div>
 
         </div>
 

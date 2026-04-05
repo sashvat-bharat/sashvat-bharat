@@ -35,9 +35,13 @@
     box-shadow var(--transition-speed) var(--easing);
 
   .promo-text {
-    font-size: 13px;
-    line-height: 13.5px;
-    font-family: var(--font-plus-jakarta-sans);
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--text-dark);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    font-family: var(--font-manrope);
   }
 
 }
@@ -45,16 +49,7 @@
 .promo-trigger:hover {
   border-color: var(--border-hover);
   padding-right: 4px;
-  box-shadow: 0 10px 30px var(--overlay-subtle);
-}
-
-.promo-text {
-  font-size: 36px;
-  font-weight: 500;
-  color: var(--text-dark);
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  user-select: none;
+  box-shadow: 0 8px 24px var(--overlay-subtle);
 }
 
 /* 2. The Inner Action Button */
@@ -231,7 +226,7 @@
   bottom: 0;
   left: 50%;
   width: 0%;
-  height: 1.5px;
+  height: 2px;
   background: var(--golden-alt);
   transform: translateX(-50%);
   box-shadow: 0 0 10px var(--golden-glow);
