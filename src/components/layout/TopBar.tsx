@@ -22,7 +22,6 @@ const TopBar = () => {
 
   return (
     <>
-      <div className='flash-message-space'></div>
 
       <div className="topbar">
 

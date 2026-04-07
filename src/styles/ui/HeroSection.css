@@ -25,9 +25,9 @@
   justify-content: center;
   padding: 0 4px 0 12px;
   gap: 12px;
-  border: 1.5px solid var(--border-light);
+  border: 1.5px solid #E4E4E4;
   border-radius: 52px;
-  background: var(--white);
+  background: #FFFFFF;
   transition:
     gap var(--transition-speed) var(--easing),
     padding var(--transition-speed) var(--easing),
@@ -38,7 +38,7 @@
     font-size: 14px;
     line-height: 16px;
     font-weight: 500;
-    color: var(--text-dark);
+    color: #171717;
     letter-spacing: -0.01em;
     white-space: nowrap;
     font-family: var(--font-manrope);
@@ -47,9 +47,9 @@
 }
 
 .promo-trigger:hover {
-  border-color: var(--border-hover);
+  border-color: #ECECEC;
   padding-right: 4px;
-  box-shadow: 0 8px 24px var(--overlay-subtle);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
 }
 
 /* 2. The Inner Action Button */
@@ -58,7 +58,7 @@
   height: 24px;
   width: 24px;
 
-  background-color: var(--text-dark);
+  background-color: #111111;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
 
 .promo-trigger:hover .action-button {
   width: 40px;
-  background-color: var(--accent-orange);
+  background-color: #f95015;
 }
 
 /* 3. SVG Precision Styling */
@@ -128,82 +128,31 @@
 .intro-text h1 {
   font-size: 56px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #171717;
   font-family: var(--font-geist-sans);
 }
 
 .intro-text p {
   /* font-weight: 500; */
   margin-top: -24px;
-  color: var(--text-dim);
+  color: #555555;
   line-height: 24px;
   font-size: 20px;
   letter-spacing: -0.1px;
   font-family: var(--font-geist-sans);
 }
 
-
-.plain-button {
-  height: 48px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 21px;
-  padding: 0px 16px;
-  border-radius: 50px;
-  letter-spacing: -0.2px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--black);
-  border: none;
-  /* border: 1px solid var(--border-light); */
-  background: var(--bg-secondary);
-
-  transition: 0.2s ease-in-out;
-  font-family: var(--font-geist-sans);
-}
-
-/* .plain-button:hover {
-  border: 1px solid var(--accent-red);
-} */
-
-.hero-image {
-  display: none;
-  position: absolute;
-  /* top: 48%; */
-  top: 20%;
-  left: 50%;
-  z-index: -100;
-  width: max-content;
-  height: max-content;
-  transform: translateX(-50%);
-
-  img {
-    width: 800px;
-    opacity: 0.16;
-    height: max-content;
-  }
-
-}
-
-
-
 .event-horizon-btn {
   height: 48px;
   border: none;
-  color: var(--white);
+  color: #FFFFFF;
   padding: 0 24px;
   cursor: pointer;
   font-size: 14px;
   overflow: hidden;
   margin-top: 32px;
   position: relative;
-  background: var(--black);
+  background: #000000;
   border-radius: 4px;
   text-transform: uppercase;
   font-family: var(--font-geist-sans);
@@ -217,7 +166,7 @@
 }
 
 .event-horizon-btn:hover .btn-text {
-  color: var(--white);
+  color: #FFFFFF;
   letter-spacing: 1px;
 }
 
@@ -227,9 +176,9 @@
   left: 50%;
   width: 0%;
   height: 2px;
-  background: var(--golden-alt);
+  background: #C5A058;
   transform: translateX(-50%);
-  box-shadow: 0 0 10px var(--golden-glow);
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
   transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 

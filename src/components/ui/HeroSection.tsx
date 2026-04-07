@@ -34,10 +34,6 @@ const HeroSection = () => {
           </button>
         </center>
 
-        <div className="hero-image">
-          <Image src="/ascii.svg" alt="hero-image" width={100} height={100} />
-        </div>
-
       </div>
     </>
   )
