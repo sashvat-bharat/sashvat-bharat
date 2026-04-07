@@ -6,7 +6,7 @@ body {
 .heading {
   font-size: 42px;
   font-weight: 500;
-  color: #171717;
+  color: var(--text-primary);
   letter-spacing: -1px;
   font-family: var(--font-geist-sans);
 }
@@ -18,17 +18,21 @@ body {
   border: 1px solid var(--accent-orange-deep);
 } */
 
+.research_container {
+  padding: 32px;
+}
+
 .research_container .research_card {
   padding: 24px;
   margin-bottom: 24px;
   border-radius: 16px;
-  background-color: #F7F7F7;
+  background-color: var(--bg-tertiary);
 
   h2 {
     font-family: var(--font-geist-sans);
     font-size: 24px;
     font-weight: 500;
-    color: #171717;
+    color: var(--text-primary);
     letter-spacing: -0.5px;
   }
 
@@ -36,7 +40,7 @@ body {
     font-family: var(--font-geist-sans);
     font-size: 16px;
     font-weight: 400;
-    color: #171717;
+    color: var(--text-primary);
     letter-spacing: -0.5px;
   }
 
@@ -53,8 +57,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    color: #FFFFFF;
-    background-color: #000000;
+    color: var(--btn-text-primary);
+    background-color: var(--btn-bg-primary);
     font-family: var(--font-geist-sans);
     transition: 0.2s ease-in-out;
   }

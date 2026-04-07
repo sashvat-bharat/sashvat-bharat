@@ -1,11 +1,18 @@
-/* base */
 :root {
 
-  /* Semantic Backgrounds */
+  /* Universal Configs */
   --bg-primary: #FFFFFF;
-  --bg-btn-primary: #000000;
+  --bg-secondary: #F0F0F0;
+  --bg-tertiary: #F7F7F7;
+  --border-primary: #E4E4E4;
+  --border-secondary: #ECECEC;
+
+
+  /* Text Configs */
   --text-primary: #171717;
-  --border-light: #E4E4E4;
+  --text-secondary: #555555;
+
+
 
   /* Buttons */
   --btn-bg-primary: #000000;
@@ -24,7 +31,24 @@
 
 /* dark */
 [data-theme="dark"] {
+
+  /* Universal Configs */
   --bg-primary: #000000;
+  --bg-secondary: #171717;
+  --bg-tertiary: #242424;
+  --border-primary: #ffffff33;
+  --border-secondary: #ffffff1a;
+
+  /* Text Configs */
+  --text-primary: #FFFFFF;
+  --text-secondary: #F5F5F5;
+
+  /* Buttons */
+  --btn-bg-primary: #FFFFFF;
+  --btn-text-primary: #000000;
+  --btn-border-primary: #ffffff33;
+
+
 }
 
 
@@ -55,5 +79,25 @@ body {
   margin: auto;
   max-width: 1376px;
   min-height: 100vh;
-  border: 1px solid #E4E4E4;
+  border-left: 1px solid var(--border-primary);
+  border-right: 1px solid var(--border-primary);
+}
+
+/* ── Theme-aware logo visibility ── */
+/* Light mode (default): show dark logo */
+.logo-dark {
+  display: none;
+}
+
+.logo-light {
+  display: block;
+}
+
+/* Dark mode: show light logo */
+[data-theme="dark"] .logo-dark {
+  display: block;
+}
+
+[data-theme="dark"] .logo-light {
+  display: none;
 }

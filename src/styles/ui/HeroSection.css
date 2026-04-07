@@ -25,9 +25,9 @@
   justify-content: center;
   padding: 0 4px 0 12px;
   gap: 12px;
-  border: 1.5px solid #E4E4E4;
+  border: 1.5px solid var(--border-primary);
   border-radius: 52px;
-  background: #FFFFFF;
+  background: var(--bg-primary);
   transition:
     gap var(--transition-speed) var(--easing),
     padding var(--transition-speed) var(--easing),
@@ -38,7 +38,7 @@
     font-size: 14px;
     line-height: 16px;
     font-weight: 500;
-    color: #171717;
+    color: var(--text-primary);
     letter-spacing: -0.01em;
     white-space: nowrap;
     font-family: var(--font-manrope);
@@ -47,7 +47,7 @@
 }
 
 .promo-trigger:hover {
-  border-color: #ECECEC;
+  border-color: var(--border-secondary);
   padding-right: 4px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
 }
@@ -128,14 +128,14 @@
 .intro-text h1 {
   font-size: 56px;
   font-weight: 500;
-  color: #171717;
+  color: var(--text-primary);
   font-family: var(--font-geist-sans);
 }
 
 .intro-text p {
   /* font-weight: 500; */
   margin-top: -24px;
-  color: #555555;
+  color: var(--text-secondary);
   line-height: 24px;
   font-size: 20px;
   letter-spacing: -0.1px;
@@ -145,14 +145,14 @@
 .event-horizon-btn {
   height: 48px;
   border: none;
-  color: #FFFFFF;
+  color: var(--btn-text-primary);
   padding: 0 24px;
   cursor: pointer;
   font-size: 14px;
   overflow: hidden;
   margin-top: 32px;
   position: relative;
-  background: #000000;
+  background: var(--btn-bg-primary);
   border-radius: 4px;
   text-transform: uppercase;
   font-family: var(--font-geist-sans);
@@ -166,7 +166,7 @@
 }
 
 .event-horizon-btn:hover .btn-text {
-  color: #FFFFFF;
+  color: var(--btn-text-primary);
   letter-spacing: 1px;
 }
 

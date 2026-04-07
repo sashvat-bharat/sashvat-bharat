@@ -6,13 +6,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #E4E4E4;
+  border: 1px solid var(--border-primary);
 }
 
 .theme_toggle_container .icon_btn {
   height: 28px;
   width: 28px;
-  color: #555555;
+  color: var(--text-secondary);
   display: flex;
   outline: none;
   cursor: pointer;
@@ -26,6 +26,6 @@
 
 /* Persistent active state — stays styled after click */
 .theme_toggle_container .icon_btn.active {
-  background-color: #F0F0F0;
-  color: #000000;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
 }
