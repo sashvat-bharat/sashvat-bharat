@@ -5,7 +5,6 @@
   letter-spacing: -1px;
   font-family: var(--font-geist-sans);
   height: 72px;
-  /* border: 1px solid red; */
   border-bottom: 1px solid var(--border-primary);
 
 }
@@ -14,13 +13,11 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid red; */
 }
 
 .research_articles_container .research_card {
   padding-top: 32px;
   padding-bottom: 32px;
-  /* border: 1px solid red; */
   border-bottom: 1px solid var(--border-primary);
 
 

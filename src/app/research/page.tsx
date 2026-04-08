@@ -11,8 +11,6 @@ const page = () => {
         <TopBar />
         <br />
 
-        {/* <h1 className='heading'>Research</h1> */}
-
         <div className='research_articles_container'>
 
           <h1 className='heading'>Research</h1>
