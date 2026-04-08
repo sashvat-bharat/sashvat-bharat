@@ -4,7 +4,7 @@ import "@/styles/global.css"
 import "@/styles/layout/TopBar.css"
 import { useState } from 'react'
 import { Menu, UserRound } from 'lucide-react'
-import ThemeToggle from '../ui/ThemeToggle'
+import { ThemeToggle } from '../ui/ThemeToggle'
 
 
 
