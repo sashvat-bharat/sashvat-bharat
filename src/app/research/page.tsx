@@ -1,6 +1,6 @@
 import React from 'react'
-import "@/styles/research/research.css";
 import "@/styles/global.css";
+import "@/styles/research/research.css";
 import TopBar from '@/components/layout/TopBar';
 
 const page = () => {
@@ -10,18 +10,35 @@ const page = () => {
       <div className='research_page_container'>
         <TopBar />
         <br />
-        <center><h1 className='heading'>Research</h1></center>
 
-        <div className='research_container'>
+        {/* <h1 className='heading'>Research</h1> */}
+
+        <div className='research_articles_container'>
+
+          <h1 className='heading'>Research</h1>
+
+
           <div className='research_card'>
-            <h2>JIT (Just-in-Time) Tool Spawning Protocol</h2>
-            <p>The JIT (Just-in-Time) Tool Spawning Protocol: A Server-Side Routing Architecture for Infinite-Tool AI Agents</p>
-            <button>Read More</button>
+            <p className='publish_time'>Published: Mar 25, 2026</p>
+            <h1 className='title_heading'>Introducing : JIT Tool Spawning Protocol</h1>
+            <p className='short_description'>A Server-Side Routing Architecture for Infinite-Tool AI Agents</p>
           </div>
+
+          <div className='research_card'>
+            <p className='publish_time'>Published: Mar 25, 2026</p>
+            <h1 className='title_heading'>Introducing : JIT Tool Spawning Protocol</h1>
+            <p className='short_description'>A Server-Side Routing Architecture for Infinite-Tool AI Agents</p>
+          </div>
+
+          <div className='research_card'>
+            <p className='publish_time'>Published: Mar 25, 2026</p>
+            <h1 className='title_heading'>Introducing : JIT Tool Spawning Protocol</h1>
+            <p className='short_description'>A Server-Side Routing Architecture for Infinite-Tool AI Agents</p>
+          </div>
+
+
         </div>
-
       </div>
-
     </>
   )
 }

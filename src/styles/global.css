@@ -11,6 +11,7 @@
   /* Text Configs */
   --text-primary: #171717;
   --text-secondary: #555555;
+  --text-tertiary: #555555;
 
 
   /* Buttons */
@@ -37,6 +38,7 @@
   /* Text Configs */
   --text-primary: #FFFFFF;
   --text-secondary: #F5F5F5;
+  --text-tertiary: #ACACAC;
 
   /* Buttons */
   --btn-bg-primary: #FFFFFF;
@@ -72,10 +74,11 @@ body {
 .home-container,
 .research_page_container {
   margin: auto;
-  max-width: 1376px;
+  /* max-width: 1376px; */
+  max-width: 1440px;
   min-height: 100vh;
-  border-left: 1px solid var(--border-primary);
-  border-right: 1px solid var(--border-primary);
+  /* border-left: 1px solid var(--border-primary); */
+  /* border-right: 1px solid var(--border-primary); */
 }
 
 /* ── Theme-aware logo visibility ── */
