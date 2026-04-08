@@ -49,6 +49,7 @@ const ThemeToggle: React.FC = () => {
   const pick = (t: Theme) => {
     setTheme(t);
     localStorage.setItem("theme", t);
+    document.cookie = `theme=${t};path=/;max-age=31536000`;
   };
 
   return (

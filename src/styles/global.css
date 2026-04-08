@@ -13,15 +13,10 @@
   --text-secondary: #555555;
 
 
-
   /* Buttons */
   --btn-bg-primary: #000000;
   --btn-text-primary: #FFFFFF;
   --btn-border-primary: #E4E4E4;
-
-
-
-
 
 
   /* Brand Colors & Accents */
@@ -101,3 +96,7 @@ body {
 [data-theme="dark"] .logo-light {
   display: none;
 }
+
+
+
+/* Can we make our svg logo images cache in browser cache so that with every load it will not load again n again ?? */

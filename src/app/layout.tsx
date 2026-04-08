@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Source_Serif_4, Plus_Jakarta_Sans, Rethink_Sans, Space_Grotesk, Lexend, Manrope, Urbanist, Instrument_Serif } from "next/font/google";
+import { cookies } from "next/headers";
 import "@/styles/global.css";
 
 
@@ -36,13 +37,47 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+async function getThemeFromCookie(): Promise<"light" | "dark"> {
+  try {
+    const cookieStore = await cookies();
+    const themeCookie = cookieStore.get("theme");
+    if (themeCookie?.value === "dark" || themeCookie?.value === "light") {
+      return themeCookie.value;
+    }
+  } catch {}
+  return "light";
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = await getThemeFromCookie();
+
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en" data-theme={theme}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var t = localStorage.getItem('theme');
+                  var c = document.cookie.match('(^|;)\\s*theme\\s*=\\s*([^;]+)');
+                  var cookieTheme = c ? c.pop() : null;
+                  if (t === 'dark' || t === 'light') {
+                    document.documentElement.setAttribute('data-theme', t);
+                    document.cookie = 'theme=' + t + ';path=/;max-age=31536000';
+                  } else if (cookieTheme === 'dark' || cookieTheme === 'light') {
+                    document.documentElement.setAttribute('data-theme', cookieTheme);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning={true} className={`${geistSans.variable} ${geistMono.variable} ${rethinkSans.variable} ${spaceGrotesk.variable} ${lexend.variable} ${manrope.variable} ${sourceSerif4.variable} ${urbanist.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable}`} >
         {children}
       </body>
