@@ -12,6 +12,7 @@
 .topbar .topbar-left {
   margin-left: 24px;
   margin-bottom: -4px;
+  text-decoration: none;
 
   img {
     height: 36px;
@@ -61,6 +62,11 @@
 .topbar .topbar-middle button:hover {
   color: var(--text-primary);
   background-color: var(--bg-secondary);
+}
+
+.topbar .topbar-middle a,
+.topbar .menu-box a {
+  text-decoration: none;
 }
 
 

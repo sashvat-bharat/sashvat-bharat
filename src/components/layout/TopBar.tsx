@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image'
+import Link from 'next/link'
 import "@/styles/global.css"
 import "@/styles/layout/TopBar.css"
 import { useState } from 'react'
@@ -25,15 +26,17 @@ const TopBar = () => {
 
       <div className="topbar">
 
-        <div className='topbar-left'>
+        <Link href="/" className='topbar-left'>
           <Image className="logo-light" src="logo/logo-light.svg" alt="logo" width={100} height={100} />
           <Image className="logo-dark" src="logo/logo-dark.svg" alt="logo" width={100} height={100} />
-        </div>
+        </Link>
 
         <div className='topbar-middle'>
           <button>Products</button>
           <button>Articles</button>
-          <button>Research</button>
+          <Link href="/research">
+            <button>Research</button>
+          </Link>
           <button>About Us</button>
           <button>Careers</button>
         </div>
@@ -58,7 +61,7 @@ const TopBar = () => {
 
           <button>Products</button>
           <button>Articles</button>
-          <button>Research</button>
+          <Link href="/research"><button>Research</button></Link>
           <button>About Us</button>
           <button>Careers</button>
 
