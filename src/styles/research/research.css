@@ -1,21 +1,14 @@
 .heading {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 400;
   color: var(--text-primary);
   letter-spacing: -1px;
   font-family: var(--font-geist-sans);
-  height: 56px;
+  height: 72px;
   /* border: 1px solid red; */
   border-bottom: 1px solid var(--border-primary);
 
 }
-
-/* .research_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  border: 1px solid var(--accent-orange-deep);
-} */
 
 .research_articles_container {
   padding: 24px;
