@@ -26,8 +26,8 @@ const TopBar = () => {
       <div className="topbar">
 
         <div className='topbar-left'>
-          <Image className="logo-light" src="/logo-light.svg" alt="logo" width={100} height={100} />
-          <Image className="logo-dark" src="/logo-dark.svg" alt="logo" width={100} height={100} />
+          <Image className="logo-light" src="logo/logo-light.svg" alt="logo" width={100} height={100} />
+          <Image className="logo-dark" src="logo/logo-dark.svg" alt="logo" width={100} height={100} />
         </div>
 
         <div className='topbar-middle'>
