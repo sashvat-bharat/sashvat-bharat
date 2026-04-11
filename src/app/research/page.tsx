@@ -10,7 +10,7 @@ const page = async () => {
   const researchPapers = getAllResearchList();
 
   return (
-    <div className='research_page_container'>
+    <div className='home-container'>
       <TopBar />
       <br />
 
@@ -37,4 +37,4 @@ const page = async () => {
   );
 }
 
-export default page;
+export default page;

@@ -71,27 +71,20 @@ body {
   user-select: none;
 }
 
-.home-container,
-.research_page_container {
+.home-container {
   margin: auto;
-  /* max-width: 1376px; */
   width: 100%;
-  /* overflow-x: hidden; */
   max-width: 1440px;
   min-height: 100vh;
   /* border-left: 1px solid var(--border-primary); */
   /* border-right: 1px solid var(--border-primary); */
 }
 
-.research_articles_container {
-
-  pre,
-  code {
-    white-space: pre-wrap !important;
-    word-break: break-word !important;
-    overflow-wrap: anywhere !important;
-    max-width: 100% !important;
-  }
+.article_container {
+  margin: auto;
+  margin-top: 56px;
+  max-width: 750px;
+  padding: 0 24px;
 }
 
 /* ── Theme-aware logo visibility ── */

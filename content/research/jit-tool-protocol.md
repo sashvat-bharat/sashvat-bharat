@@ -1,18 +1,10 @@
 ---
-title: "Introducing : JIT Tool Spawning Protocol"
+title: "The JIT (Just-in-Time) Tool Spawning Protocol"
 date: "March 01, 2026"
 description: "A Server-Side Routing Architecture for Infinite-Tool AI Agents"
+author: "Akshat Dwivedi"
+author_affiliation: "Researcher"
 ---
-
-# The JIT (Just-in-Time) Tool Spawning Protocol: A Server-Side Routing Architecture for Infinite-Tool AI Agents
-
-
-**Author:** Akshat Dwivedi
-**Affiliation:** Founder & CEO, Sashvat Bharat
-**Date:** March 2026
-**Target System:** Complex Agentic Systems with 100+ Tools
-
-## Abstract
 
 For years, the AI community has relied on a brute-force approach to multi-agent systems: stuffing the definitions, schemas, and parameters of every available tool directly into an LLM's system prompt. This method causes massive API costs, severe latency spikes, and degraded reasoning (the "Lost in the Middle" phenomenon).
 
