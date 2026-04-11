@@ -54,8 +54,8 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "logo/favicon-1.svg",
-    apple: "logo/apple-touch-icon.png",
+    icon: "/logo/favicon-1.svg",
+    apple: "/logo/apple-touch-icon.png",
   },
 
   openGraph: {
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     siteName: "Sashvat Bharat",
     images: [
       {
-        url: "logo/og-image.png",
+        url: "/logo/og-image.png",
         width: 1200,
         height: 630,
         alt: "Sashvat Bharat",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sashvat Bharat | Rule the Horizon",
     description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Rule the Horizon. Beyond Limits!",
-    images: ["logo/og-image.png"],
+    images: ["/logo/og-image.png"],
   },
 
   robots: {
