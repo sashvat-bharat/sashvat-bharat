@@ -1,3 +1,5 @@
+import katex from 'katex';
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Sashvat Bharat — Custom Markdown Parser
 // A fully type-safe, zero-dependency Markdown → HTML parser.
@@ -20,6 +22,7 @@ export type BlockNodeType =
     | 'definition_list'
     | 'footnote_definition'
     | 'html_block'
+    | 'math_block'
     | 'empty';
 
 /** All supported inline node types */
@@ -39,6 +42,7 @@ export type InlineNodeType =
     | 'superscript'
     | 'subscript'
     | 'emoji'
+    | 'inline_math'
     | 'html_inline';
 
 // ── Inline nodes ─────────────────────────────────────────────────────────────
@@ -143,7 +147,13 @@ export type InlineNode =
     | SuperscriptNode
     | SubscriptNode
     | EmojiNode
+    | InlineMathNode
     | HtmlInlineNode;
+
+export interface InlineMathNode {
+    type: 'inline_math';
+    content: string;
+}
 
 // ── Block nodes ──────────────────────────────────────────────────────────────
 
@@ -225,6 +235,11 @@ export interface HtmlBlockNode {
     content: string;
 }
 
+export interface MathBlockNode {
+    type: 'math_block';
+    content: string;
+}
+
 export interface EmptyNode {
     type: 'empty';
 }
@@ -241,6 +256,7 @@ export type BlockNode =
     | DefinitionListNode
     | FootnoteDefinitionNode
     | HtmlBlockNode
+    | MathBlockNode
     | EmptyNode;
 
 // ── Document root ────────────────────────────────────────────────────────────
@@ -348,6 +364,8 @@ function extractText(nodes: InlineNode[]): string {
                     return '';
                 case 'html_inline':
                     return '';
+                case 'inline_math':
+                    return node.content;
             }
         })
         .join('');
@@ -486,6 +504,26 @@ class InlineParser {
                     }
                     nodes.push({ type: 'inline_code', content: code });
                     i = closeIdx + ticks;
+                    continue;
+                }
+            }
+
+            // ── Inline Math ($...$ or $$...$$) ────────────────────────────
+            if (input[i] === '$') {
+                let j = i;
+                let markers = 0;
+                while (j < input.length && input[j] === '$' && markers < 2) {
+                    markers++;
+                    j++;
+                }
+
+                const delim = '$'.repeat(markers);
+                const closeIdx = input.indexOf(delim, j);
+                if (closeIdx !== -1) {
+                    flushText();
+                    const content = input.slice(j, closeIdx).trim();
+                    nodes.push({ type: 'inline_math', content });
+                    i = closeIdx + markers;
                     continue;
                 }
             }
@@ -791,6 +829,39 @@ class BlockParser {
                     content: codeLines.join('\n'),
                     meta,
                 });
+                continue;
+            }
+
+            // ── Display Math Block ($$ ... $$) ───────────────────────────
+            const displayMathMatch = line.match(/^(\s{0,3})\$\$(.*)$/);
+            if (displayMathMatch) {
+                const indent = displayMathMatch[1].length;
+                let mathContent = displayMathMatch[2];
+                i++;
+
+                // If it ends on the same line
+                if (mathContent.trim().endsWith('$$')) {
+                    mathContent = mathContent.trim().slice(0, -2);
+                    nodes.push({ type: 'math_block', content: mathContent });
+                } else {
+                    // Multi-line math block
+                    const mathLines: string[] = [mathContent];
+                    let closed = false;
+                    while (i < lines.length) {
+                        const closeMatch = lines[i].match(/^\s*(\$\$)\s*$/);
+                        if (closeMatch) {
+                            closed = true;
+                            i++;
+                            break;
+                        }
+                        mathLines.push(lines[i]);
+                        i++;
+                    }
+                    nodes.push({
+                        type: 'math_block',
+                        content: mathLines.join('\n').trim(),
+                    });
+                }
                 continue;
             }
 
@@ -1313,6 +1384,12 @@ class HtmlRenderer {
                 return ''; // Rendered separately in footnote section
             case 'html_block':
                 return this.options.sanitizeHtml ? escapeHtml(node.content) : node.content;
+            case 'math_block':
+                try {
+                    return `<div class="${this.prefix}-math-display">${katex.renderToString(node.content, { displayMode: true, throwOnError: false })}</div>`;
+                } catch (e) {
+                    return `<div class="${this.prefix}-math-display">${escapeHtml(node.content)}</div>`;
+                }
             case 'empty':
                 return '';
         }
@@ -1479,6 +1556,12 @@ class HtmlRenderer {
                 return `<sub>${this.renderInlines(node.children)}</sub>`;
             case 'emoji':
                 return `<span class="${this.prefix}-emoji" title=":${escapeHtml(node.name)}:" role="img" aria-label="${escapeHtml(node.name)}">${node.unicode}</span>`;
+            case 'inline_math':
+                try {
+                    return `<span class="${this.prefix}-math-inline">${katex.renderToString(node.content, { displayMode: false, throwOnError: false })}</span>`;
+                } catch (e) {
+                    return `<span class="${this.prefix}-math-inline">${escapeHtml(node.content)}</span>`;
+                }
             case 'html_inline':
                 return this.options.sanitizeHtml ? escapeHtml(node.content) : node.content;
         }

@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Source_Serif_4, Plus_Jakarta_Sans, Rethink_Sans, Spa
 import { cookies } from "next/headers";
 import { ThemeProvider } from "@/components/ui/ThemeToggle";
 import "@/styles/global.css";
+import "katex/dist/katex.min.css";
+
 
 // Fonts Imports -------------------------
 

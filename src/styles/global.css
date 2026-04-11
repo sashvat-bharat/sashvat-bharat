@@ -57,7 +57,8 @@
 }
 
 ::selection {
-  background: transparent;
+  background: rgba(197, 160, 88, 0.2);
+  /* Subtle golden tint */
 }
 
 body {
@@ -67,8 +68,8 @@ body {
   /* background-color: #FFFFFF; */
   background-color: var(--bg-primary);
   color: #171717;
-  -webkit-user-select: none;
-  user-select: none;
+  /* -webkit-user-select: none; */
+  /* user-select: none; */
 }
 
 .home-container {
