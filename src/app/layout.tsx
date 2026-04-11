@@ -103,11 +103,11 @@ async function getInitialTheme(): Promise<Theme> {
   try {
     const cookieStore = await cookies();
     const themeCookie = cookieStore.get("theme");
-    if (themeCookie?.value === "dark" || themeCookie?.value === "light") {
-      return themeCookie.value;
+    if (themeCookie?.value === "dark" || themeCookie?.value === "light" || themeCookie?.value === "system") {
+      return themeCookie.value as Theme;
     }
   } catch { }
-  return "system";
+  return "light";
 }
 
 export default async function RootLayout({
