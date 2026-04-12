@@ -10,6 +10,9 @@ import { getAllResearchList } from '@/lib/markdown';
 export const metadata: Metadata = {
   title: "Research & Publications",
   description: "Explore the latest research, whitepapers, and technical articles from Sashvat Bharat on AI/ML and autonomous systems.",
+  alternates: {
+    canonical: '/research',
+  },
 };
 
 
