@@ -1,15 +1,22 @@
-import Image from 'next/image'
+"use client"
+
 import "@/styles/global.css"
 import "@/styles/ui/HeroSection.css"
-import { MoveRight } from 'lucide-react'
+import { useRouter } from 'next/navigation';
 
 const HeroSection = () => {
+  const router = useRouter();
+
+  const handlePromoClick = () => {
+    router.push('/research/jit-tool-protocol');
+  };
+
   return (
     <>
       <div className="hero-section">
 
 
-        <div className="promo-trigger" role="button" tabIndex={0}>
+        <div className="promo-trigger" role="button" tabIndex={0} onClick={handlePromoClick}>
           <span className="promo-text">Introducing the JIT Tool Protocol</span>
 
           <div className="action-button">
