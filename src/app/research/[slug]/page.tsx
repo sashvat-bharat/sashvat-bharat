@@ -1,4 +1,6 @@
+import { Metadata } from 'next';
 import { getResearchBySlug, getResearchSlugs } from '@/lib/markdown';
+
 import TopBar from '@/components/layout/TopBar';
 import "@/styles/global.css";
 import "@/styles/research/research.css";
@@ -7,6 +9,28 @@ import "@/styles/markdown.css";
 export async function generateStaticParams() {
     const slugs = getResearchSlugs();
     return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const resolvedParams = await params;
+    const { frontmatter } = await getResearchBySlug(resolvedParams.slug);
+
+    return {
+        title: frontmatter.title,
+        description: frontmatter.description,
+        openGraph: {
+            title: frontmatter.title,
+            description: frontmatter.description,
+            type: 'article',
+            publishedTime: frontmatter.date,
+            authors: [frontmatter.author],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: frontmatter.title,
+            description: frontmatter.description,
+        },
+    };
 }
 
 const page = async ({

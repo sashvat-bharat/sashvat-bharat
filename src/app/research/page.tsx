@@ -1,9 +1,17 @@
 import React from 'react';
+import type { Metadata } from 'next';
+
 import Link from 'next/link';
 import "@/styles/global.css";
 import "@/styles/research/research.css";
 import TopBar from '@/components/layout/TopBar';
 import { getAllResearchList } from '@/lib/markdown';
+
+export const metadata: Metadata = {
+  title: "Research & Publications",
+  description: "Explore the latest research, whitepapers, and technical articles from Sashvat Bharat on AI/ML and autonomous systems.",
+};
+
 
 const page = async () => {
   // Fetch the data at build time (SSG)
