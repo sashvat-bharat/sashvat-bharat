@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "gen:research": "node scripts/generate-research-index.mjs",
+    "predev": "pnpm run gen:research",
     "dev": "next dev",
+    "prebuild": "pnpm run gen:research",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

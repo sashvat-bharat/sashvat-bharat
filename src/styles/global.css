@@ -21,7 +21,9 @@
 
 
   /* Brand Colors & Accents */
+  --orange-primary: #f95015;
   --golden: #C5A058;
+  --warm-ivory: #F3EDDF;
 
 }
 
@@ -58,18 +60,14 @@
 
 ::selection {
   background: rgba(197, 160, 88, 0.2);
-  /* Subtle golden tint */
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  /* background-color: #FFFFFF; */
   background-color: var(--bg-primary);
   color: #171717;
-  /* -webkit-user-select: none; */
-  /* user-select: none; */
 }
 
 .home-container {
@@ -77,8 +75,6 @@ body {
   width: 100%;
   max-width: 1440px;
   min-height: 100vh;
-  /* border-left: 1px solid var(--border-primary); */
-  /* border-right: 1px solid var(--border-primary); */
 }
 
 .article_container {

@@ -71,7 +71,7 @@
 
 .promo-trigger:hover .action-button {
   width: 40px;
-  background-color: #f95015;
+  background-color: var(--orange-primary);
 }
 
 /* 3. SVG Precision Styling */
