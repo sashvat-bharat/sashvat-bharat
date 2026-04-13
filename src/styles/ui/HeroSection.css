@@ -88,7 +88,7 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: transform var(--transition-speed) var(--easing);
-  transform: translateX(-5px);
+  transform: translateX(-3px);
 }
 
 .promo-trigger:hover .chevron {
