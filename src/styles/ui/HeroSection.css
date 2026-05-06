@@ -9,8 +9,8 @@
 
 
 :root {
-  --transition-speed: 0.45s;
-  --easing: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-speed: var(--duration-normal);
+  --easing: var(--ease-out);
 }
 
 /* 1. The Main Pill Container */
@@ -32,7 +32,18 @@
     gap var(--transition-speed) var(--easing),
     padding var(--transition-speed) var(--easing),
     border-color var(--transition-speed) var(--easing),
-    box-shadow var(--transition-speed) var(--easing);
+    box-shadow var(--transition-speed) var(--easing),
+    opacity var(--duration-slow) var(--easing),
+    transform var(--duration-slow) var(--easing);
+
+  /* Entry Animation */
+  opacity: 1;
+  transform: translateY(0);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 
   .promo-text {
     font-size: 14px;
@@ -50,6 +61,10 @@
   border-color: var(--border-secondary);
   padding-right: 4px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+.promo-trigger:active {
+  transform: scale(0.98);
 }
 
 /* 2. The Inner Action Button */
@@ -88,7 +103,7 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: transform var(--transition-speed) var(--easing);
-  transform: translateX(-3px);
+  transform: translateX(-4px);
 }
 
 .promo-trigger:hover .chevron {
@@ -130,6 +145,17 @@
   font-weight: 500;
   color: var(--text-primary);
   font-family: var(--font-geist-sans);
+
+  /* Entry Animation */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-slow) var(--easing), transform var(--duration-slow) var(--easing);
+  transition-delay: 100ms;
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(15px);
+  }
 }
 
 .intro-text p {
@@ -140,6 +166,17 @@
   font-size: 20px;
   letter-spacing: -0.1px;
   font-family: var(--font-geist-sans);
+
+  /* Entry Animation */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-slow) var(--easing), transform var(--duration-slow) var(--easing);
+  transition-delay: 200ms;
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 }
 
 .event-horizon-btn {
@@ -156,7 +193,24 @@
   border-radius: 4px;
   text-transform: uppercase;
   font-family: var(--font-geist-sans);
-  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), border 0.3s ease;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    border 0.3s ease,
+    opacity var(--duration-slow) var(--easing),
+    background-color var(--duration-normal) var(--easing);
+
+  /* Entry Animation */
+  opacity: 1;
+  transition-delay: 0s, 0s, 300ms, 0s;
+  /* delay only for opacity entry */
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.event-horizon-btn:active {
+  transform: scale(0.97);
 }
 
 .btn-text {

@@ -55,8 +55,12 @@
   border-radius: 12px;
   background-color: transparent;
   padding: 16px 12px 16px 12px;
-  transition: 0.15s ease-in-out;
+  transition: var(--duration-fast) var(--ease-out);
   font-family: var(--font-manrope);
+}
+
+.topbar .topbar-middle button:active {
+  transform: scale(0.97);
 }
 
 .topbar .topbar-middle button:hover {
@@ -96,11 +100,16 @@
     justify-content: center;
     border-radius: 50px;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    transition: var(--duration-fast) var(--ease-out);
 
     .icon {
       color: var(--text-secondary);
     }
+  }
+
+  .menu-toggle:active,
+  .user-account:active {
+    transform: scale(0.92);
   }
 
   .menu-toggle:hover,
@@ -126,7 +135,9 @@
   position: absolute;
   border: 1px solid var(--border-primary);
   background-color: var(--bg-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transform-origin: top right;
+  transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
 
   button {
     height: 36px;
@@ -140,10 +151,14 @@
     font-weight: 500;
     border-radius: 16px;
     padding: 8px 8px 8px 12px;
-    transition: 0.2s ease-in-out;
+    transition: var(--duration-fast) var(--ease-out);
     color: var(--text-primary);
     background-color: transparent;
     font-family: var(--font-manrope);
+  }
+
+  button:active {
+    transform: scale(0.97);
   }
 
   button:hover {
@@ -166,11 +181,15 @@
 }
 
 .topbar .menu-box.closed {
-  display: none;
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
 }
 
 .topbar .menu-box.open {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
 }
 
 /* Mobile = 359px */

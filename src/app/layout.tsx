@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Source_Serif_4, Plus_Jakarta_Sans, Rethink_Sans, Space_Grotesk, Lexend, Manrope, Urbanist, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Source_Serif_4, Plus_Jakarta_Sans, Rethink_Sans, Space_Grotesk, Lexend, Manrope, Urbanist, Instrument_Serif, Libre_Baskerville } from "next/font/google";
 import { cookies } from "next/headers";
 import { ThemeProvider } from "@/components/ui/ThemeToggle";
 import "@/styles/global.css";
@@ -18,6 +18,7 @@ const lexend = Lexend({ variable: "--font-lexend", subsets: ["latin"], });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], });
 const urbanist = Urbanist({ variable: "--font-urbanist", subsets: ["latin"], });
 const instrumentSerif = Instrument_Serif({ variable: "--font-instrument-serif", subsets: ["latin"], weight: "400" });
+const libreBaskerville = Libre_Baskerville({ variable: "--font-libre-baskerville", subsets: ["latin"], weight: "400" });
 
 // -------------------------------------------
 
@@ -178,7 +179,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body suppressHydrationWarning={true} className={`${geistSans.variable} ${geistMono.variable} ${rethinkSans.variable} ${spaceGrotesk.variable} ${lexend.variable} ${manrope.variable} ${sourceSerif4.variable} ${urbanist.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable}`} >
+      <body suppressHydrationWarning={true} className={`${geistSans.variable} ${geistMono.variable} ${rethinkSans.variable} ${spaceGrotesk.variable} ${lexend.variable} ${manrope.variable} ${sourceSerif4.variable} ${urbanist.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable} ${libreBaskerville.variable}`} >
         <ThemeProvider initialTheme={initialTheme}>
           {children}
         </ThemeProvider>
