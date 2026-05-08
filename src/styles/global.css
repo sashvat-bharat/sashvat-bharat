@@ -2,7 +2,7 @@
 
   /* Universal Configs */
   --bg-primary: #F0EDE8;
-  --bg-secondary: #F0EDE8;
+  --bg-secondary: #FAF8F5;
   --bg-tertiary: #F0EDE8;
 
   --border-primary: rgba(15, 14, 13, .12);
@@ -68,8 +68,8 @@ body {
 .article_container {
   margin: auto;
   margin-top: 56px;
-  max-width: 750px;
-  padding: 0 24px;
+  max-width: 800px;
+  padding: 0 16px;
 }
 
 /* ── Theme-aware logo visibility ── */

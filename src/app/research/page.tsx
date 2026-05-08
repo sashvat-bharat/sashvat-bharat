@@ -26,7 +26,9 @@ const page = async () => {
       <br />
 
       <div className='research_articles_container'>
-        <h1 className='heading'>Research</h1>
+        <h1 className='heading'>Research Articles</h1>
+
+        <div className='separator'></div>
 
         {/* Dynamically map through the markdown files */}
         {researchPapers.map((paper) => (

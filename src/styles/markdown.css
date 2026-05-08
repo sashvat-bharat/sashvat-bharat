@@ -9,7 +9,7 @@ article {
     --heading-margin-bottom: 1.25rem;
 
     color: var(--text-primary);
-    font-family: var(--font-geist-sans), sans-serif;
+    font-family: var(--font-manrope), sans-serif;
     font-size: 17px;
     line-height: var(--article-line-height);
     letter-spacing: -0.01em;
@@ -33,7 +33,7 @@ article {
         margin-top: var(--heading-margin-top);
         margin-bottom: var(--heading-margin-bottom);
         letter-spacing: -0.02em;
-        font-family: var(--font-geist-sans);
+        font-family: var(--font-manrope);
     }
 
     & h1 {
@@ -173,7 +173,7 @@ article {
         border-radius: 12px;
         overflow-x: auto;
         border: 1px solid var(--border-secondary);
-        font-family: var(--font-geist-mono), monospace;
+        font-family: var(--font-manrope), monospace;
         font-size: 14px;
         line-height: 1.6;
         color: #E6EDF3;
@@ -199,8 +199,8 @@ article {
 
     /* Light Theme Tweaks */
     [data-theme="light"] & pre {
-        background-color: #F6F8FA;
-        color: #24292F;
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
     }
 
     /* ── Images ── */
@@ -303,7 +303,7 @@ article {
                 transform: translate(-50%, -50%);
                 color: white;
                 font-size: 0.7em;
-                font-family: var(--font-geist-sans);
+                font-family: var(--font-manrope);
             }
         }
     }
@@ -344,8 +344,9 @@ article {
         padding-right: 16px !important;
         margin: 1.5rem 0;
         text-align: center;
-        background-color: var(--bg-tertiary);
         border-radius: 8px;
         font-size: 16px;
+        border: 1px solid var(--border-primary);
+        background-color: var(--bg-secondary);
     }
 }
