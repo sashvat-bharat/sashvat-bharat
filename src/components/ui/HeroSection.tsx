@@ -28,20 +28,22 @@ const HeroSection = () => {
         </div>
 
 
-        <div className='intro-text'>
-          <h1>Rule the Horizon. Beyond Limits!</h1>
-          <p>Built to last. Designed to lead. Engineered for the future.</p>
+        <div className="intro-text">
+          <h1 className="main-title">
+            Rule the horizon beyond limits!
+          </h1>
+
+          <h4 className="support-title">
+            Built to last. Designed to lead. Engineered for the future.
+          </h4>
         </div>
 
 
         <center>
-          <button className="event-horizon-btn">
-            <span className="btn-text">Enter the Horizon</span>
-            <div className="btn-underline"></div>
-          </button>
+          <button className="event-horizon-btn">Enter the horizon</button>
         </center>
 
-      </div>
+      </div >
     </>
   )
 }

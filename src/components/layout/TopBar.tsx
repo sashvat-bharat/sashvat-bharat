@@ -43,9 +43,7 @@ const TopBar = () => {
 
         <div className='topbar-right'>
 
-          <div className='theme-toggle-container'>
-            <ThemeToggle />
-          </div>
+          {/* <div className='theme-toggle-container'><ThemeToggle /></div> */}
 
           <div className='menu-n-account'>
             <div className='menu-toggle' onClick={handleMenuToggle}>
@@ -65,11 +63,9 @@ const TopBar = () => {
           <button>About Us</button>
           <button>Careers</button>
 
-          <div className='line-separator'></div>
+          {/* <div className='line-separator'></div> */}
 
-          <div className='theme-toggle-container-under-menubox'>
-            <ThemeToggle />
-          </div>
+          {/* <div className='theme-toggle-container-under-menubox'><ThemeToggle /></div> */}
 
         </div>
 

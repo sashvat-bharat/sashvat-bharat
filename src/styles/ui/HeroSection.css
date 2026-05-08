@@ -1,19 +1,19 @@
 .hero-section {
-  width: 100%;
+  gap: 32px;
+  margin: auto;
+  display: flex;
   margin-top: 180px;
-  position: relative;
-  /* display: none; */
-  /* margin-top: 120px; */
+  max-width: 1128px;
+  flex-direction: column;
   /* border: 1px solid orangered; */
 }
-
 
 :root {
   --transition-speed: var(--duration-normal);
   --easing: var(--ease-out);
 }
 
-/* 1. The Main Pill Container */
+
 .promo-trigger {
   margin: auto;
   cursor: pointer;
@@ -28,13 +28,7 @@
   border: 1.5px solid var(--border-primary);
   border-radius: 52px;
   background: var(--bg-primary);
-  transition:
-    gap var(--transition-speed) var(--easing),
-    padding var(--transition-speed) var(--easing),
-    border-color var(--transition-speed) var(--easing),
-    box-shadow var(--transition-speed) var(--easing),
-    opacity var(--duration-slow) var(--easing),
-    transform var(--duration-slow) var(--easing);
+  transition: gap var(--transition-speed) var(--easing), padding var(--transition-speed) var(--easing), border-color var(--transition-speed) var(--easing), box-shadow var(--transition-speed) var(--easing), opacity var(--duration-slow) var(--easing), transform var(--duration-slow) var(--easing);
 
   /* Entry Animation */
   opacity: 1;
@@ -57,6 +51,49 @@
 
 }
 
+.action-button {
+  position: relative;
+  height: 24px;
+  width: 24px;
+
+  background-color: #111111;
+  border-radius: 50px;
+  display: flex;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
+  transition: width var(--transition-speed) var(--easing), background-color var(--transition-speed) var(--easing);
+
+  .arrow-svg {
+    width: 16px;
+    height: 16px;
+    overflow: visible;
+
+    .shaft {
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2.75;
+      stroke-linecap: round;
+      transform-origin: 26px 16px;
+      transform: scaleX(0);
+      opacity: 0;
+      transition: transform var(--transition-speed) var(--easing), opacity 0.2s ease;
+    }
+
+    .chevron {
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform var(--transition-speed) var(--easing);
+      transform: translateX(-4px);
+    }
+
+  }
+
+}
+
 .promo-trigger:hover {
   border-color: var(--border-secondary);
   padding-right: 4px;
@@ -67,61 +104,13 @@
   transform: scale(0.98);
 }
 
-/* 2. The Inner Action Button */
-.action-button {
-  position: relative;
-  height: 24px;
-  width: 24px;
-
-  background-color: #111111;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    width var(--transition-speed) var(--easing),
-    background-color var(--transition-speed) var(--easing);
-  overflow: visible;
-}
-
 .promo-trigger:hover .action-button {
   width: 40px;
   background-color: var(--orange-primary);
 }
 
-/* 3. SVG Precision Styling */
-.arrow-svg {
-  width: 16px;
-  height: 16px;
-  overflow: visible;
-}
-
-.chevron {
-  fill: none;
-  stroke: white;
-  stroke-width: 2.75;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform var(--transition-speed) var(--easing);
-  transform: translateX(-4px);
-}
-
 .promo-trigger:hover .chevron {
   transform: translateX(0px);
-}
-
-/* The Shaft (Spawns from the chevron vertex) */
-.shaft {
-  fill: none;
-  stroke: white;
-  stroke-width: 2.75;
-  stroke-linecap: round;
-  transform-origin: 26px 16px;
-  transform: scaleX(0);
-  opacity: 0;
-  transition:
-    transform var(--transition-speed) var(--easing),
-    opacity 0.2s ease;
 }
 
 .promo-trigger:hover .shaft {
@@ -131,20 +120,28 @@
 
 
 
+
 .intro-text {
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid orangered; */
 }
 
-.intro-text h1 {
-  font-size: 56px;
-  font-weight: 500;
+.main-title {
+  font-weight: 400;
+  margin: 0;
+
+  letter-spacing: -0.028em;
   color: var(--text-primary);
-  font-family: var(--font-geist-sans);
+  font-size: clamp(36px, 4.2vw, 56px);
+  font-family: var(--font-libre-baskerville);
+
+  min-width: 300px;
+  padding: 0 24px;
+  /* border: 1px solid orangered; */
+
 
   /* Entry Animation */
   opacity: 1;
@@ -158,14 +155,18 @@
   }
 }
 
-.intro-text p {
-  /* font-weight: 500; */
-  margin-top: -24px;
+.support-title {
+  padding: 0 40px;
+  margin: 0;
+  margin-top: 5px;
+  font-weight: 400;
+  min-width: 220px;
+  font-size: clamp(16px, 1.65vw, 22px);
+
   color: var(--text-secondary);
-  line-height: 24px;
-  font-size: 20px;
-  letter-spacing: -0.1px;
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-manrope);
+  /* border: 1px solid orangered; */
+
 
   /* Entry Animation */
   opacity: 1;
@@ -180,29 +181,20 @@
 }
 
 .event-horizon-btn {
-  height: 48px;
   border: none;
-  color: var(--btn-text-primary);
-  padding: 0 24px;
+  padding: 16px 24px;
   cursor: pointer;
-  font-size: 14px;
-  overflow: hidden;
-  margin-top: 32px;
-  position: relative;
-  background: var(--btn-bg-primary);
+  font-size: clamp(15px, 3vw, 16px);
+  margin-top: clamp(5px, 1.25vw, 16px);
   border-radius: 4px;
-  text-transform: uppercase;
-  font-family: var(--font-geist-sans);
-  transition:
-    transform var(--duration-fast) var(--ease-out),
-    border 0.3s ease,
-    opacity var(--duration-slow) var(--easing),
-    background-color var(--duration-normal) var(--easing);
+  color: var(--btn-text-primary);
+  background: var(--btn-bg-primary);
+  font-family: var(--font-libre-baskerville);
 
   /* Entry Animation */
+  transition: transform var(--duration-fast) var(--ease-out), border 0.3s ease, opacity var(--duration-slow) var(--easing), background-color var(--duration-normal) var(--easing);
   opacity: 1;
   transition-delay: 0s, 0s, 300ms, 0s;
-  /* delay only for opacity entry */
 
   @starting-style {
     opacity: 0;
@@ -213,59 +205,12 @@
   transform: scale(0.97);
 }
 
-.btn-text {
-  z-index: 2;
-  position: relative;
-  transition: letter-spacing 0.4s ease;
-}
-
-.event-horizon-btn:hover .btn-text {
-  color: var(--btn-text-primary);
-  letter-spacing: 1px;
-}
-
-.btn-underline {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0%;
-  height: 2px;
-  background: #C5A058;
-  transform: translateX(-50%);
-  box-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
-  transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.event-horizon-btn:hover .btn-underline {
-  width: 70%;
-}
-
-
 
 
 @media (max-width: 900px) {
 
   .hero-section {
-    margin-top: 96px;
+    margin-top: 100px;
   }
-
-  .intro-text {
-    margin-top: 16px;
-  }
-
-  .intro-text h1 {
-    font-size: 40px;
-  }
-
-  .intro-text p {
-    margin-top: -16px;
-    max-width: 200px;
-    font-size: 14px;
-  }
-
-  .plain-button {
-    cursor: default;
-  }
-
 
 }

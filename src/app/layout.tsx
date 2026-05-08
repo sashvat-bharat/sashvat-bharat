@@ -8,6 +8,7 @@ import "katex/dist/katex.min.css";
 
 // Fonts Imports -------------------------
 
+const libreBaskerville = Libre_Baskerville({ variable: "--font-libre-baskerville", subsets: ["latin"], weight: "400" });
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], });
 const sourceSerif4 = Source_Serif_4({ variable: "--font-source-serif-4", subsets: ["latin"], });
@@ -18,7 +19,6 @@ const lexend = Lexend({ variable: "--font-lexend", subsets: ["latin"], });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], });
 const urbanist = Urbanist({ variable: "--font-urbanist", subsets: ["latin"], });
 const instrumentSerif = Instrument_Serif({ variable: "--font-instrument-serif", subsets: ["latin"], weight: "400" });
-const libreBaskerville = Libre_Baskerville({ variable: "--font-libre-baskerville", subsets: ["latin"], weight: "400" });
 
 // -------------------------------------------
 

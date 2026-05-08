@@ -1,10 +1,11 @@
 .heading {
+  height: 72px;
   font-size: 40px;
   font-weight: 400;
+  letter-spacing: -0.028em;
   color: var(--text-primary);
-  letter-spacing: -1px;
-  font-family: var(--font-geist-sans);
-  height: 72px;
+  /* font-family: var(--font-geist-sans); */
+  font-family: var(--font-libre-baskerville);
   border-bottom: 1px solid var(--border-primary);
 }
 
@@ -28,7 +29,7 @@
   }
 
   .title_heading {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: var(--text-primary);
     font-family: var(--font-geist-sans);
@@ -71,8 +72,10 @@
     }
 
     .title {
-      line-height: 1;
+      line-height: 1.3;
       text-align: center;
+      font-family: var(--font-libre-baskerville);
+
     }
 
     .author {
@@ -92,6 +95,7 @@
       margin-inline: auto;
       color: var(--text-primary);
       font-family: var(--font-geist-sans);
+      /* font-family: var(--font-libre-baskerville); */
     }
 
     h1 {
