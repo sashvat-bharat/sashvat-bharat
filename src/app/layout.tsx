@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Sashvat Bharat | Rule the Horizon Beyond Limits!",
+    default: "Sashvat Bharat | Built for breakthroughs.",
     template: "%s | Sashvat Bharat"
   },
   description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Rule the Horizon. Beyond Limits!",
