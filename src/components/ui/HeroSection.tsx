@@ -29,9 +29,6 @@ const HeroSection = () => {
 
 
         <div className="intro-text">
-
-          {/* <h1 className="main-title">Rule the horizon beyond limits!</h1> */}
-          {/* <h1 className="main-title">Ordinary is not an option. Breakthrough is.</h1> */}
           <h1 className="main-title">Built for breakthroughs.</h1>
 
           <h4 className="support-title">
