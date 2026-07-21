@@ -33,10 +33,11 @@ export const metadata: Metadata = {
     default: "Sashvat Bharat | Built for breakthroughs.",
     template: "%s | Sashvat Bharat"
   },
-  description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Rule the Horizon. Beyond Limits!",
+  description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Built for breakthroughs.",
   keywords: [
     "Sashvat Bharat",
     "AI Agents",
+    "Harness Engineering",
     "Machine Learning Systems",
     "Productivity Apps",
     "B2B AI Solutions",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     "Model Accelerator",
     "Agent Accelerator",
     "JIT Tool Spawning Protocol",
-    "rule the horizon beyond limits"
+    "built for breakthroughs."
   ],
   authors: [{ name: "Akshat Dwivedi" }, { name: "Sashvat Bharat", url: "https://sashvat.com" }],
   creator: "Akshat Dwivedi",
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Sashvat Bharat | AI & Productivity Solutions",
-    description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Rule the Horizon. Beyond Limits!",
+    description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Built for breakthroughs.",
     url: "https://sashvat.com",
     siteName: "Sashvat Bharat",
     images: [
@@ -80,8 +81,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Sashvat Bharat | Rule the Horizon",
-    description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Rule the Horizon. Beyond Limits!",
+    title: "Sashvat Bharat | Built for breakthroughs.",
+    description: "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Built for breakthroughs.",
     images: ["/logo/og-image.png"],
   },
 
@@ -132,7 +133,7 @@ export default async function RootLayout({
           "@type": "ImageObject",
           "url": "https://sashvat.com/logo/favicon-1.svg"
         },
-        "description": "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Rule the Horizon. Beyond Limits!",
+        "description": "Next-generation AI/ML systems, autonomous AI agents, and high-performance productivity applications for B2B and B2C markets. Built for breakthroughs.",
         "founder": {
           "@type": "Person",
           "name": "Akshat Dwivedi",
