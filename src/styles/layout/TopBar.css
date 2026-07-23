@@ -51,6 +51,7 @@
   line-height: 20px;
   font-weight: 400;
   border-radius: 50px;
+  outline: none;
   background-color: transparent;
   padding: 16px 12px 16px 12px;
   border: 1px solid transparent;

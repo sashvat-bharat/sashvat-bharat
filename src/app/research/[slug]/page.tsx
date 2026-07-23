@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
+import { Sparkles } from 'lucide-react';
 import { getResearchBySlug, getResearchSlugs, Author } from '@/lib/markdown';
+import { calculateReadingTime } from '@/lib/date-utils';
 
 import TopBar from '@/components/layout/TopBar';
+import ArticleHeader from '@/components/research/ArticleHeader';
+import ArticleContent from '@/components/research/ArticleContent';
+
 import "@/styles/global.css";
 import "@/styles/research/research.css";
 import "@/styles/markdown.css";
@@ -45,30 +50,48 @@ const page = async ({
 }: {
     params: Promise<{ slug: string }>
 }) => {
-    // Await the params before destructuring
     const resolvedParams = await params;
 
-    // Fetch the actual string slug
     const { contentHtml, frontmatter } = await getResearchBySlug(resolvedParams.slug);
 
-    const displayAuthors = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
-        ? frontmatter.authors.map((a: Author) => a.affiliation ? `${a.name} (${a.affiliation})` : a.name).join(', ')
+    const authorsList: Author[] = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
+        ? frontmatter.authors
         : frontmatter.author
-        ? `${frontmatter.author}${frontmatter.author_affiliation ? ` - ${frontmatter.author_affiliation}` : ''}`
-        : '';
+        ? [{ name: frontmatter.author, affiliation: frontmatter.author_affiliation }]
+        : [{ name: 'Sashvat Bharat Team' }];
+
+    // Strip top h1 if duplicate
+    const cleanContent = contentHtml.replace(/<h1[^>]*>.*?<\/h1>/i, '');
+    const { minutes } = calculateReadingTime(cleanContent);
 
     return (
         <div className='home-container'>
             <TopBar />
-            <div className='article_container'>
-                <article>
-                    <p className='datetime'>{frontmatter.date}</p>
-                    <h1 className='title'>{frontmatter.title}</h1>
-                    {displayAuthors && <p className='author'>By, {displayAuthors}</p>}
-                    <div className='separator'></div>
-                    <div className='content' dangerouslySetInnerHTML={{ __html: contentHtml.replace(/<h1[^>]*>.*?<\/h1>/i, '') }} />
+            
+            <main className='article_container'>
+                <article className='article_wrapper'>
+                    <ArticleHeader
+                        title={frontmatter.title || 'Research Article'}
+                        date={frontmatter.date}
+                        category={frontmatter.category}
+                        authors={authorsList}
+                        readingMinutes={minutes}
+                    />
+
+                    <ArticleContent htmlContent={cleanContent} />
+
+                    {/* Footer Signoff */}
+                    <footer className='article_footer_card'>
+                        <div className='footer_badge_row'>
+                            <Sparkles size={16} className='sparkle_icon' />
+                            <span>Sashvat Bharat Research Lab</span>
+                        </div>
+                        <p className='footer_tagline'>
+                            Building next-generation AI/ML architectures and autonomous systems for breakthroughs.
+                        </p>
+                    </footer>
                 </article>
-            </div>
+            </main>
         </div>
     );
 }

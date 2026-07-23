@@ -1369,7 +1369,7 @@ class HtmlRenderer {
             case 'code_block':
                 return this.renderCodeBlock(node);
             case 'blockquote':
-                return `<blockquote class="${this.prefix}-blockquote">\n${this.renderBlocks(node.children)}\n</blockquote>`;
+                return `<div class="${this.prefix}-blockquote">\n${this.renderBlocks(node.children)}\n</div>`;
             case 'horizontal_rule':
                 return '<hr />';
             case 'unordered_list':
@@ -1540,7 +1540,9 @@ class HtmlRenderer {
                 return `<code>${escapeHtml(node.content)}</code>`;
             case 'link': {
                 const title = node.title ? ` title="${escapeHtml(node.title)}"` : '';
-                return `<a href="${escapeHtml(node.href)}"${title}>${this.renderInlines(node.children)}</a>`;
+                const isAnchor = node.href.startsWith('#');
+                const targetAttr = isAnchor ? '' : ' target="_blank" rel="noopener noreferrer"';
+                return `<a href="${escapeHtml(node.href)}"${title}${targetAttr}>${this.renderInlines(node.children)}</a>`;
             }
             case 'image': {
                 const title = node.title ? ` title="${escapeHtml(node.title)}"` : '';
