@@ -1,11 +1,11 @@
 import React from 'react';
 import type { Metadata } from 'next';
 
-import Link from 'next/link';
 import "@/styles/global.css";
 import "@/styles/research/research.css";
 import TopBar from '@/components/layout/TopBar';
 import { getAllResearchList } from '@/lib/markdown';
+import ResearchExplorer from '@/components/research/ResearchExplorer';
 
 export const metadata: Metadata = {
   title: "Research & Publications",
@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     canonical: '/research',
   },
 };
-
 
 const page = async () => {
   // Fetch the data at build time (SSG)
@@ -26,25 +25,9 @@ const page = async () => {
       <br />
 
       <div className='research_articles_container'>
-        <h1 className='heading'>Research Articles</h1>
+        <center><h1 className='heading'>Super Intelligence Research Lab</h1></center>
 
-        <div className='separator'></div>
-
-        {/* Dynamically map through the markdown files */}
-        {researchPapers.map((paper) => (
-          <Link href={`/research/${paper.slug}`} key={paper.slug} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div className='research_card'>
-              <p className='publish_time'>Published: {paper.frontmatter.date}</p>
-              <h1 className='title_heading'>{paper.frontmatter.title}</h1>
-              <p className='short_description'>{paper.frontmatter.description}</p>
-            </div>
-          </Link>
-        ))}
-
-        {/* Fallback if folder is empty */}
-        {researchPapers.length === 0 && (
-          <p style={{ color: 'gray' }}>No research papers published yet.</p>
-        )}
+        <ResearchExplorer researchPapers={researchPapers} />
       </div>
     </div>
   );

@@ -18,13 +18,37 @@ export function getResearchSlugs() {
         .map((file) => file.replace(/\.md$/, ''));
 }
 
+export interface Author {
+    name: string;
+    affiliation?: string;
+}
+
+export interface ResearchFrontmatter {
+    title?: string;
+    date?: string;
+    category?: string;
+    description?: string;
+    authors?: Author[];
+    author?: string;
+    author_affiliation?: string;
+    [key: string]: unknown;
+}
+
 // Fetch single post content + parse to HTML
-export async function getResearchBySlug(slug: string) {
+export async function getResearchBySlug(slug: string): Promise<{
+    slug: string;
+    frontmatter: ResearchFrontmatter;
+    contentHtml: string;
+}> {
     const fullPath = path.join(researchDir, `${slug}.md`);
     if (!fs.existsSync(fullPath)) {
         return {
             slug,
-            frontmatter: {},
+            frontmatter: {
+                authors: [],
+                author: '',
+                author_affiliation: '',
+            },
             contentHtml: '<p>Content not found</p>',
         };
     }
@@ -38,17 +62,29 @@ export async function getResearchBySlug(slug: string) {
 
     return {
         slug,
-        frontmatter: data,
+        frontmatter: {
+            ...data,
+            category: data.category ?? '',
+            authors: Array.isArray(data.authors)
+                ? data.authors
+                : data.author
+                ? [{ name: data.author, affiliation: data.author_affiliation ?? '' }]
+                : [],
+            author: data.author ?? (Array.isArray(data.authors) ? data.authors[0]?.name : ''),
+            author_affiliation: data.author_affiliation ?? (Array.isArray(data.authors) ? data.authors[0]?.affiliation : ''),
+        },
         contentHtml,
     };
 }
 
 // Type for research index entries
 export interface ResearchIndexEntry {
+    date: string;
+    category: string;
     slug: string;
     title: string;
-    date: string;
     description: string;
+    authors?: Author[];
     author?: string;
     author_affiliation?: string;
 }
@@ -67,11 +103,13 @@ export function getAllResearchList() {
     const posts = entries.map((entry) => ({
         slug: entry.slug,
         frontmatter: {
-            title: entry.title,
             date: entry.date,
+            category: entry.category ?? '',
+            title: entry.title,
             description: entry.description,
-            author: entry.author,
-            author_affiliation: entry.author_affiliation,
+            authors: entry.authors ?? (entry.author ? [{ name: entry.author, affiliation: entry.author_affiliation }] : []),
+            author: entry.author ?? entry.authors?.[0]?.name ?? '',
+            author_affiliation: entry.author_affiliation ?? entry.authors?.[0]?.affiliation ?? '',
         },
     }));
 
@@ -80,3 +118,6 @@ export function getAllResearchList() {
         new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
     );
 }
+
+import { formatResearchDate } from './date-utils';
+export { formatResearchDate };

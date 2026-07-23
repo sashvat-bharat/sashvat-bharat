@@ -1,18 +1,15 @@
 :root {
-
   /* Universal Configs */
-  --bg-primary: #F0EDE8;
-  --bg-secondary: #FAF8F5;
-  --bg-tertiary: #F0EDE8;
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F2F2F2;
 
-  --border-primary: rgba(15, 14, 13, .12);
-  --border-secondary: rgba(15, 14, 13, .12);
-  /* --border-secondary: #D4D1CD; */
-
+  --border-primary: #0f0e0d1f;
+  --border-secondary: #F2F2F2;
 
   /* Text Configs */
-  --text-primary: #0E0E0D;
-  --text-secondary: #4D4B4C;
+  --text-primary: #171717;
+  --text-secondary: #4D4D4D;
   --text-tertiary: #4D4B4C;
 
 
@@ -46,7 +43,8 @@
 }
 
 ::selection {
-  background: rgba(197, 160, 88, 0.2);
+  background: #010101;
+  color: #FFFFFF;
 }
 
 body {
@@ -59,7 +57,8 @@ body {
 .home-container {
   margin: auto;
   width: 100%;
-  max-width: 1240px;
+  /* max-width: 1240px; */
+  max-width: 1448px;
   /* min-height: 150vh; */
   /* padding: 0 24px; */
   /* border: 1px solid orangered; */

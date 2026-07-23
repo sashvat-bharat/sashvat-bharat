@@ -31,9 +31,9 @@ const HeroSection = () => {
         <div className="intro-text">
           <h1 className="main-title">Built for breakthroughs.</h1>
 
-          <h4 className="support-title">
+          <p className="support-title">
             Built to last. Designed to lead. Engineered for the future.
-          </h4>
+          </p>
         </div>
 
 

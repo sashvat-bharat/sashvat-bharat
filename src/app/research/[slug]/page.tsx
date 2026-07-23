@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getResearchBySlug, getResearchSlugs } from '@/lib/markdown';
+import { getResearchBySlug, getResearchSlugs, Author } from '@/lib/markdown';
 
 import TopBar from '@/components/layout/TopBar';
 import "@/styles/global.css";
@@ -15,6 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const resolvedParams = await params;
     const { frontmatter } = await getResearchBySlug(resolvedParams.slug);
 
+    const authorNames = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
+        ? frontmatter.authors.map((a: Author) => a.name)
+        : frontmatter.author ? [frontmatter.author] : [];
+
     return {
         title: frontmatter.title,
         description: frontmatter.description,
@@ -26,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description: frontmatter.description,
             type: 'article',
             publishedTime: frontmatter.date,
-            authors: [frontmatter.author],
+            authors: authorNames,
         },
         twitter: {
             card: 'summary_large_image',
@@ -47,6 +51,12 @@ const page = async ({
     // Fetch the actual string slug
     const { contentHtml, frontmatter } = await getResearchBySlug(resolvedParams.slug);
 
+    const displayAuthors = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
+        ? frontmatter.authors.map((a: Author) => a.affiliation ? `${a.name} (${a.affiliation})` : a.name).join(', ')
+        : frontmatter.author
+        ? `${frontmatter.author}${frontmatter.author_affiliation ? ` - ${frontmatter.author_affiliation}` : ''}`
+        : '';
+
     return (
         <div className='home-container'>
             <TopBar />
@@ -54,7 +64,7 @@ const page = async ({
                 <article>
                     <p className='datetime'>{frontmatter.date}</p>
                     <h1 className='title'>{frontmatter.title}</h1>
-                    <p className='author'>By, {frontmatter.author}{frontmatter.author_affiliation ? ` - ${frontmatter.author_affiliation}` : ''}</p>
+                    {displayAuthors && <p className='author'>By, {displayAuthors}</p>}
                     <div className='separator'></div>
                     <div className='content' dangerouslySetInnerHTML={{ __html: contentHtml.replace(/<h1[^>]*>.*?<\/h1>/i, '') }} />
                 </article>

@@ -1,9 +1,11 @@
 ---
+date: "2026-03-01"
+category: "Agents"
 title: "The JIT (Just-in-Time) Tool Spawning Protocol"
-date: "March 01, 2026"
-description: "A Server-Side Routing Architecture for Infinite-Tool AI Agents"
-author: "Akshat Dwivedi"
-author_affiliation: "Researcher"
+description: "A Server-Side Routing Architecture for Infinite-Tool AI Agents. saving upto 88.8% tokens."
+authors:
+  - name: "Akshat Dwivedi"
+    affiliation: "Researcher"
 ---
 
 For years, the AI community has relied on a brute-force approach to multi-agent systems: stuffing the definitions, schemas, and parameters of every available tool directly into an LLM's system prompt. This method causes massive API costs, severe latency spikes, and degraded reasoning (the "Lost in the Middle" phenomenon).

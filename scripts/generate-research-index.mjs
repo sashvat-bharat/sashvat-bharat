@@ -31,13 +31,28 @@ function generate() {
         const raw  = fs.readFileSync(path.join(RESEARCH_DIR, file), 'utf8');
         const { data } = matter(raw);
 
+        let authors = [];
+        if (Array.isArray(data.authors)) {
+            authors = data.authors.map((a) => ({
+                name: a.name ?? '',
+                affiliation: a.affiliation ?? '',
+            }));
+        } else if (data.author) {
+            authors = [
+                {
+                    name: data.author,
+                    affiliation: data.author_affiliation ?? '',
+                },
+            ];
+        }
+
         return {
+            date:         data.date        ?? '',
+            category:     data.category    ?? '',
             slug,
-            title:              data.title       ?? '',
-            date:               data.date        ?? '',
-            description:        data.description ?? '',
-            author:             data.author      ?? undefined,
-            author_affiliation: data.author_affiliation ?? undefined,
+            title:        data.title       ?? '',
+            description:  data.description ?? '',
+            authors,
         };
     });
 
