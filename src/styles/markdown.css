@@ -382,7 +382,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 16px;
-    background-color: var(--bg-tertiary);
+    background-color: var(--bg-primary);
     border-bottom: 1px solid var(--border-primary);
     font-family: var(--font-geist-mono), monospace;
     font-size: 14px;
@@ -413,7 +413,6 @@
 .code_block_copy_btn:hover {
     color: var(--text-primary);
     background-color: var(--bg-tertiary);
-    border-color: var(--text-primary);
 }
 
 .code_block_copy_btn.copied {
