@@ -15,14 +15,12 @@
 
   /* Buttons */
   --btn-bg-primary: #0E0E0D;
-  --btn-bg-secondary: rgba(197, 160, 88, 0.2);
 
   --btn-text-primary: #FFFFFF;
   --btn-border-primary: #E4E4E4;
 
 
   /* Brand Colors & Accents */
-  --warm-ivory: #F3EDDF;
   --orange-primary: #f95015;
 
   /* Motion Tokens */
@@ -32,6 +30,23 @@
   --duration-normal: 250ms;
   --duration-slow: 400ms;
 
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #121212;
+  --bg-tertiary: #1A1A1A;
+
+  --border-primary: rgba(255, 255, 255, 0.08);
+  --border-secondary: #1A1A1A;
+
+  --text-primary: #F5F5F5;
+  --text-secondary: #A0A0A0;
+  --text-tertiary: #707070;
+
+  --btn-bg-primary: #F5F5F5;
+  --btn-text-primary: #0A0A0A;
+  --btn-border-primary: #2C2C2C;
 }
 
 * {
@@ -102,6 +117,11 @@ pre code::-webkit-scrollbar-thumb:hover {
   color: #FFFFFF;
 }
 
+[data-theme="dark"] ::selection {
+  background: #FFFFFF;
+  color: #000000;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -134,4 +154,16 @@ body {
 
 [data-theme="dark"] .logo-light {
   display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
 }

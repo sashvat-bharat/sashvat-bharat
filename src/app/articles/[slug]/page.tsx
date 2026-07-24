@@ -1,23 +1,23 @@
 import { Metadata } from 'next';
 import { Sparkles } from 'lucide-react';
-import { getResearchBySlug, getResearchSlugs, Author } from '@/lib/markdown';
+import { getArticleBySlug, getArticlesSlugs, Author } from '@/lib/articles';
 import { calculateReadingTime } from '@/lib/date-utils';
 
 import ArticleHeader from '@/components/research/ArticleHeader';
 import ArticleContent from '@/components/research/ArticleContent';
 
 import "@/styles/global.css";
-import "@/styles/research/research.css";
+import "@/styles/articles/articles.css";
 import "@/styles/markdown.css";
 
 export async function generateStaticParams() {
-    const slugs = getResearchSlugs();
+    const slugs = getArticlesSlugs();
     return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const resolvedParams = await params;
-    const { frontmatter } = await getResearchBySlug(resolvedParams.slug);
+    const { frontmatter } = await getArticleBySlug(resolvedParams.slug);
 
     const authorNames = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
         ? frontmatter.authors.map((a: Author) => a.name)
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: frontmatter.title,
         description: frontmatter.description,
         alternates: {
-            canonical: `/research/${resolvedParams.slug}`,
+            canonical: `/articles/${resolvedParams.slug}`,
         },
         openGraph: {
             title: frontmatter.title,
@@ -51,7 +51,7 @@ const page = async ({
 }) => {
     const resolvedParams = await params;
 
-    const { contentHtml, frontmatter } = await getResearchBySlug(resolvedParams.slug);
+    const { contentHtml, frontmatter } = await getArticleBySlug(resolvedParams.slug);
 
     const authorsList: Author[] = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
         ? frontmatter.authors
@@ -69,7 +69,7 @@ const page = async ({
             <main className='article_container'>
                 <article className='article_wrapper'>
                     <ArticleHeader
-                        title={frontmatter.title || 'Research Article'}
+                        title={frontmatter.title || 'Article'}
                         date={frontmatter.date}
                         category={frontmatter.category}
                         authors={authorsList}
@@ -82,10 +82,10 @@ const page = async ({
                     <footer className='article_footer_card'>
                         <div className='footer_badge_row'>
                             <Sparkles size={16} className='sparkle_icon' />
-                            <span>Sashvat Bharat&apos;s Frontier AI & Autonomous Systems Research.</span>
+                            <span>Sashvat Bharat&apos;s Articles & Insights.</span>
                         </div>
                         <p className='footer_tagline'>
-                            Advancing the foundations of autonomous intelligence through research in AI systems, distributed architectures, reasoning algorithms.
+                            Sharing insights and updates on artificial intelligence, systems architecture, engineering practices, and research translations.
                         </p>
                     </footer>
                 </article>

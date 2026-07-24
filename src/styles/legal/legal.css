@@ -1,0 +1,113 @@
+.legal_container {
+  max-width: 800px;
+  margin: 24px auto 0 auto;
+  padding: 40px 24px 80px 24px;
+  font-family: var(--font-geist-sans), sans-serif;
+  color: var(--text-primary);
+}
+
+.legal_container h1 {
+  font-size: clamp(32px, 4.2vw, 48px);
+  font-weight: 450;
+  margin-bottom: 8px;
+  letter-spacing: -0.028em;
+}
+
+.legal_last_updated {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
+
+.legal_subheading {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 12px auto 0 auto;
+}
+
+.legal_content {
+  display: block;
+}
+
+.legal_content h2 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-top: 40px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.legal_content h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal_content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.legal_content ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.legal_content li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pillar_card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.pillar_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+}
+
+.legal_draft_notice {
+  margin-top: 64px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legal_draft_badge {
+  background-color: var(--text-secondary);
+  color: var(--bg-primary);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}

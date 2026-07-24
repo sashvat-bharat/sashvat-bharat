@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 
 import "@/styles/global.css";
 import "@/styles/research/research.css";
-import TopBar from '@/components/layout/TopBar';
 import { getAllResearchList } from '@/lib/markdown';
 import ResearchExplorer from '@/components/research/ResearchExplorer';
 
@@ -21,11 +20,11 @@ const page = async () => {
 
   return (
     <div className='home-container'>
-      <TopBar />
-      <br />
-
       <div className='research_articles_container'>
-        <center><h1 className='heading'>Super Intelligence Research Lab</h1></center>
+        <center>
+          <h1 className='heading'>Super Intelligence Research Lab</h1>
+          <p className='subheading'>Exploring systems engineering, reasoning models, and foundational architectures for autonomous agents.</p>
+        </center>
 
         <ResearchExplorer researchPapers={researchPapers} />
       </div>

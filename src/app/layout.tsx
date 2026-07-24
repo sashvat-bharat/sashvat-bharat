@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Source_Serif_4, Plus_Jakarta_Sans, Rethink_Sans, Space_Grotesk, Lexend, Manrope, Urbanist, Instrument_Serif, Libre_Baskerville } from "next/font/google";
+import { Geist, Geist_Mono, Rethink_Sans, Manrope, Libre_Baskerville } from "next/font/google";
 import { cookies } from "next/headers";
 import { ThemeProvider } from "@/components/ui/ThemeToggle";
+import Footer from "@/components/layout/Footer";
+import TopBar from "@/components/layout/TopBar";
 import "@/styles/global.css";
 import "katex/dist/katex.min.css";
 
@@ -11,14 +13,8 @@ import "katex/dist/katex.min.css";
 const libreBaskerville = Libre_Baskerville({ variable: "--font-libre-baskerville", subsets: ["latin"], weight: ["400"], style: ["normal", "italic"] });
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], });
-const sourceSerif4 = Source_Serif_4({ variable: "--font-source-serif-4", subsets: ["latin"], });
-const plusJakartaSans = Plus_Jakarta_Sans({ variable: "--font-plus-jakarta-sans", subsets: ["latin"], });
 const rethinkSans = Rethink_Sans({ variable: "--font-rethink-sans", subsets: ["latin"], });
-const spaceGrotesk = Space_Grotesk({ variable: "--font-space-grotesk", subsets: ["latin"], });
-const lexend = Lexend({ variable: "--font-lexend", subsets: ["latin"], });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], });
-const urbanist = Urbanist({ variable: "--font-urbanist", subsets: ["latin"], });
-const instrumentSerif = Instrument_Serif({ variable: "--font-instrument-serif", subsets: ["latin"], weight: "400" });
 
 // -------------------------------------------
 
@@ -180,9 +176,17 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body suppressHydrationWarning={true} className={`${geistSans.variable} ${geistMono.variable} ${rethinkSans.variable} ${spaceGrotesk.variable} ${lexend.variable} ${manrope.variable} ${sourceSerif4.variable} ${urbanist.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable} ${libreBaskerville.variable}`} >
+      <body suppressHydrationWarning={true} className={`${geistSans.variable} ${geistMono.variable} ${rethinkSans.variable} ${manrope.variable} ${libreBaskerville.variable}`} >
         <ThemeProvider initialTheme={initialTheme}>
-          {children}
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <div className="home-container" style={{ width: '100%' }}>
+              <TopBar />
+            </div>
+            <div style={{ flex: 1 }}>
+              {children}
+            </div>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

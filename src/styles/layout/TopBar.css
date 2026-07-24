@@ -159,7 +159,7 @@
 
   button:hover {
     color: var(--text-primary);
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-tertiary);
   }
 
 }
@@ -192,4 +192,21 @@
     cursor: none;
   }
 
+}
+
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-container-under-menubox {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.line-separator {
+  height: 1px;
+  background-color: var(--border-primary);
+  margin: 8px 0;
 }

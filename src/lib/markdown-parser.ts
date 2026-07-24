@@ -1,12 +1,12 @@
 import katex from 'katex';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Sashvat Bharat — Custom Markdown Parser
+// Sashvat Bharat - Custom Markdown Parser
 // A fully type-safe, zero-dependency Markdown → HTML parser.
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// §1  TYPE DEFINITIONS — AST Node Types
+// §1  TYPE DEFINITIONS - AST Node Types
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /** All supported block-level node types */
@@ -1195,7 +1195,7 @@ class BlockParser {
             while (i < lines.length) {
                 const nextLine = lines[i];
                 if (nextLine.trim() === '') {
-                    // Blank line might be a separator — peek ahead
+                    // Blank line might be a separator - peek ahead
                     if (i + 1 < lines.length && lines[i + 1].match(/^\s{2,}/)) {
                         subLines.push('');
                         i++;
@@ -1234,7 +1234,7 @@ class BlockParser {
                     const subResult = this.parseOrderedList(dedented, 0);
                     subList = subResult.node;
                 } else {
-                    // Continuation text — append to content
+                    // Continuation text - append to content
                     content += '\n' + dedented.join('\n');
                 }
             }

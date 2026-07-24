@@ -1,6 +1,6 @@
 ---
 date: "2026-03-01"
-category: "Agents"
+category: "Protocols"
 title: "The JIT (Just-in-Time) Tool Spawning Protocol"
 description: "A Server-Side Routing Architecture for Infinite-Tool AI Agents. saving upto 88.8% tokens."
 authors:
@@ -10,7 +10,7 @@ authors:
 
 For years, the AI community has relied on a brute-force approach to multi-agent systems: stuffing the definitions, schemas, and parameters of every available tool directly into an LLM's system prompt. This method causes massive API costs, severe latency spikes, and degraded reasoning (the "Lost in the Middle" phenomenon).
 
-This paper introduces the **JIT (Just-in-Time) Tool Spawning Protocol**, a highly optimized backend architecture. Instead of front-loading context, this protocol stores tool schemas in a vector database, uses semantic similarity to fetch a Top 5 list, and employs a high-speed Small Language Model (SLM) to filter the exact tools needed based on user intent. By dynamically injecting only 1 to 3 requisite tools into the primary LLM, systems can scale infinitely while reducing compute overhead significantly — our experiments show up to **~88.8% token savings** compared to the traditional approach.
+This paper introduces the **JIT (Just-in-Time) Tool Spawning Protocol**, a highly optimized backend architecture. Instead of front-loading context, this protocol stores tool schemas in a vector database, uses semantic similarity to fetch a Top 5 list, and employs a high-speed Small Language Model (SLM) to filter the exact tools needed based on user intent. By dynamically injecting only 1 to 3 requisite tools into the primary LLM, systems can scale infinitely while reducing compute overhead significantly - our experiments show up to **~88.8% token savings** compared to the traditional approach.
 
 **Source Code & Implementation:** The reference implementation of the JIT Tool Spawning Protocol is open-sourced and available at: [Github](https://github.com/sashvat-bharat/jit-tool-protocol)
 
@@ -65,7 +65,7 @@ Before the user ever interacts with the system, we separate the "Searchable Desc
 
 3. **Similarity Search:** The system runs a Cosine Similarity search against the Vector DB, returning the **Top K** closest matches (e.g., `fetch_transactions`, `delete_transaction`, `get_user_profile`, etc.).
 
-> **Note on Top K:** In our reference implementation, we use a default of K=5, which provides a strong balance between recall and precision. However, this value is fully configurable — developers should adjust K based on their total tool count, tool similarity density, and performance requirements. A system with 500+ highly similar tools may benefit from K=7 or K=10, while a smaller registry with distinct tools could work well with K=3.
+> **Note on Top K:** In our reference implementation, we use a default of K=5, which provides a strong balance between recall and precision. However, this value is fully configurable - developers should adjust K based on their total tool count, tool similarity density, and performance requirements. A system with 500+ highly similar tools may benefit from K=7 or K=10, while a smaller registry with distinct tools could work well with K=3.
 
   
 
@@ -143,11 +143,11 @@ To validate this, we ran a direct comparison between the traditional "stuff ever
 | Tokens consumed for tools                                   | **~5,000 tokens**                   | **~0 tokens** (handled by SLM)                                     |
 | SLM routing cost (Top 5 short descriptions + system prompt) | N/A                                 | ~500 tokens (tools) + ~60 tokens (system prompt) = **~560 tokens** |
 | **Total tool-related token overhead**                       | **~5,000 tokens**                   | **~560 tokens**                                                    |
-| **Token savings**                                           | —                                   | **~4,440 tokens (~88.8% reduction)**                               |
+| **Token savings**                                           | -                                   | **~4,440 tokens (~88.8% reduction)**                               |
 
-This is with only 50 tools. As the tool registry scales to 200, 500, or 10,000+ tools, the traditional approach's cost grows linearly while the JIT Protocol's cost stays flat — the SLM always only sees the Top K short descriptions, no matter how large the registry becomes.
+This is with only 50 tools. As the tool registry scales to 200, 500, or 10,000+ tools, the traditional approach's cost grows linearly while the JIT Protocol's cost stays flat - the SLM always only sees the Top K short descriptions, no matter how large the registry becomes.
 
-> **On Latency:** The JIT Protocol adds an extra routing step (~200ms for the SLM call) compared to the traditional single-call approach. This is a deliberate trade-off — you invest a small amount of latency upfront in the routing layer, but in return you save significant processing time on the Heavy LLM by feeding it a drastically smaller prompt. In systems with large tool registries, the net latency is often lower because the Heavy LLM responds faster with a leaner context.
+> **On Latency:** The JIT Protocol adds an extra routing step (~200ms for the SLM call) compared to the traditional single-call approach. This is a deliberate trade-off - you invest a small amount of latency upfront in the routing layer, but in return you save significant processing time on the Heavy LLM by feeding it a drastically smaller prompt. In systems with large tool registries, the net latency is often lower because the Heavy LLM responds faster with a leaner context.
 
 ---
 ## 4. Handling Multi-Turn Conversations
@@ -160,15 +160,15 @@ Consider this conversation:
 
 The second query on its own doesn't mention stocks at all. So how does the system know *what* to email?
 
-The answer lies in the **memory layer**, which is a standard practice in modern agentic architectures. Most production AI systems already maintain a rolling conversation context — typically the last 2–3 exchanges — which gets loaded programmatically alongside the new user prompt. So when the user says *"email that to my boss,"* the memory layer ensures the Heavy LLM already has the context of the previous stock price response.
+The answer lies in the **memory layer**, which is a standard practice in modern agentic architectures. Most production AI systems already maintain a rolling conversation context - typically the last 2–3 exchanges - which gets loaded programmatically alongside the new user prompt. So when the user says *"email that to my boss,"* the memory layer ensures the Heavy LLM already has the context of the previous stock price response.
 
-The JIT Protocol works seamlessly with this pattern. The memory layer gives the system enough context to understand what *"that"* refers to, and the JIT router independently resolves that the user now needs the `send_email` tool. Each layer does its own job — memory handles *what*, and JIT handles *which tool*.
+The JIT Protocol works seamlessly with this pattern. The memory layer gives the system enough context to understand what *"that"* refers to, and the JIT router independently resolves that the user now needs the `send_email` tool. Each layer does its own job - memory handles *what*, and JIT handles *which tool*.
 
   
 ---
 ## 5. Conclusion
 
-By separating tool discovery from tool execution, the JIT Tool Spawning Protocol allows AI systems to scale to thousands of capabilities without suffering from context collapse or spiraling API costs. Our experiments demonstrate an **88.8% reduction in tool-related token overhead** with just 50 tools — a saving that only grows larger as the tool registry scales.
+By separating tool discovery from tool execution, the JIT Tool Spawning Protocol allows AI systems to scale to thousands of capabilities without suffering from context collapse or spiraling API costs. Our experiments demonstrate an **88.8% reduction in tool-related token overhead** with just 50 tools - a saving that only grows larger as the tool registry scales.
 
 It provides a mathematically sound, highly efficient foundation for the next generation of enterprise agentic architectures.
 

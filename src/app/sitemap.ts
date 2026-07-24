@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getResearchSlugs } from '@/lib/markdown';
+import { getArticlesSlugs } from '@/lib/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://sashvat.com';
@@ -8,6 +9,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/research',
+    '/articles',
+    '/careers',
+    '/about',
+    '/products',
+    '/legal',
+    '/legal/privacy-policy',
+    '/legal/terms',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -24,5 +32,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...routes, ...researchRoutes];
+  // Article routes
+  const articleSlugs = getArticlesSlugs();
+  const articleRoutes = articleSlugs.map((slug) => ({
+    url: `${baseUrl}/articles/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  return [...routes, ...researchRoutes, ...articleRoutes];
 }

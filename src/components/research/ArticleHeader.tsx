@@ -43,7 +43,7 @@ export default function ArticleHeader({
   return (
     <header className="article_hero_header">
 
-      {/* (Tag • Date • Time to Read — Share) */}
+      {/* (Tag • Date • Time to Read - Share) */}
       <div className="article_meta_bar">
         <div className="article_meta_left">{category && <span className="article_category_text">{category}</span>} {category && formattedDate && <span className="meta_dot">•</span>} {formattedDate && (<time dateTime={date} className="article_meta_date">{formattedDate}</time>)} {formattedDate && <span className="meta_dot">•</span>} <span className="article_meta_time">{readingMinutes} min read</span></div>
         <button type="button" onClick={handleCopyLink} className={`article_share_btn_minimal ${copied ? 'copied' : ''}`} aria-label="Share or copy article link">{copied ? <Check size={14} /> : <Share2 size={14} />}<span>{copied ? 'Copied' : 'Share'}</span></button>
