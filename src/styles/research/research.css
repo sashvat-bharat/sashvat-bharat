@@ -175,12 +175,10 @@
 .research_card:hover {
   background-color: var(--bg-tertiary);
   border-color: rgba(15, 14, 13, 0.28);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="dark"] .research_card:hover {
   border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
 }
 
 .card_meta_header {

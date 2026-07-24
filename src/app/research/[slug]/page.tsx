@@ -84,10 +84,10 @@ const page = async ({
                     <footer className='article_footer_card'>
                         <div className='footer_badge_row'>
                             <Sparkles size={16} className='sparkle_icon' />
-                            <span>Sashvat Bharat Research Lab</span>
+                            <span>Sashvat Bharat&apos;s Frontier AI & Autonomous Systems Research.</span>
                         </div>
                         <p className='footer_tagline'>
-                            Building next-generation AI/ML architectures and autonomous systems for breakthroughs.
+                            Advancing the foundations of autonomous intelligence through research in AI systems, distributed architectures, reasoning algorithms.
                         </p>
                     </footer>
                 </article>
