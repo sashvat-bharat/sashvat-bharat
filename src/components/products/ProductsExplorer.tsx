@@ -6,7 +6,7 @@ import { Terminal, Package } from 'lucide-react';
 export interface ProductItem {
   id: string;
   title: string;
-  category: string;
+  category: string | string[];
   link?: string;
   state?: string;
   description: string;
@@ -28,7 +28,11 @@ export default function ProductsExplorer({ products }: ProductsExplorerProps) {
 
     products.forEach((product) => {
       if (product.category) {
-        dynamicCategories.add(product.category);
+        if (Array.isArray(product.category)) {
+          product.category.forEach((cat) => dynamicCategories.add(cat));
+        } else {
+          dynamicCategories.add(product.category);
+        }
       }
     });
 
@@ -40,19 +44,24 @@ export default function ProductsExplorer({ products }: ProductsExplorerProps) {
     return products.filter((product) => {
       const title = product.title?.toLowerCase() || '';
       const description = product.description?.toLowerCase() || '';
-      const category = product.category?.toLowerCase() || '';
+      
+      const categories = Array.isArray(product.category)
+        ? product.category.map((c) => c.toLowerCase())
+        : [product.category?.toLowerCase() || ''];
 
       // 1. Category filter matching
       let passesFilter = true;
       if (selectedFilter !== 'All') {
-        passesFilter = category === selectedFilter.toLowerCase();
+        passesFilter = categories.includes(selectedFilter.toLowerCase());
       }
 
       // 2. Search query matching
       let passesSearch = true;
       if (searchQuery.trim() !== '') {
         const query = searchQuery.trim().toLowerCase();
-        passesSearch = title.includes(query) || description.includes(query) || category.includes(query);
+        passesSearch = title.includes(query) || 
+                       description.includes(query) || 
+                       categories.some((cat) => cat.includes(query));
       }
 
       return passesFilter && passesSearch;
@@ -88,8 +97,19 @@ export default function ProductsExplorer({ products }: ProductsExplorerProps) {
           {filteredProducts.map((product) => (
             <div className='product_card' key={product.id}>
               <div className='product_header'>
-                <div className='product_icon_wrapper'>
-                  <Terminal size={24} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: '16px' }}>
+                  <div className='product_icon_wrapper'>
+                    <Terminal size={24} />
+                  </div>
+                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                    {Array.isArray(product.category) ? (
+                      product.category.map((cat, idx) => (
+                        <span className='product_meta_tag' key={idx}>{cat}</span>
+                      ))
+                    ) : (
+                      <span className='product_meta_tag'>{product.category}</span>
+                    )}
+                  </div>
                 </div>
                 <h3 className='product_title'>{product.title}</h3>
                 <p className='product_description'>{product.description}</p>

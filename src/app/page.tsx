@@ -18,18 +18,18 @@ const page = () => {
             <div className='pillars_grid'>
               <div className='pillar_card'>
                 <Compass size={24} color="var(--text-primary)" />
-                <h3>Frontier Systems Research</h3>
-                <p>Developing robust reasoning algorithms, distributed agent setups, and scalable compilation mechanisms.</p>
+                <h3>Sovereign Infrastructure Autonomy</h3>
+                <p>Breaking the monopoly of cloud API dependencies. We build secure, local-first products while supporting and contributing to foundational open-source infrastructure.</p>
               </div>
               <div className='pillar_card'>
                 <Cpu size={24} color="var(--text-primary)" />
-                <h3>Developer Ecosystems</h3>
-                <p>Designing high-throughput command-line execution interfaces, local cached engines, and compiler integrations.</p>
+                <h3>From Wrappers to Reasoning Engines</h3>
+                <p>No superficial tools. We research and build compound architectures that allow neural networks to plan, reason, and self-correct with mathematical reliability.</p>
               </div>
               <div className='pillar_card'>
                 <Flame size={24} color="var(--text-primary)" />
-                <h3>Open Collaboration</h3>
-                <p>Pioneering transparent protocol specifications that optimize standard model context windows and reduce token bloat.</p>
+                <h3>The Centenary Mission (2047)</h3>
+                <p>Engineering on a decadal horizon. Establishing the premier systems and AI research powerhouse in Bharat by the centenary of Independence.</p>
               </div>
             </div>
           </section>

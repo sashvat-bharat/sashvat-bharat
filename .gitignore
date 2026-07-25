@@ -34,16 +34,15 @@ yarn-error.log*
 .env*
 .claude
 .agents
-commands.md
 CLAUDE.md
 AGENTS.md
-/content/products.json
 
 # vercel
 .vercel
 
 # auto-generated index (rebuilt by scripts/generate-research-index.mjs)
 /content/research.json
+/content/articles.json
 
 # typescript
 *.tsbuildinfo

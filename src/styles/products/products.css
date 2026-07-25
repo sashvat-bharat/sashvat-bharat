@@ -71,6 +71,11 @@
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   border-color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.product_card:hover .product_icon_wrapper {
+  background-color: var(--bg-secondary);
 }
 
 .product_badge {

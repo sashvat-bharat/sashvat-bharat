@@ -33,8 +33,8 @@
 }
 
 [data-theme="dark"] {
-  --bg-primary: #0A0A0A;
-  --bg-secondary: #121212;
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
   --bg-tertiary: #1A1A1A;
 
   --border-primary: rgba(255, 255, 255, 0.08);

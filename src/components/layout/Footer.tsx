@@ -48,7 +48,7 @@ export default function Footer() {
           <p className="footer_tagline" style={{ margin: 0 }}>
             Subscribe to our research digest and product announcements.
           </p>
-          <form className="footer_newsletter_form" onSubmit={(e) => e.preventDefault()}>
+          <form className="footer_newsletter_form" onSubmit={(e) => { e.preventDefault(); alert("Newsletter subscription is temporarily disabled. Please check back later!"); }}>
             <input 
               type="email" 
               placeholder="Enter your email" 

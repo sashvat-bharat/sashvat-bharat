@@ -1,0 +1,38 @@
+[
+  {
+    "id": "jit-tool-protocol",
+    "title": "JIT Tool Protocol",
+    "category": "Protocol",
+    "link": "/research/jit-tool-protocol",
+    "description": "Server-side routing protocol for infinite-tools. Dynamically fetches, ranks, and injects relevant tools into LLM contexts on-the-fly, reducing token costs by up to 88.8%.",
+    "features": [
+      "Server-side dynamic routing",
+      "Up to 88.8% token savings",
+      "High-performance SLM filtering"
+    ]
+  },
+  {
+    "id": "self-evolving-memory",
+    "title": "Self Evolving Memory for AI",
+    "category": "Software",
+    "state": "coming soon",
+    "description": "The Architecture is inspired from the Human Brain and tends to provide the Highest Retrieval Accuracy. built to work on Production Grade Environments.",
+    "features": [
+      "Adaptive memory graphs with self-organization",
+      "Context-aware retrieval with high recall and precision",
+      "Scalable production-ready memory infrastructure"
+    ]
+  },
+  {
+    "id": "agent-platform",
+    "title": "Agent Accelerator",
+    "category": "Library",
+    "state": "coming soon",
+    "description": "orchestration framework built with Rust and TypeScript for deploying, coordinating, and scaling collaborative AI agents with production-grade reliability and fault tolerance.",
+    "features": [
+      "Multi-agent workflows",
+      "Automatic failure recovery",
+      "Shared memory & context"
+    ]
+  }
+]

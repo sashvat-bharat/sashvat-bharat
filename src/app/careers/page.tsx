@@ -58,9 +58,10 @@ const page = () => {
       <div className='careers_container'>
         {/* Hero Section */}
         <section className='careers_hero'>
-          <h1>Let&apos;s build the breakthroughs together.</h1>
+          <h1>Wanna work with us?</h1>
+          {/* <h1>Let&apos;s build the breakthroughs together.</h1> */}
           <p>
-            We are a group of researchers, engineers, and builders dedicated to build cool SAAS and Agentic AI Systems Join us in building what comes next.
+            We are a group of researchers, engineers, and builders dedicated to build cool SAAS and agentic systems. join us if you are crazy dev.
           </p>
         </section>
 

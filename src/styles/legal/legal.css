@@ -81,6 +81,7 @@
 .pillar_card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+  background-color: var(--bg-tertiary);
 }
 
 .legal_draft_notice {
