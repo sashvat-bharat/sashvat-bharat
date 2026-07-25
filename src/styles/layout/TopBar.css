@@ -5,7 +5,8 @@
   display: flex;
   position: relative;
   align-items: center;
-  background-color: var(--bg-primary);
+  background-color: transparent;
+  /* background-color: var(--bg-primary); */
 }
 
 .topbar .topbar-left {

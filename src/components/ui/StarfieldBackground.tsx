@@ -13,7 +13,7 @@ export default function StarfieldBackground() {
     if (!ctx) return;
 
     const GRID_SIZE = 24; // Grid cell spacing in pixels
-    const DENSITY = 0.1; // Percentage of grid nodes populated
+    const DENSITY = 0.09; // Percentage of grid nodes populated
     let cols = 0;
     let rows = 0;
     let particles: Particle[] = [];
@@ -31,8 +31,12 @@ export default function StarfieldBackground() {
       size = 1;
       speed = 0.02;
       alpha = 1;
+      baseAlpha = 1;
       particleState: "idle" | "moving" = "idle";
       idleTimer = 0;
+      colorType: "white" | "deepblue" | "purplish" = "white";
+      pulsePhase = Math.random() * Math.PI * 2;
+      pulseSpeed = 0.015 + Math.random() * 0.025;
 
       constructor(isHero = false) {
         this.isHero = isHero;
@@ -48,17 +52,30 @@ export default function StarfieldBackground() {
         this.x = this.gx * GRID_SIZE;
         this.y = this.gy * GRID_SIZE;
 
-        // Base sizes: 1x1 or 2x2 for regular stars, 4x4 for the focal hero block
+        const roll = Math.random();
+
         if (this.isHero) {
-          this.size = 4;
+          this.size = 3;
           this.speed = 0.015;
-          this.alpha = 1.0;
+          this.baseAlpha = 1.0;
+          this.colorType = "purplish";
         } else {
-          this.size = Math.random() > 0.85 ? 2 : 1;
+          this.size = roll > 0.9 ? 2 : 1;
           this.speed = 0.02 + Math.random() * 0.03;
-          this.alpha = 0.2 + Math.random() * 0.8;
+          this.baseAlpha = 0.2 + Math.random() * 0.8;
+
+          // Color distribution: ~50% crisp white, ~27% deep blue, ~23% light purplish
+          const colorRoll = Math.random();
+          if (colorRoll > 0.77) {
+            this.colorType = "purplish";
+          } else if (colorRoll > 0.5) {
+            this.colorType = "deepblue";
+          } else {
+            this.colorType = "white";
+          }
         }
 
+        this.alpha = this.baseAlpha;
         this.particleState = "idle";
         this.idleTimer = Math.floor(Math.random() * 120) + 30;
       }
@@ -80,6 +97,11 @@ export default function StarfieldBackground() {
       update() {
         const targetX = this.targetGx * GRID_SIZE;
         const targetY = this.targetGy * GRID_SIZE;
+
+        // Subtle radiation pulse / twinkling animation
+        this.pulsePhase += this.pulseSpeed;
+        const pulse = Math.sin(this.pulsePhase);
+        this.alpha = Math.max(0.15, Math.min(1.0, this.baseAlpha + pulse * 0.2));
 
         if (this.particleState === "moving") {
           const dx = targetX - this.x;
@@ -104,13 +126,57 @@ export default function StarfieldBackground() {
         }
       }
 
-      draw(context: CanvasRenderingContext2D, color: string) {
-        context.fillStyle = color;
-        context.globalAlpha = this.alpha;
-
+      draw(context: CanvasRenderingContext2D) {
         const drawX = Math.floor(this.x);
         const drawY = Math.floor(this.y);
-        context.fillRect(drawX, drawY, this.size, this.size);
+
+        context.globalAlpha = this.alpha;
+
+        if (this.isHero) {
+          // Hero Star: Refined outer aura bloom
+          context.shadowColor = "rgba(168, 85, 247, 0.95)";
+          context.shadowBlur = 14;
+          context.fillStyle = "rgba(147, 51, 234, 0.3)";
+          context.fillRect(drawX - 2, drawY - 2, this.size + 4, this.size + 4);
+
+          // Hero Core
+          context.shadowColor = "rgba(96, 165, 250, 0.9)";
+          context.shadowBlur = 8;
+          context.fillStyle = "#F3E8FF";
+          context.fillRect(drawX, drawY, this.size, this.size);
+        } else if (this.colorType === "purplish") {
+          // Soft violet bloom halo
+          context.shadowColor = "rgba(192, 132, 252, 0.9)";
+          context.shadowBlur = this.size > 1 ? 9 : 5;
+          context.fillStyle = "rgba(168, 85, 247, 0.25)";
+          context.fillRect(drawX - 1, drawY - 1, this.size + 2, this.size + 2);
+
+          // Bright purplish-violet star core
+          context.shadowBlur = this.size > 1 ? 6 : 3;
+          context.fillStyle = "#F3E8FF";
+          context.fillRect(drawX, drawY, this.size, this.size);
+        } else if (this.colorType === "deepblue") {
+          // Soft deep blue bloom halo
+          context.shadowColor = "rgba(59, 130, 246, 0.9)";
+          context.shadowBlur = this.size > 1 ? 9 : 5;
+          context.fillStyle = "rgba(37, 99, 235, 0.25)";
+          context.fillRect(drawX - 1, drawY - 1, this.size + 2, this.size + 2);
+
+          // Bright deep blue star core
+          context.shadowBlur = this.size > 1 ? 6 : 3;
+          context.fillStyle = "#BAE6FD";
+          context.fillRect(drawX, drawY, this.size, this.size);
+        } else {
+          // Fine crisp white star
+          context.shadowColor = "rgba(255, 255, 255, 0.6)";
+          context.shadowBlur = this.size > 1 ? 4 : 2;
+          context.fillStyle = "#FFFFFF";
+          context.fillRect(drawX, drawY, this.size, this.size);
+        }
+
+        // Reset shadow properties
+        context.shadowBlur = 0;
+        context.shadowColor = "transparent";
       }
     }
 
@@ -154,11 +220,9 @@ export default function StarfieldBackground() {
       const isDark = document.documentElement.getAttribute("data-theme") === "dark";
 
       if (isDark) {
-        const starColor = "#FFFFFF";
-
         for (let i = 0; i < particles.length; i++) {
           particles[i].update();
-          particles[i].draw(ctx, starColor);
+          particles[i].draw(ctx);
         }
       }
 
