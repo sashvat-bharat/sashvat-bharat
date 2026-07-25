@@ -2,10 +2,9 @@
   gap: 32px;
   margin: auto;
   display: flex;
-  margin-top: 180px;
+  margin-top: clamp(100px, 12vw, 180px);
   max-width: 1128px;
   flex-direction: column;
-  /* border: 1px solid orangered; */
 }
 
 :root {
@@ -40,7 +39,7 @@
   }
 
   .promo-text {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 16px;
     font-weight: 400;
     color: var(--text-primary);
@@ -50,8 +49,12 @@
   }
 }
 
+[data-theme="dark"] .promo-trigger {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 [data-theme="dark"] .promo-trigger:hover {
-  border-color: var(--btn-border-primary);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .action-button {
@@ -98,7 +101,7 @@
 }
 
 .promo-trigger:hover {
-  border-color: var(--border-secondary);
+  border-color: var(--border-primary);
   padding-right: 4px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
 }
@@ -138,9 +141,8 @@
 
   letter-spacing: -0.028em;
   color: var(--text-primary);
-  font-size: clamp(36px, 4.2vw, 56px);
+  font-size: clamp(36px, 7vw, 56px);
   font-family: var(--font-libre-baskerville);
-  /* font-family: var(--font-geist-sans); */
 
   min-width: 300px;
   padding: 0 24px;
@@ -165,7 +167,7 @@
   margin-top: 5px;
   font-weight: 350;
   min-width: 220px;
-  font-size: clamp(16px, 1.65vw, 20px);
+  font-size: clamp(16px, 3vw, 20px);
 
   color: var(--text-secondary);
   font-family: var(--font-geist-sans);
@@ -211,13 +213,7 @@
 
 
 
-@media (max-width: 900px) {
 
-  .hero-section {
-    margin-top: 100px;
-  }
-
-}
 
 .home_sections_container {
   display: flex;
@@ -258,7 +254,7 @@
 }
 
 .home_section_title {
-  font-size: 28px;
+  font-size: var(--font-size-3xl);
   font-weight: 500;
   color: var(--text-primary);
   font-family: var(--font-geist-sans);
@@ -275,7 +271,7 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-primary);
   border-radius: 16px;
-  padding: 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -289,14 +285,14 @@
 }
 
 .pillar_card h3 {
-  font-size: 18px;
+  font-size: var(--font-size-md);
   font-weight: 500;
   color: var(--text-primary);
   font-family: var(--font-geist-sans), sans-serif;
 }
 
 .pillar_card p {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: 1.6;
   font-family: var(--font-geist-sans), sans-serif;
@@ -329,7 +325,7 @@
 }
 
 .featured_card h3 {
-  font-size: 22px;
+  font-size: var(--font-size-xl);
   font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 8px;
@@ -337,7 +333,7 @@
 }
 
 .featured_card p {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: 1.6;
   font-family: var(--font-geist-sans), sans-serif;
@@ -349,7 +345,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: 500;
   color: var(--text-primary);
   font-family: var(--font-manrope), sans-serif;
@@ -369,7 +365,7 @@
 }
 
 .featured_cta_card h3 {
-  font-size: 28px;
+  font-size: var(--font-size-3xl);
   font-weight: 500;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -377,7 +373,7 @@
 }
 
 .featured_cta_card p {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 540px;

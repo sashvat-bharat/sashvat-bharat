@@ -15,9 +15,7 @@
 
   /* Buttons */
   --btn-bg-primary: #0E0E0D;
-
   --btn-text-primary: #FFFFFF;
-  --btn-border-primary: #E4E4E4;
 
 
   /* Brand Colors & Accents */
@@ -30,6 +28,22 @@
   --duration-normal: 250ms;
   --duration-slow: 400ms;
 
+  /* Font Sizes Scale */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+
+  /* Responsive Font Size Clamps */
+  --font-size-heading: round(nearest, clamp(32px, 4.2vw, 48px), 2px);
+  --font-size-subheading: round(nearest, clamp(14px, 1.8vw, 18px), 2px);
+  --font-size-hero: round(nearest, clamp(36px, 5vw, 64px), 2px);
+  --font-size-hero-title: round(nearest, clamp(36px, 8vw, 72px), 2px);
+
 }
 
 [data-theme="dark"] {
@@ -38,6 +52,7 @@
   --bg-tertiary: #1A1A1A;
 
   --border-primary: rgba(255, 255, 255, 0.08);
+  --border-primary: rgba(255, 255, 255, 0.1);
   --border-secondary: #1A1A1A;
 
   --text-primary: #F5F5F5;
@@ -46,7 +61,6 @@
 
   --btn-bg-primary: #F5F5F5;
   --btn-text-primary: #0A0A0A;
-  --btn-border-primary: #2C2C2C;
 }
 
 * {

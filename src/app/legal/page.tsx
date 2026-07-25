@@ -25,28 +25,36 @@ const LegalDirectory = () => {
         </p>
 
         <div className="legal_content" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', maxWidth: '640px', margin: '0 auto' }}>
-          <Link href="/legal/privacy-policy" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div className="pillar_card" style={{ cursor: 'pointer', textAlign: 'left' }}>
-              <ShieldCheck size={24} color="var(--text-primary)" />
-              <h3 style={{ margin: '12px 0 8px 0', fontSize: '18px', fontWeight: 500 }}>Privacy Policy</h3>
-              <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                Learn about how we collect, use, protect, and handle user data in our systems.
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '16px', fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>
+          <Link href="/legal/privacy-policy" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <div className="pillar_card" style={{ cursor: 'pointer', textAlign: 'left', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                  <ShieldCheck size={24} color="var(--text-primary)" />
+                  <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 500 }}>Privacy Policy</h3>
+                </div>
+                <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                  Learn about how we collect, use, protect, and handle user data in our systems.
+                </p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '24px', fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>
                 <span>Read Policy</span>
                 <ArrowRight size={14} />
               </div>
             </div>
           </Link>
 
-          <Link href="/legal/terms" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div className="pillar_card" style={{ cursor: 'pointer', textAlign: 'left' }}>
-              <FileText size={24} color="var(--text-primary)" />
-              <h3 style={{ margin: '12px 0 8px 0', fontSize: '18px', fontWeight: 500 }}>Terms of Service</h3>
-              <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                Review the terms, rules, and governance policies for using our tools and services.
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '16px', fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>
+          <Link href="/legal/terms" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <div className="pillar_card" style={{ cursor: 'pointer', textAlign: 'left', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                  <FileText size={24} color="var(--text-primary)" />
+                  <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 500 }}>Terms of Service</h3>
+                </div>
+                <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                  Review the terms, rules, and governance policies for using our tools and services.
+                </p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '24px', fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>
                 <span>Read Terms</span>
                 <ArrowRight size={14} />
               </div>

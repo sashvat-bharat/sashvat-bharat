@@ -18,7 +18,7 @@
 }
 
 .careers_hero h1 {
-  font-size: clamp(32px, 4.2vw, 48px);
+  font-size: var(--font-size-heading);
   font-weight: 450;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -28,7 +28,7 @@
 }
 
 .careers_hero p {
-  font-size: clamp(15px, 1.8vw, 18px);
+  font-size: var(--font-size-subheading);
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 600px;
@@ -42,7 +42,7 @@
 }
 
 .section_title {
-  font-size: 28px;
+  font-size: var(--font-size-3xl);
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text-primary);
@@ -58,7 +58,7 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-primary);
   border-radius: 12px;
-  padding: 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -71,13 +71,13 @@
 }
 
 .culture_card h3 {
-  font-size: 20px;
+  font-size: var(--font-size-lg);
   font-weight: 500;
   color: var(--text-primary);
 }
 
 .culture_card p {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -96,7 +96,7 @@
 }
 
 .department_title {
-  font-size: 20px;
+  font-size: var(--font-size-lg);
   font-weight: 500;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -113,7 +113,7 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-primary);
   border-radius: 12px;
-  padding: 24px 32px;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -135,7 +135,7 @@
 }
 
 .position_title {
-  font-size: 20px;
+  font-size: var(--font-size-lg);
   font-weight: 500;
   color: var(--text-primary);
 }
@@ -144,7 +144,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
 }
 
@@ -152,7 +152,7 @@
   background-color: var(--bg-tertiary);
   padding: 4px 10px;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: 500;
   color: var(--text-primary);
 }
@@ -163,7 +163,7 @@
   border: none;
   padding: 10px 20px;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   cursor: pointer;
   transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
@@ -181,7 +181,7 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-primary);
   border-radius: 16px;
-  padding: 48px;
+  padding: 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -192,13 +192,13 @@
 }
 
 .spontaneous_card h2 {
-  font-size: 28px;
+  font-size: var(--font-size-3xl);
   font-weight: 500;
   color: var(--text-primary);
 }
 
 .spontaneous_card p {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 600px;

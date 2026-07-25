@@ -60,14 +60,14 @@
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-tertiary);
     font-weight: 400;
 }
 
 /* Borderless Minimal Tag */
 .article_category_text {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-weight: 500;
     color: var(--text-secondary);
     letter-spacing: 0.02em;
@@ -76,14 +76,14 @@
 
 .meta_dot {
     color: var(--border-primary);
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     user-select: none;
 }
 
 .article_meta_date,
 .article_meta_time {
     color: var(--text-tertiary);
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     letter-spacing: -0.01em;
 }
 
@@ -95,7 +95,7 @@
     background: transparent;
     border: none;
     color: var(--text-tertiary);
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-weight: 450;
     font-family: var(--font-geist-sans), sans-serif;
     letter-spacing: -0.01em;
@@ -149,7 +149,7 @@
 }
 
 .article_authors_card .author_names_text {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-weight: 400;
     letter-spacing: -0.01em;
     color: var(--text-secondary);
@@ -157,14 +157,14 @@
 }
 
 .article_authors_card .author_name_str {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-weight: 400;
     letter-spacing: -0.01em;
     color: var(--text-secondary);
 }
 
 .article_authors_card .author_comma_str {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-secondary);
 }
 
@@ -182,7 +182,7 @@
 
 .content {
     font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 1.0625rem; /* 17px - Official Vercel Body Size */
+    font-size: round(nearest, clamp(16px, 1.8vw, 18px), 2px);
     line-height: 1.76;
     letter-spacing: -0.015em; /* Geist Sans Signature Tight Tracking */
     color: var(--text-primary);
@@ -204,7 +204,7 @@
 /* Paragraphs */
 .content p {
     color: var(--text-primary);
-    font-size: 1.0625rem;
+    font-size: round(nearest, clamp(16px, 1.8vw, 18px), 2px);
     line-height: 1.76;
     letter-spacing: -0.015em;
     margin-bottom: 1.6rem;
@@ -227,35 +227,35 @@
 }
 
 .content h2 {
-    font-size: 28px;
+    font-size: var(--font-size-3xl);
     margin-top: 3.25rem;
     margin-bottom: 1.15rem;
     letter-spacing: -0.024em;
 }
 
 .content h3 {
-    font-size: 22px;
+    font-size: var(--font-size-xl);
     margin-top: 2.5rem;
     margin-bottom: 0.9rem;
     letter-spacing: -0.02em;
 }
 
 .content h4 {
-    font-size: 18px;
+    font-size: var(--font-size-md);
     margin-top: 1.85rem;
     margin-bottom: 0.7rem;
     letter-spacing: -0.015em;
 }
 
 .content h5 {
-    font-size: 16px;
+    font-size: var(--font-size-base);
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
     letter-spacing: -0.012em;
 }
 
 .content h6 {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -315,7 +315,7 @@
     line-height: 1.7;
     letter-spacing: -0.014em;
     color: var(--text-primary);
-    font-size: 1.0625rem;
+    font-size: round(nearest, clamp(16px, 1.8vw, 18px), 2px);
 }
 
 .content li::marker {
@@ -375,6 +375,12 @@
     border: 1px solid var(--border-primary);
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.content pre:hover {
+    border-color: rgba(15, 14, 13, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
 .code_block_header {
@@ -385,7 +391,7 @@
     background-color: var(--bg-primary);
     border-bottom: 1px solid var(--border-primary);
     font-family: var(--font-geist-mono), monospace;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-secondary);
     letter-spacing: 0.02em;
 }
@@ -403,7 +409,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-family: var(--font-geist-mono), monospace;
     padding: 4px 10px;
     border-radius: 6px;
@@ -413,6 +419,11 @@
 .code_block_copy_btn:hover {
     color: var(--text-primary);
     background-color: var(--bg-tertiary);
+    transform: scale(1.02);
+}
+
+.code_block_copy_btn:active {
+    transform: scale(0.98);
 }
 
 .code_block_copy_btn.copied {
@@ -426,13 +437,28 @@
     padding: 1.25rem 1.5rem;
     overflow-x: auto;
     font-family: var(--font-geist-mono), monospace;
-    font-size: 0.875rem; /* 14px */
+    font-size: var(--font-size-sm);
     line-height: 1.65;
     letter-spacing: -0.01em;
     color: var(--text-primary);
     background: transparent;
     border: none;
     border-radius: 0;
+}
+
+/* Custom code block scrollbars */
+.content pre code::-webkit-scrollbar {
+    height: 6px;
+}
+.content pre code::-webkit-scrollbar-track {
+    background: transparent;
+}
+.content pre code::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 3px;
+}
+.content pre code::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
 }
 
 /* Inline Code */
@@ -555,7 +581,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--text-primary);
     font-family: var(--font-geist-sans);
@@ -566,7 +592,7 @@
 }
 
 .footer_tagline {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-secondary);
     max-width: 480px;
     line-height: 1.55;
@@ -588,7 +614,7 @@
     color: var(--btn-text-primary);
     border-radius: 50px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-weight: 500;
     font-family: var(--font-geist-sans);
     letter-spacing: -0.01em;
@@ -625,13 +651,13 @@
     }
 
     .content h2 {
-        font-size: 24px;
+        font-size: var(--font-size-2xl);
         margin-top: 2.25rem;
         margin-bottom: 0.9rem;
     }
 
     .content h3 {
-        font-size: 20px;
+        font-size: var(--font-size-lg);
         margin-top: 1.85rem;
     }
 

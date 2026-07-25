@@ -68,7 +68,7 @@ const TopBar = () => {
           <Link href="/products"><button>Products</button></Link>
           <Link href="/articles"><button>Articles</button></Link>
           <Link href="/research"><button>Research</button></Link>
-          <Link href="/about"><button>About Us</button></Link>
+          <Link href="/about"><button>About</button></Link>
           <Link href="/careers"><button>Careers</button></Link>
 
         </div>

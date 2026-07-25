@@ -40,10 +40,10 @@
   gap: 8px;
   background-color: var(--btn-bg-primary);
   color: var(--btn-text-primary);
-  border: 1px solid var(--btn-border-primary);
+  border: 1px solid var(--border-primary);
   padding: 12px 24px;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
