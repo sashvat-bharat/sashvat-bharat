@@ -1,14 +1,15 @@
 import React from 'react';
-import Link from 'next/link';
-import { ArrowRight, Compass, Cpu, Flame, Code, BookOpen } from 'lucide-react';
+import { Compass, Cpu, Flame } from 'lucide-react';
 
 import "@/styles/global.css";
 import HeroSection from "@/components/ui/HeroSection";
+import StarfieldBackground from "@/components/ui/StarfieldBackground";
 
 const page = () => {
   return (
     <>
-      <div className='home-container'>
+      <StarfieldBackground />
+      <div className='home-container' style={{ position: 'relative', zIndex: 1 }}>
         <HeroSection />
 
         <div className='home_sections_container'>
