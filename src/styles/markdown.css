@@ -1,352 +1,673 @@
-/* ── Sashvat Bharat: Markdown Styling ── */
-/* Ultra-clean, modern, and type-safe styling for generated content. */
+/* ─────────────────────────────────────────────────────────────────────────────
+   Sashvat Bharat - Vercel-Grade Geist Sans Research Article Typography System
+   Implements official Geist Sans tracking (-0.015em), precision line-heights (1.76),
+   antialiased font rendering, and refined editorial spacing.
+   ───────────────────────────────────────────────────────────────────────────── */
 
-article {
-    --link-color: var(--golden, #C5A058);
-    --code-bg: var(--bg-secondary);
-    --article-line-height: 1.75;
-    --heading-margin-top: 2.25rem;
-    --heading-margin-bottom: 1.25rem;
+/* ── Article Layout Container ── */
 
+.article_container {
+    margin: 24px auto 120px auto;
+    max-width: 800px;
+    padding: 40px 24px 0 24px;
+}
+
+@media (max-width: 640px) {
+    .article_container {
+        margin: 24px auto 80px auto;
+        padding: 40px 18px 0 18px;
+    }
+}
+
+.article_wrapper {
+    width: 100%;
+}
+
+/* ── Article Hero Header (Minimalist) ── */
+
+.article_hero_header {
+    margin-bottom: 32px;
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Article Title */
+.article_main_title {
+    font-family: var(--font-geist-sans), sans-serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 450;
+    line-height: 1.18;
+    letter-spacing: -0.032em;
     color: var(--text-primary);
-    font-family: var(--font-manrope), sans-serif;
-    font-size: 17px;
-    line-height: var(--article-line-height);
+    margin-top: 0;
+    margin-bottom: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Grouped Meta Row (Tag, Date, Reading Time, Share) */
+.article_meta_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.article_meta_left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: var(--font-size-sm);
+    color: var(--text-tertiary);
+    font-weight: 400;
+}
+
+/* Borderless Minimal Tag */
+.article_category_text {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.meta_dot {
+    color: var(--border-primary);
+    font-size: var(--font-size-sm);
+    user-select: none;
+}
+
+.article_meta_date,
+.article_meta_time {
+    color: var(--text-tertiary);
+    font-size: var(--font-size-sm);
     letter-spacing: -0.01em;
+}
 
-    /* Spacing between blocks */
-    &>* {
-        margin-top: 0;
-        margin-bottom: 1.25rem;
+/* Minimal Share Button */
+.article_share_btn_minimal {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    font-size: var(--font-size-sm);
+    font-weight: 450;
+    font-family: var(--font-geist-sans), sans-serif;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.article_share_btn_minimal:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+}
+
+.article_share_btn_minimal.copied {
+    color: var(--text-primary);
+}
+
+/* Minimal Author Row */
+.article_authors_card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-family: var(--font-geist-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.article_authors_card .author_avatars_group {
+    display: flex;
+    align-items: center;
+}
+
+.article_authors_card .author_avatar_placeholder {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: var(--bg-tertiary);
+    border: 2px solid var(--bg-primary);
+    margin-left: -7px;
+    flex-shrink: 0;
+}
+
+.article_authors_card .author_avatars_group .author_avatar_placeholder:first-child {
+    margin-left: 0;
+}
+
+.article_authors_card .author_names_container {
+    display: flex;
+    align-items: center;
+}
+
+.article_authors_card .author_names_text {
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.article_authors_card .author_name_str {
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--text-secondary);
+}
+
+.article_authors_card .author_comma_str {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.article_header_divider {
+    height: 1px;
+    width: 100%;
+    background: var(--border-primary);
+    margin: 32px 0 40px 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   § Article Body & Rendered Markdown Typography (Geist Sans Polish)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.content {
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: round(nearest, clamp(16px, 1.8vw, 18px), 2px);
+    line-height: 1.76;
+    letter-spacing: -0.015em; /* Geist Sans Signature Tight Tracking */
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Vertical Rhythm between blocks */
+.content > * {
+    margin-top: 0;
+    margin-bottom: 1.6rem;
+}
+
+.content > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Paragraphs */
+.content p {
+    color: var(--text-primary);
+    font-size: round(nearest, clamp(16px, 1.8vw, 18px), 2px);
+    line-height: 1.76;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.6rem;
+}
+
+/* Headings inside article content */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    color: var(--text-primary);
+    font-family: var(--font-rethink-sans), sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.022em;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+.content h2 {
+    font-size: var(--font-size-3xl);
+    margin-top: 3.25rem;
+    margin-bottom: 1.15rem;
+    letter-spacing: -0.024em;
+}
+
+.content h3 {
+    font-size: var(--font-size-xl);
+    margin-top: 2.5rem;
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.02em;
+}
+
+.content h4 {
+    font-size: var(--font-size-md);
+    margin-top: 1.85rem;
+    margin-bottom: 0.7rem;
+    letter-spacing: -0.015em;
+}
+
+.content h5 {
+    font-size: var(--font-size-base);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.012em;
+}
+
+.content h6 {
+    font-size: var(--font-size-sm);
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Heading Anchor Links */
+.heading_anchor_link {
+    opacity: 0;
+    margin-left: 8px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.85em;
+    transition: opacity 0.2s ease;
+}
+
+.content h2:hover .heading_anchor_link,
+.content h3:hover .heading_anchor_link,
+.content h4:hover .heading_anchor_link {
+    opacity: 1;
+}
+
+/* Text Emphasis & Links */
+.content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.content em {
+    font-style: italic;
+}
+
+.content a {
+    color: var(--orange-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--orange-primary);
+    transition: opacity 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.content a:hover {
+    opacity: 0.82;
+    text-decoration-color: var(--orange-primary);
+}
+
+/* Lists */
+.content ul,
+.content ol {
+    padding-left: 1.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.content li {
+    margin-bottom: 0.6rem;
+    line-height: 1.7;
+    letter-spacing: -0.014em;
+    color: var(--text-primary);
+    font-size: round(nearest, clamp(16px, 1.8vw, 18px), 2px);
+}
+
+.content li::marker {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.content li ul,
+.content li ol {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+/* Custom Div Blockquotes */
+.content .md-blockquote {
+    position: relative;
+    margin: 2rem 0;
+    padding: 1.15rem 1.4rem 1.15rem 1.75rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1.025rem;
+    line-height: 1.72;
+    letter-spacing: -0.014em;
+    font-family: var(--font-geist-sans), sans-serif;
+}
+
+.content .md-blockquote::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: 3px;
+    background-color: var(--text-primary);
+    border-radius: 99px;
+}
+
+.content .md-blockquote p {
+    margin-bottom: 0;
+    font-size: 1.025rem;
+    line-height: 1.72;
+    letter-spacing: -0.014em;
+    color: var(--text-primary);
+}
+
+.content .md-blockquote p + p {
+    margin-top: 0.75rem;
+}
+
+/* Code Blocks & Pre (Light Theme) */
+.content pre {
+    margin: 2rem 0;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-primary);
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.content pre:hover {
+    border-color: rgba(15, 14, 13, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.code_block_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-primary);
+    font-family: var(--font-geist-mono), monospace;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+}
+
+.code_block_language {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.code_block_copy_btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-size-sm);
+    font-family: var(--font-geist-mono), monospace;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.code_block_copy_btn:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+    transform: scale(1.02);
+}
+
+.code_block_copy_btn:active {
+    transform: scale(0.98);
+}
+
+.code_block_copy_btn.copied {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+}
+
+.content pre code {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    font-family: var(--font-geist-mono), monospace;
+    font-size: var(--font-size-sm);
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+/* Custom code block scrollbars */
+.content pre code::-webkit-scrollbar {
+    height: 6px;
+}
+.content pre code::-webkit-scrollbar-track {
+    background: transparent;
+}
+.content pre code::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 3px;
+}
+.content pre code::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+}
+
+/* Inline Code */
+.content code {
+    font-family: var(--font-geist-mono), monospace;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 0.2em 0.4em;
+    border-radius: 5px;
+    font-size: 0.85em;
+    letter-spacing: -0.01em;
+    border: 1px solid var(--border-primary);
+}
+
+/* Tables */
+.content .md-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-primary);
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+.content .md-table th,
+.content .md-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border-primary);
+    border-right: 1px solid var(--border-primary);
+    text-align: left;
+}
+
+.content .md-table th:last-child,
+.content .md-table td:last-child {
+    border-right: none;
+}
+
+.content .md-table tr:last-child td {
+    border-bottom: none;
+}
+
+.content .md-table th {
+    background-color: var(--bg-tertiary);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: var(--font-geist-sans);
+}
+
+.content .md-table tr:hover td {
+    background-color: var(--bg-secondary);
+}
+
+/* Math (KaTeX) */
+.content .md-math-display {
+    margin: 2rem 0;
+    padding: 1.25rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-primary);
+    overflow-x: auto;
+    text-align: center;
+}
+
+.content .md-math-inline {
+    padding: 0 0.2em;
+}
+
+/* Images & Figures */
+.content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 2.25rem auto;
+    display: block;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-primary);
+}
+
+/* Horizontal Rules */
+.content hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--border-primary) 20%, var(--border-primary) 80%, transparent 100%);
+    margin: 3.25rem 0;
+}
+
+/* Footnotes */
+.content .md-footnotes {
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border-primary);
+    font-size: 0.925rem;
+    color: var(--text-secondary);
+}
+
+.content .md-footnote-backref {
+    color: var(--orange-primary);
+    text-decoration: none;
+    margin-left: 6px;
+}
+
+/* Article Footer Card */
+.article_footer_card {
+    margin-top: 64px;
+    padding: 40px 32px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.footer_badge_row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: var(--font-geist-sans);
+}
+
+.sparkle_icon {
+    color: var(--text-primary);
+}
+
+.footer_tagline {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    max-width: 480px;
+    line-height: 1.55;
+    font-family: var(--font-geist-sans);
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.footer_actions {
+    margin-top: 8px;
+}
+
+.footer_back_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background-color: var(--btn-bg-primary);
+    color: var(--btn-text-primary);
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    font-family: var(--font-geist-sans);
+    letter-spacing: -0.01em;
+    transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.footer_back_btn:hover {
+    opacity: 0.88;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   § Responsive Overrides
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    .article_hero_header {
+        margin-bottom: 28px;
     }
 
-    /* ── Headings ── */
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-        color: var(--text-primary);
-        font-weight: 500;
-        line-height: 1.3;
-        margin-top: var(--heading-margin-top);
-        margin-bottom: var(--heading-margin-bottom);
-        letter-spacing: -0.02em;
-        font-family: var(--font-manrope);
+    .article_main_title {
+        font-size: clamp(22px, 5.5vw, 28px);
+        margin-bottom: 16px;
     }
 
-    & h1 {
-        font-size: 2.51rem;
-        text-align: center;
-        margin-top: 0;
+    .content {
+        font-size: 1rem; /* 16px */
+        line-height: 1.72;
     }
 
-    & h2 {
-        font-size: 2.15rem;
-    }
-
-    & h3 {
-        font-size: 1.5rem;
-    }
-
-    & h4 {
-        font-size: 1.25rem;
-    }
-
-    & h5 {
-        font-size: 1.1rem;
-    }
-
-    & h6 {
+    .content p {
         font-size: 1rem;
-        color: var(--text-tertiary);
-        font-weight: 400;
+        line-height: 1.72;
+        margin-bottom: 1.4rem;
     }
 
-    /* ── Text ── */
-    & p {
-        color: var(--text-secondary);
+    .content h2 {
+        font-size: var(--font-size-2xl);
+        margin-top: 2.25rem;
+        margin-bottom: 0.9rem;
     }
 
-    & strong {
-        color: var(--text-primary);
-        font-weight: 600;
+    .content h3 {
+        font-size: var(--font-size-lg);
+        margin-top: 1.85rem;
     }
 
-    & em {
-        font-style: italic;
+    .content pre code {
+        font-size: 0.825rem;
+        padding: 1rem;
     }
 
-    & u {
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        text-decoration-color: var(--border-primary);
-    }
-
-    & a {
-        color: var(--link-color);
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-        transition: border-color 0.2s ease, opacity 0.2s ease;
-
-        &:hover {
-            opacity: 0.8;
-            border-bottom-color: var(--link-color);
-        }
-    }
-
-    /* ── Lists ── */
-    & ul,
-    & ol {
-        padding-left: 1.5rem;
-        color: var(--text-secondary);
-    }
-
-    & li {
-        margin-bottom: 0.5rem;
-
-        &::marker {
-            color: var(--text-tertiary);
-        }
-    }
-
-    /* Nesting */
-    & li ul,
-    & li ol {
-        margin-bottom: 0;
-        margin-top: 0.5rem;
-    }
-
-    /* ── Blockquotes ── */
-    & .md-blockquote {
-        margin: 2.5rem 0;
-        padding: 0.4rem 1.5rem 1.2rem 1.5rem;
-        border-left: 3px solid var(--border-primary);
-        color: var(--text-tertiary);
-        /* font-style: italic; */
-        background-color: var(--bg-tertiary);
-        border-radius: 0 8px 8px 0;
-
-        & p {
-            margin-bottom: 0;
-        }
-    }
-
-    /* ── Tables ── */
-    & .md-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 2.5rem 0;
-        font-size: 15px;
-        overflow-x: auto;
-        display: block;
-
-        @media (min-width: 768px) {
-            display: table;
-        }
-
-        & th,
-        & td {
-            text-align: left;
-            padding: 12px 16px;
-            border: 1px solid var(--border-primary);
-        }
-
-        & th {
-            background-color: var(--bg-tertiary);
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        & tr:nth-child(even) {
-            background-color: var(--bg-tertiary);
-        }
-    }
-
-    /* ── Code Blocks ── */
-    & pre {
-        margin: 2rem 0;
-        padding: 1.25rem;
-        background-color: #0D1117;
-        /* Slate-dark for contrast */
-        border-radius: 12px;
-        overflow-x: auto;
-        border: 1px solid var(--border-secondary);
-        font-family: var(--font-manrope), monospace;
-        font-size: 14px;
-        line-height: 1.6;
-        color: #E6EDF3;
-
-        & code {
-            padding: 0;
-            background: transparent;
-            color: inherit;
-            border: none;
-            font-size: inherit;
-        }
-    }
-
-    & code {
-        font-family: var(--font-geist-mono), monospace;
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        padding: 0.2rem 0.4rem;
-        border-radius: 6px;
-        font-size: 0.9em;
-        border: 1px solid var(--border-primary);
-    }
-
-    /* Light Theme Tweaks */
-    [data-theme="light"] & pre {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-    }
-
-    /* ── Images ── */
-    & img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-        margin: 2.5rem 0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        border: 1px solid var(--border-primary);
-    }
-
-    /* ── Horizontal Rules ── */
-    & hr {
-        border: 0;
-        height: 1px;
-        background: var(--border-primary);
-        margin: 3rem 0;
-    }
-
-    /* ── Extended Formatting ── */
-    & mark {
-        background-color: rgba(243, 156, 18, 0.15);
-        /* Soft transparent gold */
-        color: inherit;
-        padding: 0.1em 0.3em;
-        border-radius: 4px;
-        border-bottom: 2px solid rgba(243, 156, 18, 0.4);
-    }
-
-    & strike,
-    & del {
-        color: var(--text-tertiary);
-        text-decoration: line-through;
-    }
-
-    & sub,
-    & sup {
-        font-size: 0.75em;
-        line-height: 0;
-        position: relative;
-        vertical-align: baseline;
-    }
-
-    & sup {
-        top: -0.5em;
-    }
-
-    & sub {
-        bottom: -0.25em;
-    }
-
-    /* ── Footnotes ── */
-    & .md-footnotes {
-        margin-top: 4rem;
-        border-top: 1px solid var(--border-primary);
-        padding-top: 1.5rem;
-        font-size: 0.9em;
-        color: var(--text-tertiary);
-
-        & ol {
-            padding-left: 1.25rem;
-        }
-
-        & .md-footnote-backref {
-            margin-left: 0.5rem;
-            color: var(--link-color);
-            text-decoration: none;
-            opacity: 0.6;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
-
-    /* ── Task Lists ── */
-    & li input[type="checkbox"] {
-        appearance: none;
-        width: 1.1em;
-        height: 1.1em;
-        border: 2px solid var(--border-primary);
-        border-radius: 4px;
-        background: var(--bg-primary);
-        margin-right: 0.75rem;
-        vertical-align: middle;
-        position: relative;
-        cursor: not-allowed;
-
-        &:checked {
-            background-color: var(--golden);
-            border-color: var(--golden);
-
-            &::after {
-                content: "v";
-                /* Simple check icon */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: white;
-                font-size: 0.7em;
-                font-family: var(--font-manrope);
-            }
-        }
-    }
-
-    /* ── Definition Lists ── */
-    & dl {
-        margin-bottom: 2rem;
-
-        & dt {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 1.5rem;
-        }
-
-        & dd {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-            color: var(--text-secondary);
-        }
-    }
-
-    /* ── Emojis ── */
-    & .md-emoji {
-        display: inline-block;
-        margin: 0 0.1em;
-        font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    }
-
-    /* ── Math (LaTeX) ── */
-    & .md-math-inline {
-        padding: 0 0.2em;
-    }
-
-    & .md-math-display {
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding-left: 16px;
-        padding-right: 16px !important;
-        margin: 1.5rem 0;
-        text-align: center;
-        border-radius: 8px;
-        font-size: 16px;
-        border: 1px solid var(--border-primary);
-        background-color: var(--bg-secondary);
+    .article_footer_card {
+        padding: 28px 20px;
+        margin-top: 48px;
     }
 }

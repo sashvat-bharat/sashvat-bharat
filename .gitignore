@@ -30,20 +30,20 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env and main files (can opt-in for committing if needed)
 .env*
 .claude
 .agents
-commands.md
 CLAUDE.md
 AGENTS.md
-
+codebase.md
 
 # vercel
 .vercel
 
-# auto-generated research index (rebuilt by scripts/generate-research-index.mjs)
+# auto-generated index (rebuilt by scripts/generate-research-index.mjs)
 /content/research.json
+/content/articles.json
 
 # typescript
 *.tsbuildinfo

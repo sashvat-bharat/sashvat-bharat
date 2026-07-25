@@ -17,11 +17,9 @@ function applyTheme(t: Theme) {
   const root = document.documentElement;
   if (t === "dark") {
     root.setAttribute("data-theme", "dark");
-  } else if (t === "light") {
-    root.setAttribute("data-theme", "light");
   } else {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    root.setAttribute("data-theme", prefersDark ? "dark" : "light");
+    // Default to 'light' mode
+    root.setAttribute("data-theme", "light");
   }
 }
 

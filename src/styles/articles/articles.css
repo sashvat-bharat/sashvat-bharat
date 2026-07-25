@@ -220,7 +220,7 @@
   color: var(--text-primary);
   margin-top: 20px;
   margin-bottom: 24px;
-  font-family: var(--font-geist-sans, var(--font-libre-baskerville), sans-serif);
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
 .card_bottom_section {

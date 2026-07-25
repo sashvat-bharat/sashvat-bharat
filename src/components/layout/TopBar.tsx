@@ -32,18 +32,26 @@ const TopBar = () => {
         </Link>
 
         <div className='topbar-middle'>
-          <button>Products</button>
-          <button>Articles</button>
+          <Link href="/products">
+            <button>Products</button>
+          </Link>
+          <Link href="/articles">
+            <button>Articles</button>
+          </Link>
           <Link href="/research">
             <button>Research</button>
           </Link>
-          <button>About Us</button>
-          <button>Careers</button>
+          <Link href="/about">
+            <button>About</button>
+          </Link>
+          <Link href="/careers">
+            <button>Careers</button>
+          </Link>
         </div>
 
         <div className='topbar-right'>
 
-          {/* <div className='theme-toggle-container'><ThemeToggle /></div> */}
+          <div className='theme-toggle-container'><ThemeToggle /></div>
 
           <div className='menu-n-account'>
             <div className='menu-toggle' onClick={handleMenuToggle}>
@@ -57,15 +65,11 @@ const TopBar = () => {
 
         <div className={`menu-box ${menuOpen ? 'open' : 'closed'}`}>
 
-          <button>Products</button>
-          <button>Articles</button>
+          <Link href="/products"><button>Products</button></Link>
+          <Link href="/articles"><button>Articles</button></Link>
           <Link href="/research"><button>Research</button></Link>
-          <button>About Us</button>
-          <button>Careers</button>
-
-          {/* <div className='line-separator'></div> */}
-
-          {/* <div className='theme-toggle-container-under-menubox'><ThemeToggle /></div> */}
+          <Link href="/about"><button>About</button></Link>
+          <Link href="/careers"><button>Careers</button></Link>
 
         </div>
 
