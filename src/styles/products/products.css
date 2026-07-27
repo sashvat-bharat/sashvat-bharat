@@ -1,8 +1,8 @@
 .products_container {
-  padding: 40px 24px;
+  padding: 40px 24px 80px 24px;
   display: flex;
   margin-top: 24px;
-  gap: 4rem;
+  gap: 3rem;
   flex-direction: column;
   font-family: var(--font-geist-sans), sans-serif;
 }
@@ -11,18 +11,15 @@
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 0 40px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 0;
 }
 
 .products_hero h1 {
   font-size: var(--font-size-heading);
   font-weight: 450;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  letter-spacing: -0.028em;
   color: var(--text-primary);
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
 .products_hero p {
@@ -30,7 +27,8 @@
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 12px auto 0 auto;
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
 .section_title {
@@ -43,7 +41,7 @@
 .products_section {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 3rem;
   width: 100%;
 }
 
@@ -51,6 +49,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 32px;
+  margin-top: 36px;
 }
 
 .product_card {
