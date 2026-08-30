@@ -28,11 +28,11 @@
     "title": "Agent Accelerator",
     "category": "Library",
     "state": "coming soon",
-    "description": "orchestration framework built with Rust and TypeScript for deploying, coordinating, and scaling collaborative AI agents with production-grade reliability and fault tolerance.",
+    "description": "High-performance TypeScript SDK providing a unified API across AI providers while preserving complete model data in structured JSON. Optimized for high cache hit rates, lower inference costs, observability, and agent orchestration. Designed for integration across Sashvat Bharat's upcoming AI products and platforms.",
     "features": [
-      "Multi-agent workflows",
-      "Automatic failure recovery",
-      "Shared memory & context"
+      "Unified API across AI providers and models",
+      "Complete structured JSON data preservation",
+      "High-efficiency caching and lower inference costs"
     ]
   }
 ]
