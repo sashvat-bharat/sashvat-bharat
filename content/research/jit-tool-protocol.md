@@ -1,7 +1,7 @@
 ---
 date: "2026-03-01"
 category: "Protocols"
-title: "The JIT (Just-in-Time) Tool Spawning Protocol"
+title: "The jit (just-in-time) tool spawning protocol"
 description: "A Server-Side Routing Architecture for Infinite-Tool AI Agents. saving upto 88.8% tokens."
 authors:
   - name: "Akshat Dwivedi"
