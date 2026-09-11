@@ -20,8 +20,9 @@
   align-items: center;
   justify-content: center;
   border: none;
+  padding: 0;
+  font: inherit;
   background-color: transparent;
-
 }
 
 /* Persistent active state - stays styled after click */

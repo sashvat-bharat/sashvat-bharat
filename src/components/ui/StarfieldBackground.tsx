@@ -1,6 +1,27 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
+
+interface StarPalette {
+  color: string;
+}
+
+// Astrophysical star color spectrum modeled directly after stars.png:
+// Predominantly crisp diamond white, warm stellar amber/peach dwarfs, soft cyan/blue, and subtle lavender.
+const STAR_PALETTES: StarPalette[] = [
+  // Diamond / crisp white
+  { color: '#FFFFFF' },
+  { color: '#F0F6FC' },
+  // Warm stellar amber / peach dwarf stars (visible throughout stars.png)
+  { color: '#FED7AA' },
+  { color: '#FFD8A8' },
+  { color: '#FDBA74' },
+  // Subtle cool blue / cyan
+  { color: '#BAE6FD' },
+  { color: '#93C5FD' },
+  // Soft lavender / violet
+  { color: '#E9D5FF' },
+];
 
 export default function StarfieldBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -9,182 +30,204 @@ export default function StarfieldBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const GRID_SIZE = 24; // Grid cell spacing in pixels
-    const DENSITY = 0.09; // Percentage of grid nodes populated
-    let cols = 0;
-    let rows = 0;
-    let particles: Particle[] = [];
-    let dpr = 1;
     let animFrameId: number;
+    let stars: Star[] = [];
 
-    class Particle {
-      isHero: boolean;
-      gx = 0;
-      gy = 0;
-      targetGx = 0;
-      targetGy = 0;
+    class Star {
       x = 0;
       y = 0;
-      size = 1;
-      speed = 0.02;
-      alpha = 1;
-      baseAlpha = 1;
-      particleState: "idle" | "moving" = "idle";
+      radius = 1;
+      baseAlpha = 0.8;
+      alpha = 0.8;
+      palette: StarPalette;
+
+      // Tier: 'micro' (distant background dust) or 'standard' (clear mid-ground stars)
+      tier: 'micro' | 'standard';
+
+      // Twinkle / scintillation
+      twinklePhase = Math.random() * Math.PI * 2;
+      twinkleSpeed = 0.008 + Math.random() * 0.015;
+      twinkleAmp = 0.12 + Math.random() * 0.16;
+
+      // Motion
+      mode: 'idle' | 'gliding' = 'idle';
       idleTimer = 0;
-      colorType: "white" | "deepblue" | "purplish" = "white";
-      pulsePhase = Math.random() * Math.PI * 2;
-      pulseSpeed = 0.015 + Math.random() * 0.025;
+      startX = 0;
+      startY = 0;
+      targetX = 0;
+      targetY = 0;
+      controlX = 0;
+      controlY = 0;
+      glideProgress = 1;
+      glideDuration = 200;
 
-      constructor(isHero = false) {
-        this.isHero = isHero;
-        this.reset();
-      }
+      // Ambient zero-G micro-drift (very slow & calm)
+      ambientAngle = Math.random() * Math.PI * 2;
+      ambientSpeed = 0.004 + Math.random() * 0.01;
+      swayPhase = Math.random() * Math.PI * 2;
+      swaySpeed = 0.003 + Math.random() * 0.006;
 
-      reset() {
-        this.gx = Math.floor(Math.random() * (cols || 1));
-        this.gy = Math.floor(Math.random() * (rows || 1));
-        this.targetGx = this.gx;
-        this.targetGy = this.gy;
+      constructor(tier: 'micro' | 'standard', randomPos = true) {
+        this.tier = tier;
 
-        this.x = this.gx * GRID_SIZE;
-        this.y = this.gy * GRID_SIZE;
-
+        // Palette selection weighted towards white & warm amber
         const roll = Math.random();
-
-        if (this.isHero) {
-          this.size = 3;
-          this.speed = 0.015;
-          this.baseAlpha = 1.0;
-          this.colorType = "purplish";
+        if (roll < 0.5) {
+          this.palette = STAR_PALETTES[Math.floor(Math.random() * 2)];
+        } else if (roll < 0.75) {
+          this.palette = STAR_PALETTES[2 + Math.floor(Math.random() * 3)];
+        } else if (roll < 0.9) {
+          this.palette = STAR_PALETTES[5 + Math.floor(Math.random() * 2)];
         } else {
-          this.size = roll > 0.9 ? 2 : 1;
-          this.speed = 0.02 + Math.random() * 0.03;
-          this.baseAlpha = 0.2 + Math.random() * 0.8;
+          this.palette = STAR_PALETTES[7];
+        }
 
-          // Color distribution: ~50% crisp white, ~27% deep blue, ~23% light purplish
-          const colorRoll = Math.random();
-          if (colorRoll > 0.77) {
-            this.colorType = "purplish";
-          } else if (colorRoll > 0.5) {
-            this.colorType = "deepblue";
-          } else {
-            this.colorType = "white";
-          }
+        if (tier === 'micro') {
+          this.radius = 0.45 + Math.random() * 0.4;
+          this.baseAlpha = 0.2 + Math.random() * 0.4;
+          this.ambientSpeed = 0.003 + Math.random() * 0.006;
+          this.twinkleAmp = 0.1 + Math.random() * 0.12;
+        } else {
+          this.radius = 0.85 + Math.random() * 0.65;
+          this.baseAlpha = 0.55 + Math.random() * 0.4;
+          this.ambientSpeed = 0.006 + Math.random() * 0.01;
+          this.twinkleAmp = 0.14 + Math.random() * 0.16;
         }
 
         this.alpha = this.baseAlpha;
-        this.particleState = "idle";
-        this.idleTimer = Math.floor(Math.random() * 120) + 30;
+        this.reset(randomPos);
       }
 
-      pickNewTarget() {
-        const isHorizontal = Math.random() > 0.5;
-        const distance =
-          (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1);
+      reset(randomPos = false) {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
 
-        if (isHorizontal) {
-          this.targetGx = Math.max(0, Math.min(cols - 1, this.gx + distance));
-        } else {
-          this.targetGy = Math.max(0, Math.min(rows - 1, this.gy + distance));
+        if (randomPos) {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
         }
 
-        this.particleState = "moving";
+        this.startX = this.x;
+        this.startY = this.y;
+        this.targetX = this.x;
+        this.targetY = this.y;
+        this.controlX = this.x;
+        this.controlY = this.y;
+        this.glideProgress = 1;
+        this.mode = 'idle';
+        this.idleTimer = Math.floor(Math.random() * 300) + 100;
       }
 
-      update() {
-        const targetX = this.targetGx * GRID_SIZE;
-        const targetY = this.targetGy * GRID_SIZE;
+      pickNewGlide(w: number, h: number) {
+        this.startX = this.x;
+        this.startY = this.y;
 
-        // Subtle radiation pulse / twinkling animation
-        this.pulsePhase += this.pulseSpeed;
-        const pulse = Math.sin(this.pulsePhase);
-        this.alpha = Math.max(0.15, Math.min(1.0, this.baseAlpha + pulse * 0.2));
+        const angle = Math.random() * Math.PI * 2;
+        const distance =
+          this.tier === 'standard' ? 30 + Math.random() * 55 : 15 + Math.random() * 28;
 
-        if (this.particleState === "moving") {
-          const dx = targetX - this.x;
-          const dy = targetY - this.y;
+        let targetX = this.startX + Math.cos(angle) * distance;
+        let targetY = this.startY + Math.sin(angle) * distance;
 
-          if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
-            this.x = targetX;
-            this.y = targetY;
-            this.gx = this.targetGx;
-            this.gy = this.targetGy;
-            this.particleState = "idle";
-            this.idleTimer = Math.floor(Math.random() * 180) + 40;
+        // Wrap gently
+        if (targetX < -30) targetX = w + 30;
+        else if (targetX > w + 30) targetX = -30;
+        if (targetY < -30) targetY = h + 30;
+        else if (targetY > h + 30) targetY = -30;
+
+        this.targetX = targetX;
+        this.targetY = targetY;
+
+        // Bezier control point for natural curved trajectory
+        const midX = (this.startX + this.targetX) / 2;
+        const midY = (this.startY + this.targetY) / 2;
+        const dx = this.targetX - this.startX;
+        const dy = this.targetY - this.startY;
+        const len = Math.hypot(dx, dy) || 1;
+
+        const curveAmount = (Math.random() - 0.5) * len * 0.45;
+        this.controlX = midX + (-dy / len) * curveAmount;
+        this.controlY = midY + (dx / len) * curveAmount;
+
+        this.glideProgress = 0;
+        // Slowed down, graceful movement
+        this.glideDuration = Math.floor(distance * 4.8) + 140;
+        this.mode = 'gliding';
+      }
+
+      update(w: number, h: number) {
+        // Natural twinkle scintillation
+        this.twinklePhase += this.twinkleSpeed;
+        const shimmer = Math.sin(this.twinklePhase);
+        this.alpha = Math.max(0.08, Math.min(1.0, this.baseAlpha + shimmer * this.twinkleAmp));
+
+        if (this.mode === 'gliding') {
+          this.glideProgress += 1 / this.glideDuration;
+
+          if (this.glideProgress >= 1) {
+            this.x = this.targetX;
+            this.y = this.targetY;
+            this.mode = 'idle';
+            this.idleTimer = Math.floor(Math.random() * 300) + 120;
           } else {
-            this.x += dx * this.speed;
-            this.y += dy * this.speed;
+            // Cubic smoothstep easing
+            const t = this.glideProgress;
+            const easeT = t * t * (3 - 2 * t);
+            const oneMinusT = 1 - easeT;
+
+            // Quadratic Bezier curve
+            this.x =
+              oneMinusT * oneMinusT * this.startX +
+              2 * oneMinusT * easeT * this.controlX +
+              easeT * easeT * this.targetX;
+
+            this.y =
+              oneMinusT * oneMinusT * this.startY +
+              2 * oneMinusT * easeT * this.controlY +
+              easeT * easeT * this.targetY;
           }
-        } else if (this.particleState === "idle") {
+        } else {
+          // Ambient zero-G organic drift (slow & gentle)
+          this.swayPhase += this.swaySpeed;
+          this.x +=
+            Math.cos(this.ambientAngle) * this.ambientSpeed + Math.sin(this.swayPhase) * 0.025;
+          this.y +=
+            Math.sin(this.ambientAngle) * this.ambientSpeed + Math.cos(this.swayPhase) * 0.025;
+
           this.idleTimer--;
           if (this.idleTimer <= 0) {
-            this.pickNewTarget();
+            this.pickNewGlide(w, h);
           }
         }
+
+        // Viewport wrapping
+        const bound = 30;
+        if (this.x < -bound) this.x = w + bound;
+        else if (this.x > w + bound) this.x = -bound;
+        if (this.y < -bound) this.y = h + bound;
+        else if (this.y > h + bound) this.y = -bound;
       }
 
       draw(context: CanvasRenderingContext2D) {
-        const drawX = Math.floor(this.x);
-        const drawY = Math.floor(this.y);
-
+        context.save();
         context.globalAlpha = this.alpha;
-
-        if (this.isHero) {
-          // Hero Star: Refined outer aura bloom
-          context.shadowColor = "rgba(168, 85, 247, 0.95)";
-          context.shadowBlur = 14;
-          context.fillStyle = "rgba(147, 51, 234, 0.3)";
-          context.fillRect(drawX - 2, drawY - 2, this.size + 4, this.size + 4);
-
-          // Hero Core
-          context.shadowColor = "rgba(96, 165, 250, 0.9)";
-          context.shadowBlur = 8;
-          context.fillStyle = "#F3E8FF";
-          context.fillRect(drawX, drawY, this.size, this.size);
-        } else if (this.colorType === "purplish") {
-          // Soft violet bloom halo
-          context.shadowColor = "rgba(192, 132, 252, 0.9)";
-          context.shadowBlur = this.size > 1 ? 9 : 5;
-          context.fillStyle = "rgba(168, 85, 247, 0.25)";
-          context.fillRect(drawX - 1, drawY - 1, this.size + 2, this.size + 2);
-
-          // Bright purplish-violet star core
-          context.shadowBlur = this.size > 1 ? 6 : 3;
-          context.fillStyle = "#F3E8FF";
-          context.fillRect(drawX, drawY, this.size, this.size);
-        } else if (this.colorType === "deepblue") {
-          // Soft deep blue bloom halo
-          context.shadowColor = "rgba(59, 130, 246, 0.9)";
-          context.shadowBlur = this.size > 1 ? 9 : 5;
-          context.fillStyle = "rgba(37, 99, 235, 0.25)";
-          context.fillRect(drawX - 1, drawY - 1, this.size + 2, this.size + 2);
-
-          // Bright deep blue star core
-          context.shadowBlur = this.size > 1 ? 6 : 3;
-          context.fillStyle = "#BAE6FD";
-          context.fillRect(drawX, drawY, this.size, this.size);
-        } else {
-          // Fine crisp white star
-          context.shadowColor = "rgba(255, 255, 255, 0.6)";
-          context.shadowBlur = this.size > 1 ? 4 : 2;
-          context.fillStyle = "#FFFFFF";
-          context.fillRect(drawX, drawY, this.size, this.size);
-        }
-
-        // Reset shadow properties
-        context.shadowBlur = 0;
-        context.shadowColor = "transparent";
+        context.fillStyle = this.palette.color;
+        context.beginPath();
+        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        context.fill();
+        context.restore();
       }
     }
 
     function initCanvas() {
       if (!canvas || !ctx) return;
+
+      const dpr = window.devicePixelRatio || 1;
       const width = window.innerWidth;
       const height = window.innerHeight;
-      dpr = window.devicePixelRatio || 1;
 
       canvas.width = width * dpr;
       canvas.height = height * dpr;
@@ -193,19 +236,22 @@ export default function StarfieldBackground() {
 
       ctx.scale(dpr, dpr);
 
-      cols = Math.floor(width / GRID_SIZE);
-      rows = Math.floor(height / GRID_SIZE);
+      // Star density matching stars.png: rich backdrop of micro stars + mid-field stars
+      const totalCount = Math.max(240, Math.min(360, Math.floor((width * height) / 5200)));
+      const standardCount = Math.floor(totalCount * 0.3);
+      const microCount = totalCount - standardCount;
 
-      const totalNodes = cols * rows;
-      const count = Math.floor(totalNodes * DENSITY);
+      stars = [];
 
-      particles = [];
-
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle(false));
+      // 1. Distant micro stars (dense celestial field)
+      for (let i = 0; i < microCount; i++) {
+        stars.push(new Star('micro', true));
       }
 
-      particles.push(new Particle(true));
+      // 2. Standard bright stars
+      for (let i = 0; i < standardCount; i++) {
+        stars.push(new Star('standard', true));
+      }
     }
 
     function animate() {
@@ -217,12 +263,12 @@ export default function StarfieldBackground() {
       ctx.clearRect(0, 0, width, height);
 
       // Only draw and animate star particles in dark mode
-      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
       if (isDark) {
-        for (let i = 0; i < particles.length; i++) {
-          particles[i].update();
-          particles[i].draw(ctx);
+        for (let i = 0; i < stars.length; i++) {
+          stars[i].update(width, height);
+          stars[i].draw(ctx);
         }
       }
 
@@ -233,12 +279,12 @@ export default function StarfieldBackground() {
       initCanvas();
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     initCanvas();
     animate();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
       if (animFrameId) {
         cancelAnimationFrame(animFrameId);
       }
@@ -249,12 +295,12 @@ export default function StarfieldBackground() {
     <canvas
       ref={canvasRef}
       style={{
-        position: "fixed",
+        position: 'fixed',
         top: 0,
         left: 0,
-        width: "100vw",
-        height: "100vh",
-        pointerEvents: "none",
+        width: '100vw',
+        height: '100vh',
+        pointerEvents: 'none',
         zIndex: 0,
       }}
     />

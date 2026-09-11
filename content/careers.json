@@ -1,0 +1,57 @@
+{
+  "hiring": false,
+  "roles": [
+    {
+      "id": "ai-research-scientist-agent-reasoning",
+      "title": "AI Research Scientist — Agent Reasoning & Memory",
+      "department": "Research & Science",
+      "location": "Remote (Global)",
+      "type": "Full-time",
+      "level": "Staff / Principal",
+      "description": "Lead research into deterministic agent deliberation, dynamic tool selection architectures, and self-evolving graph-based memory topologies for production environments.",
+      "tags": [
+        "PyTorch",
+        "Agent Topologies",
+        "Graph Memory",
+        "Reasoning Protocols",
+        "Eval Harnesses"
+      ]
+    },
+    {
+      "id": "staff-systems-engineer-rust",
+      "title": "Staff Systems Engineer — Rust & High-Performance Runtimes",
+      "department": "Systems & Infrastructure",
+      "location": "Remote (Global)",
+      "type": "Full-time",
+      "level": "Staff",
+      "description": "Architect and build ultra-low-latency reverse proxies, dynamic context routers, and caching infrastructure powering the JIT Tool Protocol and multi-agent harnesses.",
+      "tags": [
+        "Rust",
+        "Tokio",
+        "Distributed Systems",
+        "SIMD / Cache Optimization",
+        "Network Protocols"
+      ]
+    },
+    {
+      "id": "research-engineer-slm-distillation",
+      "title": "Research Engineer — Small Language Models & Distillation",
+      "department": "Research & Science",
+      "location": "Remote (Global)",
+      "type": "Full-time",
+      "level": "Senior",
+      "description": "Train, quantize, and distill high-accuracy sub-3B parameter models for zero-latency tool classification, intent extraction, and on-device agent execution.",
+      "tags": ["vLLM", "Model Distillation", "Quantization", "Triton", "Fine-Tuning"]
+    },
+    {
+      "id": "senior-frontend-engineer-ai-interfaces",
+      "title": "Senior Frontend Engineer — AI Developer Tools & Canvas",
+      "department": "Product & DevTools",
+      "location": "Remote (Global)",
+      "type": "Full-time",
+      "level": "Senior",
+      "description": "Craft ultra-fluid, typography-driven developer interfaces, real-time agent execution traces, and interactive visual debugging harnesses for autonomous workflows.",
+      "tags": ["React 19", "Next.js", "TypeScript", "WebGL / Canvas", "Design Systems"]
+    }
+  ]
+}

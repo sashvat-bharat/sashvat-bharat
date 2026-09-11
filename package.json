@@ -3,32 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "gen:research": "node scripts/generate-research-index.mjs",
-    "predev": "pnpm run gen:research",
+    "gen:index": "node scripts/generate-index.mjs",
+    "gen:research": "pnpm run gen:index",
+    "predev": "pnpm run gen:index",
     "dev": "next dev",
-    "prebuild": "pnpm run gen:research",
+    "prebuild": "pnpm run gen:index",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "biome check .",
+    "lint:write": "biome check --write .",
+    "format": "biome format .",
+    "format:write": "biome format --write ."
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.12.0",
     "katex": "^0.16.45",
     "lucide-react": "^0.577.0",
-    "next": "16.2.4",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "next": "16.3.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.12",
     "@types/katex": "^0.16.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
     "typescript": "^5"
   }
 }

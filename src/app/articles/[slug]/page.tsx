@@ -1,97 +1,86 @@
-import { Metadata } from 'next';
-import { Sparkles } from 'lucide-react';
-import { getArticleBySlug, getArticlesSlugs, Author } from '@/lib/articles';
+import type { Metadata } from 'next';
+import ArticleContent from '@/components/research/ArticleContent';
+import ArticleHeader from '@/components/research/ArticleHeader';
+import { type Author, getArticleBySlug, getArticlesSlugs } from '@/lib/articles';
 import { calculateReadingTime } from '@/lib/date-utils';
 
-import ArticleHeader from '@/components/research/ArticleHeader';
-import ArticleContent from '@/components/research/ArticleContent';
-
-import "@/styles/global.css";
-import "@/styles/articles/articles.css";
-import "@/styles/markdown.css";
+import '@/styles/global.css';
+import '@/styles/articles/articles.css';
+import '@/styles/markdown.css';
 
 export async function generateStaticParams() {
-    const slugs = getArticlesSlugs();
-    return slugs.map((slug) => ({ slug }));
+  const slugs = getArticlesSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-    const resolvedParams = await params;
-    const { frontmatter } = await getArticleBySlug(resolvedParams.slug);
-
-    const authorNames = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
-        ? frontmatter.authors.map((a: Author) => a.name)
-        : frontmatter.author ? [frontmatter.author] : [];
-
-    return {
-        title: frontmatter.title,
-        description: frontmatter.description,
-        alternates: {
-            canonical: `/articles/${resolvedParams.slug}`,
-        },
-        openGraph: {
-            title: frontmatter.title,
-            description: frontmatter.description,
-            type: 'article',
-            publishedTime: frontmatter.date,
-            authors: authorNames,
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: frontmatter.title,
-            description: frontmatter.description,
-        },
-    };
-}
-
-const page = async ({
-    params
+export async function generateMetadata({
+  params,
 }: {
-    params: Promise<{ slug: string }>
-}) => {
-    const resolvedParams = await params;
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { frontmatter } = await getArticleBySlug(resolvedParams.slug);
 
-    const { contentHtml, frontmatter } = await getArticleBySlug(resolvedParams.slug);
+  const authorNames =
+    Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
+      ? frontmatter.authors.map((a: Author) => a.name)
+      : frontmatter.author
+        ? [frontmatter.author]
+        : [];
 
-    const authorsList: Author[] = Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
-        ? frontmatter.authors
-        : frontmatter.author
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    alternates: {
+      canonical: `/articles/${resolvedParams.slug}`,
+    },
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      type: 'article',
+      publishedTime: frontmatter.date,
+      authors: authorNames,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: frontmatter.description,
+    },
+  };
+}
+
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const resolvedParams = await params;
+
+  const { contentHtml, frontmatter } = await getArticleBySlug(resolvedParams.slug);
+
+  const authorsList: Author[] =
+    Array.isArray(frontmatter.authors) && frontmatter.authors.length > 0
+      ? frontmatter.authors
+      : frontmatter.author
         ? [{ name: frontmatter.author, affiliation: frontmatter.author_affiliation }]
         : [{ name: 'Sashvat Bharat Team' }];
 
-    // Strip top h1 if duplicate
-    const cleanContent = contentHtml.replace(/<h1[^>]*>.*?<\/h1>/i, '');
-    const { minutes } = calculateReadingTime(cleanContent);
+  // Strip top h1 if duplicate
+  const cleanContent = contentHtml.replace(/<h1[^>]*>.*?<\/h1>/i, '');
+  const { minutes } = calculateReadingTime(cleanContent);
 
-    return (
-        <div className='home-container'>
-            
-            <main className='article_container'>
-                <article className='article_wrapper'>
-                    <ArticleHeader
-                        title={frontmatter.title || 'Article'}
-                        date={frontmatter.date}
-                        category={frontmatter.category}
-                        authors={authorsList}
-                        readingMinutes={minutes}
-                    />
+  return (
+    <div className='home-container'>
+      <main className='article_container'>
+        <article className='article_wrapper'>
+          <ArticleHeader
+            title={frontmatter.title || 'Article'}
+            date={frontmatter.date}
+            authors={authorsList}
+            readingMinutes={minutes}
+          />
 
-                    <ArticleContent htmlContent={cleanContent} />
-
-                    {/* Footer Signoff */}
-                    <footer className='article_footer_card'>
-                        <div className='footer_badge_row'>
-                            <Sparkles size={16} className='sparkle_icon' />
-                            <span>Sashvat Bharat&apos;s Articles & Insights.</span>
-                        </div>
-                        <p className='footer_tagline'>
-                            Sharing insights and updates on artificial intelligence, systems architecture, engineering practices, and research translations.
-                        </p>
-                    </footer>
-                </article>
-            </main>
-        </div>
-    );
-}
+          <ArticleContent htmlContent={cleanContent} />
+        </article>
+      </main>
+    </div>
+  );
+};
 
 export default page;

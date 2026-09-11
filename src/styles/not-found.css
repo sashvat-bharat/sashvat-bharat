@@ -47,7 +47,9 @@
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .not_found_btn:hover {

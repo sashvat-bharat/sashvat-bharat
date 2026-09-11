@@ -75,7 +75,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
 }
 
 .pillar_card:hover {

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface ArticleContentProps {
   htmlContent: string;
@@ -71,15 +71,16 @@ export default function ArticleContent({ htmlContent }: ArticleContentProps) {
       anchor.href = `#${id}`;
       anchor.setAttribute('aria-label', `Link to section ${heading.textContent}`);
       anchor.innerHTML = `#`;
-      
+
       heading.appendChild(anchor);
     });
-  }, [htmlContent]);
+  }, []);
 
   return (
     <div
       ref={contentRef}
-      className="content"
+      className='content'
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: htmlContent is escaped/sanitized by the custom markdown parser
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   );

@@ -1,11 +1,11 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { MarkdownParser } from './markdown-parser';
 
 const parser = new MarkdownParser({
-    headingIds: true,
-    gfm: true,
-    extendedSyntax: true,
+  headingIds: true,
+  gfm: true,
+  extendedSyntax: true,
 });
 
 export function getLegalMarkdown(filename: string): string {

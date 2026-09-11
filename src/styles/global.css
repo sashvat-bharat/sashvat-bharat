@@ -1,22 +1,20 @@
 :root {
   /* Universal Configs */
-  --bg-primary: #FAFAFA;
-  --bg-secondary: #FFFFFF;
-  --bg-tertiary: #F2F2F2;
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f2f2f2;
 
   --border-primary: #0f0e0d1f;
-  --border-secondary: #F2F2F2;
+  --border-secondary: #f2f2f2;
 
   /* Text Configs */
   --text-primary: #171717;
-  --text-secondary: #4D4D4D;
-  --text-tertiary: #4D4B4C;
-
+  --text-secondary: #4d4d4d;
+  --text-tertiary: #4d4b4c;
 
   /* Buttons */
-  --btn-bg-primary: #0E0E0D;
-  --btn-text-primary: #FFFFFF;
-
+  --btn-bg-primary: #0e0e0d;
+  --btn-text-primary: #ffffff;
 
   /* Brand Colors & Accents */
   --orange-primary: #f95015;
@@ -44,23 +42,49 @@
   --font-size-hero: round(nearest, clamp(36px, 5vw, 64px), 2px);
   --font-size-hero-title: round(nearest, clamp(36px, 8vw, 72px), 2px);
 
+  /* Syntax Highlighting (Light) */
+  --hl-keyword: #cf222e;
+  --hl-string: #0a3069;
+  --hl-function: #8250df;
+  --hl-type: #953800;
+  --hl-number: #0550ae;
+  --hl-comment: #6e7781;
+  --hl-attr: #116329;
+  --hl-variable: #24292f;
+  --hl-operator: #cf222e;
+  --hl-punctuation: #57606a;
+  --hl-tag: #116329;
+  --hl-literal: #0550ae;
 }
 
 [data-theme="dark"] {
   --bg-primary: #000000;
-  --bg-secondary: #0A0A0A;
-  --bg-tertiary: #1A1A1A;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #1a1a1a;
 
-  --border-primary: rgba(255, 255, 255, 0.08);
-  --border-primary: rgba(255, 255, 255, 0.1);
-  --border-secondary: #1A1A1A;
+  --border-primary: #2e2e2e;
+  --border-secondary: #2e2e2e;
 
-  --text-primary: #F5F5F5;
-  --text-secondary: #A0A0A0;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
   --text-tertiary: #707070;
 
-  --btn-bg-primary: #F5F5F5;
-  --btn-text-primary: #0A0A0A;
+  --btn-bg-primary: #f5f5f5;
+  --btn-text-primary: #0a0a0a;
+
+  /* Syntax Highlighting (Dark) */
+  --hl-keyword: #ff7b72;
+  --hl-string: #a5d6ff;
+  --hl-function: #d2a8ff;
+  --hl-type: #ffa657;
+  --hl-number: #79c0ff;
+  --hl-comment: #8b949e;
+  --hl-attr: #7ee787;
+  --hl-variable: #e6edf3;
+  --hl-operator: #ff7b72;
+  --hl-punctuation: #8b949e;
+  --hl-tag: #7ee787;
+  --hl-literal: #79c0ff;
 }
 
 * {
@@ -128,11 +152,11 @@ pre code::-webkit-scrollbar-thumb:hover {
 
 ::selection {
   background: #010101;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 [data-theme="dark"] ::selection {
-  background: #FFFFFF;
+  background: #ffffff;
   color: #000000;
 }
 
@@ -148,8 +172,6 @@ body {
   width: 100%;
   max-width: 1448px;
 }
-
-
 
 /* ── Theme-aware logo visibility ── */
 /* Light mode (default): show dark logo */
@@ -171,13 +193,22 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
+    /* biome-ignore lint/complexity/noImportantStyles: standard a11y pattern — must override all animations */
     animation-delay: -1ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: standard a11y pattern — must override all animations */
     animation-duration: 1ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: standard a11y pattern — must override all animations */
     animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: standard a11y pattern — must override all animations */
     background-attachment: initial !important;
+    /* biome-ignore lint/complexity/noImportantStyles: standard a11y pattern — must override all animations */
     scroll-behavior: auto !important;
+    /* biome-ignore lint/complexity/noImportantStyles: standard a11y pattern — must override all animations */
     transition-duration: 0s !important;
+    /* biome-ignore lint/complexity/noImportantStyles: standard a11y pattern — must override all animations */
     transition-delay: 0s !important;
   }
 }

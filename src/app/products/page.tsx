@@ -1,15 +1,15 @@
-import React from 'react';
+import fs from 'node:fs';
+import path from 'node:path';
 import type { Metadata } from 'next';
-import fs from 'fs';
-import path from 'path';
 
-import "@/styles/global.css";
-import "@/styles/products/products.css";
-import ProductsExplorer, { ProductItem } from '@/components/products/ProductsExplorer';
+import '@/styles/global.css';
+import '@/styles/products/products.css';
+import ProductsExplorer, { type ProductItem } from '@/components/products/ProductsExplorer';
 
 export const metadata: Metadata = {
-  title: "Projects",
-  description: "Discover our high-performance AI engines, autonomous tools, and productivity applications.",
+  title: 'Projects',
+  description:
+    'Discover our high-performance AI engines, autonomous tools, and productivity applications.',
   alternates: {
     canonical: '/products',
   },
@@ -31,13 +31,13 @@ const page = () => {
 
   return (
     <div className='home-container'>
-      
       <div className='products_container'>
         {/* Hero Section */}
         <section className='products_hero'>
           <h1>Products & Systems</h1>
           <p>
-            High-performance agent systems, productivity applications, and harnesses designed for next-generation intelligence.
+            High-performance agent systems, productivity applications, and harnesses designed for
+            next-generation intelligence.
           </p>
         </section>
 
@@ -48,6 +48,6 @@ const page = () => {
       </div>
     </div>
   );
-}
+};
 
 export default page;

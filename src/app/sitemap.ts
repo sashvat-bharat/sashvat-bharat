@@ -1,6 +1,6 @@
-import { MetadataRoute } from 'next';
-import { getResearchSlugs } from '@/lib/markdown';
+import type { MetadataRoute } from 'next';
 import { getArticlesSlugs } from '@/lib/articles';
+import { getResearchSlugs } from '@/lib/markdown';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://sashvat.com';
