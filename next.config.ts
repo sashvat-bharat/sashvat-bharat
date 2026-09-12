@@ -36,6 +36,11 @@ const nextConfig: NextConfig = {
         destination: '/articles/agent-accelerator',
         permanent: false,
       },
+      {
+        source: '/sitemap_index.xml',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
     ];
   },
 };

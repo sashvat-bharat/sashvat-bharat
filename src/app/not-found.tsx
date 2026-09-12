@@ -8,6 +8,10 @@ import '@/styles/not-found.css';
 export const metadata: Metadata = {
   title: '404 - Page Not Found',
   description: 'The requested page could not be found.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {

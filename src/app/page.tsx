@@ -1,8 +1,15 @@
 import { Compass, Cpu, Flame } from 'lucide-react';
+import type { Metadata } from 'next';
 
 import '@/styles/global.css';
 import HeroSection from '@/components/ui/HeroSection';
 import StarfieldBackground from '@/components/ui/StarfieldBackground';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
 
 const page = () => {
   return (

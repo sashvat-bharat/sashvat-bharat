@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/legal/privacy-policy',
   },
+  openGraph: {
+    title: 'Privacy Policy | Sashvat Bharat',
+    description:
+      'Privacy Policy for Sashvat Bharat. Learn about how we handle and protect data in our systems.',
+    url: 'https://sashvat.com/legal/privacy-policy',
+  },
 };
 
 const PrivacyPolicy = () => {

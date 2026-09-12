@@ -7,11 +7,17 @@ import '@/styles/products/products.css';
 import ProductsExplorer, { type ProductItem } from '@/components/products/ProductsExplorer';
 
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: 'Products & Systems',
   description:
     'Discover our high-performance AI engines, autonomous tools, and productivity applications.',
   alternates: {
     canonical: '/products',
+  },
+  openGraph: {
+    title: 'Products & Systems | Sashvat Bharat',
+    description:
+      'Discover our high-performance AI engines, autonomous tools, and productivity applications.',
+    url: 'https://sashvat.com/products',
   },
 };
 

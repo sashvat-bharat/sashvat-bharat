@@ -60,12 +60,12 @@ export const metadata: Metadata = {
   publisher: 'Sashvat Bharat',
 
   metadataBase: new URL('https://sashvat.com'),
-  alternates: {
-    canonical: '/',
-  },
 
   icons: {
-    icon: '/logo/favicon-1.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/logo/favicon-1.svg', type: 'image/svg+xml' },
+    ],
     apple: '/logo/apple-touch-icon.png',
   },
 
@@ -182,6 +182,11 @@ export default async function RootLayout({
                   if (cookieTheme === 'dark' || cookieTheme === 'light') {
                     document.documentElement.setAttribute('data-theme', cookieTheme);
                     localStorage.setItem('theme', cookieTheme);
+                  } else {
+                    var localTheme = localStorage.getItem('theme');
+                    if (localTheme === 'dark' || localTheme === 'light') {
+                      document.documentElement.setAttribute('data-theme', localTheme);
+                    }
                   }
                 } catch (e) {}
               })();

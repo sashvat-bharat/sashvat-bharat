@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/legal/terms',
   },
+  openGraph: {
+    title: 'Terms of Service | Sashvat Bharat',
+    description:
+      'Terms of Service for Sashvat Bharat. Learn about the terms governing access and use of our platforms.',
+    url: 'https://sashvat.com/legal/terms',
+  },
 };
 
 const TermsOfService = () => {

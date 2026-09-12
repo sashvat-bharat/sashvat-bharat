@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/about',
   },
+  openGraph: {
+    title: 'About Us | Sashvat Bharat',
+    description: 'Learn more about Sashvat Bharat, our mission, vision, and core philosophy.',
+    url: 'https://sashvat.com/about',
+  },
 };
 
 const Page = () => {

@@ -1,45 +1,86 @@
 import type { MetadataRoute } from 'next';
-import { getArticlesSlugs } from '@/lib/articles';
-import { getResearchSlugs } from '@/lib/markdown';
+import { getAllArticlesList } from '@/lib/articles';
+import { getAllResearchList } from '@/lib/markdown';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://sashvat.com';
+  const now = new Date();
 
-  // Base routes
-  const routes = [
-    '',
-    '/research',
-    '/articles',
-    '/careers',
-    '/about',
-    '/products',
-    '/legal',
-    '/legal/privacy-policy',
-    '/legal/terms',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'daily' as const,
-    priority: 1,
-  }));
+  // Core static pages with tailored priorities and frequencies
+  const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/research`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/articles`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/products`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/careers`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/legal`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/legal/privacy-policy`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/legal/terms`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ];
 
-  // Research routes
-  const researchSlugs = getResearchSlugs();
-  const researchRoutes = researchSlugs.map((slug) => ({
-    url: `${baseUrl}/research/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
+  // Research routes with actual publication dates
+  const researchPapers = getAllResearchList();
+  const researchRoutes: MetadataRoute.Sitemap = researchPapers.map((paper) => ({
+    url: `${baseUrl}/research/${paper.slug}`,
+    lastModified: paper.frontmatter?.date ? new Date(paper.frontmatter.date) : now,
+    changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
-  // Article routes
-  const articleSlugs = getArticlesSlugs();
-  const articleRoutes = articleSlugs.map((slug) => ({
-    url: `${baseUrl}/articles/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
+  // Article routes with actual publication dates
+  const articles = getAllArticlesList();
+  const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `${baseUrl}/articles/${article.slug}`,
+    lastModified: article.frontmatter?.date ? new Date(article.frontmatter.date) : now,
+    changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
-  return [...routes, ...researchRoutes, ...articleRoutes];
+  return [...staticPages, ...researchRoutes, ...articleRoutes];
 }

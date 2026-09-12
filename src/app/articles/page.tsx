@@ -6,10 +6,17 @@ import ArticleExplorer from '@/components/articles/ArticleExplorer';
 import { getAllArticlesList } from '@/lib/articles';
 
 export const metadata: Metadata = {
-  title: 'Articles & Updates',
-  description: 'Explore the latest articles, posts, and announcements from Sashvat Bharat.',
+  title: 'Articles & Publications',
+  description:
+    'Explore technical essays, updates, and deep dives into AI systems from Sashvat Bharat.',
   alternates: {
     canonical: '/articles',
+  },
+  openGraph: {
+    title: 'Articles & Publications | Sashvat Bharat',
+    description:
+      'Explore technical essays, updates, and deep dives into AI systems from Sashvat Bharat.',
+    url: 'https://sashvat.com/articles',
   },
 };
 

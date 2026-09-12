@@ -38,13 +38,23 @@ export async function generateMetadata({
       title: frontmatter.title,
       description: frontmatter.description,
       type: 'article',
+      url: `https://sashvat.com/articles/${resolvedParams.slug}`,
       publishedTime: frontmatter.date,
       authors: authorNames,
+      images: [
+        {
+          url: '/logo/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: frontmatter.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: frontmatter.title,
       description: frontmatter.description,
+      images: ['/logo/og-image.png'],
     },
   };
 }
@@ -65,8 +75,40 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const cleanContent = contentHtml.replace(/<h1[^>]*>.*?<\/h1>/i, '');
   const { minutes } = calculateReadingTime(cleanContent);
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    datePublished: frontmatter.date,
+    dateModified: frontmatter.date,
+    author: authorsList.map((a) => ({
+      '@type': 'Person',
+      name: a.name,
+    })),
+    publisher: {
+      '@type': 'Organization',
+      name: 'Sashvat Bharat',
+      url: 'https://sashvat.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://sashvat.com/logo/favicon-1.svg',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://sashvat.com/articles/${resolvedParams.slug}`,
+    },
+    image: 'https://sashvat.com/logo/og-image.png',
+  };
+
   return (
     <div className='home-container'>
+      <script
+        type='application/ld+json'
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD schema is JSON.stringify of static metadata
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <main className='article_container'>
         <article className='article_wrapper'>
           <ArticleHeader

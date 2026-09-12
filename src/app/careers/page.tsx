@@ -7,11 +7,17 @@ import '@/styles/careers/careers.css';
 import CareersExplorer, { type CareerRole } from '@/components/careers/CareersExplorer';
 
 export const metadata: Metadata = {
-  title: 'Careers — Sashvat Bharat',
+  title: 'Careers',
   description:
     'Join Sashvat Bharat. We are assembling a high-density collective of systems engineers, machine learning scientists, and builders solving foundational AI.',
   alternates: {
     canonical: '/careers',
+  },
+  openGraph: {
+    title: 'Careers | Sashvat Bharat',
+    description:
+      'Join Sashvat Bharat. We are assembling a high-density collective of systems engineers, machine learning scientists, and builders solving foundational AI.',
+    url: 'https://sashvat.com/careers',
   },
 };
 

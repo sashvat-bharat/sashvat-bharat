@@ -12,6 +12,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/research',
   },
+  openGraph: {
+    title: 'Research & Publications | Sashvat Bharat',
+    description:
+      'Explore the latest research, whitepapers, and technical articles from Sashvat Bharat on AI/ML and autonomous systems.',
+    url: 'https://sashvat.com/research',
+  },
 };
 
 const page = async () => {

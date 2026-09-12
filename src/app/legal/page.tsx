@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/legal',
   },
+  openGraph: {
+    title: 'Legal Directory | Sashvat Bharat',
+    description: "Access Sashvat Bharat's Terms of Service and Privacy Policy agreements.",
+    url: 'https://sashvat.com/legal',
+  },
 };
 
 const LegalDirectory = () => {
