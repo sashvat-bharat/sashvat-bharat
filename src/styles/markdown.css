@@ -650,14 +650,19 @@
 /* Math (KaTeX) */
 .content .md-math-display {
   margin: 1.75rem 0;
-  padding: 1rem;
+  padding: 0;
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-primary);
   border-radius: 8px;
-  overflow-x: auto;
-  text-align: center;
+  overflow: hidden;
   box-shadow: none;
   font-size: 0.95em;
+}
+
+.content .md-math-body {
+  padding: 1rem;
+  overflow-x: auto;
+  text-align: center;
 }
 
 .content .md-math-display .katex-display {
@@ -714,8 +719,8 @@
 .article_footer_card {
   margin-top: 64px;
   padding: 40px 32px;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   text-align: center;
   display: flex;
@@ -825,4 +830,8 @@
     padding: 28px 20px;
     margin-top: 48px;
   }
+}
+
+[data-theme="dark"] .article_footer_card {
+  border-color: var(--border-primary);
 }

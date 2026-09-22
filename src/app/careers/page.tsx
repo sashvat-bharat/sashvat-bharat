@@ -81,14 +81,12 @@ export default function CareersPage() {
             <div className='highlight_item'>
               <span className='highlight_val'>Clean Architecture</span>
               <span className='highlight_label'>
-                Zero unnecessary layers, engineered from first principles
+                Zero unnecessary layers, from first principles
               </span>
             </div>
             <div className='highlight_item'>
               <span className='highlight_val'>Applied Research</span>
-              <span className='highlight_label'>
-                Bridging foundational mathematics with resilient production software
-              </span>
+              <span className='highlight_label'>Bridging mathematics with production software</span>
             </div>
           </div>
         </section>

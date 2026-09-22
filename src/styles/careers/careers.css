@@ -80,8 +80,8 @@
 }
 
 .highlight_item {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   padding: 20px 18px;
   text-align: center;
@@ -93,7 +93,7 @@
 }
 
 .highlight_item:hover {
-  background-color: var(--bg-tertiary);
+  background-color: transparent;
 }
 
 .highlight_val {
@@ -105,12 +105,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  text-align: left;
 }
 
 .highlight_label {
   font-size: var(--font-size-xs);
   color: var(--text-secondary);
   line-height: 1.4;
+  text-align: left;
 }
 
 /* ── Section Headings ── */
@@ -227,8 +229,8 @@
 }
 
 .career_role_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 24px;
   display: flex;
@@ -238,7 +240,7 @@
 }
 
 .career_role_card:hover {
-  background-color: var(--bg-tertiary);
+  background-color: transparent;
 }
 
 .role_header {
@@ -375,7 +377,7 @@
   padding: 64px 24px;
   border-radius: 20px;
   border: 1px dashed var(--border-primary);
-  background-color: var(--bg-secondary);
+  background-color: transparent;
   gap: 12px;
 }
 
@@ -424,8 +426,8 @@
 
 /* ── Hiring Paused Card ── */
 .hiring_paused_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 48px 28px;
   text-align: center;
@@ -440,7 +442,7 @@
 }
 
 .hiring_paused_card:hover {
-  background-color: var(--bg-tertiary);
+  background-color: transparent;
 }
 
 .hiring_paused_card h3 {
@@ -477,8 +479,8 @@
 }
 
 .spontaneous_inner {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 24px;
   padding: 48px 32px;
   text-align: center;
@@ -492,7 +494,7 @@
 }
 
 .spontaneous_inner:hover {
-  background-color: var(--bg-tertiary);
+  background-color: transparent;
 }
 
 .spontaneous_badge {
@@ -645,4 +647,11 @@
   .careers_highlights_strip {
     grid-template-columns: 1fr;
   }
+}
+
+[data-theme="dark"] .highlight_item,
+[data-theme="dark"] .career_role_card,
+[data-theme="dark"] .hiring_paused_card,
+[data-theme="dark"] .spontaneous_inner {
+  border-color: var(--border-primary);
 }

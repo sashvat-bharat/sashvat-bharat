@@ -279,8 +279,8 @@
 }
 
 .pillar_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -294,7 +294,7 @@
 .pillar_card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-  background-color: var(--bg-tertiary);
+  background-color: transparent;
 }
 
 .pillar_card h3 {
@@ -318,8 +318,8 @@
 }
 
 .featured_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 32px;
   display: flex;
@@ -367,8 +367,8 @@
 }
 
 .featured_cta_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 48px;
   text-align: center;
@@ -393,4 +393,10 @@
   line-height: 1.6;
   max-width: 540px;
   font-family: var(--font-geist-sans), sans-serif;
+}
+
+[data-theme="dark"] .pillar_card,
+[data-theme="dark"] .featured_card,
+[data-theme="dark"] .featured_cta_card {
+  border-color: var(--border-primary);
 }

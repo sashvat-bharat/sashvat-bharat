@@ -55,9 +55,8 @@
     font-family: var(--font-geist-sans);
     background-color: transparent;
     color: var(--text-secondary);
-    transition:
-      background-color var(--duration-fast) var(--ease-out),
-      color var(--duration-fast) var(--ease-out);
+    /* No transition: filter pills must switch theme instantly */
+    transition: none;
   }
 
   button:hover {
@@ -133,7 +132,7 @@
   margin-top: 40px;
   border-radius: 16px;
   border: 1px dashed var(--border-primary);
-  background-color: var(--bg-secondary);
+  background-color: transparent;
   font-family: var(--font-geist-sans);
 }
 
@@ -182,8 +181,9 @@
 }
 
 .research_card {
-  background-color: var(--bg-secondary);
-  /* border: 1px solid var(--border-primary); */
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
   /* border-radius: 20px; */
   padding: 24px;
   /* min-height: 400px; */
@@ -201,12 +201,18 @@
 }
 
 .research_card:hover {
-  background-color: var(--bg-tertiary);
-  border-color: rgba(15, 14, 13, 0.28);
+  background-color: #f7f7f7;
+  border-color: #f7f7f7;
+}
+
+[data-theme="dark"] .research_card {
+  background-color: transparent;
+  border-color: var(--border-primary);
 }
 
 [data-theme="dark"] .research_card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: #121212;
+  border-color: #121212;
 }
 
 .card_meta_header {

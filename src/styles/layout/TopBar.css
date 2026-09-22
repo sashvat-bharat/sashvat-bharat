@@ -17,7 +17,6 @@
     height: 36px;
     cursor: pointer;
     width: max-content;
-    color: #ffffff;
   }
 }
 
@@ -186,6 +185,12 @@
 
 /* Mobile = 359px */
 @media (max-width: 900px) {
+
+  .topbar-left {
+    margin-bottom: -3px;
+    img {margin-left: -8px;}
+  }
+
   .topbar-left {
     cursor: default;
   }
@@ -196,6 +201,7 @@
 
   .topbar-right {
     cursor: none;
+    margin-right: -12px;
   }
 }
 

@@ -68,8 +68,8 @@
 }
 
 .pillar_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -83,7 +83,7 @@
 .pillar_card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-  background-color: var(--bg-tertiary);
+  background-color: transparent;
 }
 
 .legal_draft_notice {
@@ -113,4 +113,8 @@
   border-radius: 4px;
   letter-spacing: 0.05em;
   white-space: nowrap;
+}
+
+[data-theme="dark"] .pillar_card {
+  border-color: var(--border-primary);
 }

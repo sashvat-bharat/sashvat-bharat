@@ -1,4 +1,3 @@
-import { Compass, Cpu, Flame } from 'lucide-react';
 import type { Metadata } from 'next';
 
 import '@/styles/global.css';
@@ -24,7 +23,6 @@ const page = () => {
             <h2 className='home_section_title'>Focus Areas</h2>
             <div className='pillars_grid'>
               <div className='pillar_card'>
-                <Compass size={24} color='var(--text-primary)' />
                 <h3>Sovereign Infrastructure Autonomy</h3>
                 <p>
                   Breaking the monopoly of cloud API dependencies. We build secure, local-first
@@ -33,7 +31,6 @@ const page = () => {
                 </p>
               </div>
               <div className='pillar_card'>
-                <Cpu size={24} color='var(--text-primary)' />
                 <h3>From Wrappers to Reasoning Engines</h3>
                 <p>
                   No superficial tools. We research and build compound architectures that allow
@@ -41,8 +38,7 @@ const page = () => {
                 </p>
               </div>
               <div className='pillar_card'>
-                <Flame size={24} color='var(--text-primary)' />
-                <h3>The Centenary Mission (2047)</h3>
+                <h3>The Centenary Mission for Bharat (2047)</h3>
                 <p>
                   Engineering on a decadal horizon. Establishing the premier systems and AI research
                   powerhouse in Bharat by the centenary of Independence.

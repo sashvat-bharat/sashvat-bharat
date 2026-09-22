@@ -56,8 +56,8 @@
 }
 
 .mission_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -90,8 +90,8 @@
 }
 
 .team_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -190,4 +190,9 @@
   .milestone_year {
     min-width: auto;
   }
+}
+
+[data-theme="dark"] .mission_card,
+[data-theme="dark"] .team_card {
+  border-color: var(--border-primary);
 }

@@ -53,8 +53,8 @@
 }
 
 .product_card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 24px;
   display: flex;
@@ -70,7 +70,11 @@
 }
 
 .product_card:hover {
-  background-color: var(--bg-tertiary);
+  background-color: transparent;
+}
+
+[data-theme="dark"] .product_card {
+  border-color: var(--border-primary);
 }
 
 .product_header {
@@ -185,7 +189,7 @@
   padding: 80px 24px;
   border-radius: 20px;
   border: 1px dashed var(--border-primary);
-  background-color: var(--bg-secondary);
+  background-color: transparent;
   gap: 16px;
 }
 

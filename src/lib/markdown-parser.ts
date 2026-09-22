@@ -1452,12 +1452,14 @@ class HtmlRenderer {
         return ''; // Rendered separately in footnote section
       case 'html_block':
         return this.options.sanitizeHtml ? escapeHtml(node.content) : node.content;
-      case 'math_block':
+      case 'math_block': {
+        const latexAttr = escapeHtml(node.content);
         try {
-          return `<div class="${this.prefix}-math-display">${katex.renderToString(node.content, { displayMode: true, throwOnError: false })}</div>`;
+          return `<div class="${this.prefix}-math-display" data-latex="${latexAttr}"><div class="${this.prefix}-math-body">${katex.renderToString(node.content, { displayMode: true, throwOnError: false })}</div></div>`;
         } catch (_e) {
-          return `<div class="${this.prefix}-math-display">${escapeHtml(node.content)}</div>`;
+          return `<div class="${this.prefix}-math-display" data-latex="${latexAttr}"><div class="${this.prefix}-math-body">${escapeHtml(node.content)}</div></div>`;
         }
+      }
       case 'empty':
         return '';
     }
@@ -1641,12 +1643,14 @@ class HtmlRenderer {
         return `<sub>${this.renderInlines(node.children)}</sub>`;
       case 'emoji':
         return `<span class="${this.prefix}-emoji" title=":${escapeHtml(node.name)}:" role="img" aria-label="${escapeHtml(node.name)}">${node.unicode}</span>`;
-      case 'inline_math':
+      case 'inline_math': {
+        const latexAttr = escapeHtml(node.content);
         try {
-          return `<span class="${this.prefix}-math-inline">${katex.renderToString(node.content, { displayMode: false, throwOnError: false })}</span>`;
+          return `<span class="${this.prefix}-math-inline" data-latex="${latexAttr}">${katex.renderToString(node.content, { displayMode: false, throwOnError: false })}</span>`;
         } catch (_e) {
-          return `<span class="${this.prefix}-math-inline">${escapeHtml(node.content)}</span>`;
+          return `<span class="${this.prefix}-math-inline" data-latex="${latexAttr}">${escapeHtml(node.content)}</span>`;
         }
+      }
       case 'html_inline':
         return this.options.sanitizeHtml ? escapeHtml(node.content) : node.content;
     }

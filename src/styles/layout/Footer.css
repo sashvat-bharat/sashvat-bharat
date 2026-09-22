@@ -1,7 +1,6 @@
 .footer {
   width: 100%;
-  background-color: var(--bg-primary);
-  border-top: 1px solid var(--border-primary);
+  background-color: #fbfbfb;
   padding: 64px 24px 32px 24px;
   font-family: var(--font-geist-sans), sans-serif;
   margin-top: auto;
@@ -120,7 +119,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--border-primary);
   padding-top: 32px;
   max-width: 1376px;
   margin-left: auto;
@@ -132,6 +130,10 @@
 .footer_copyright {
   font-size: var(--font-size-xs);
   color: var(--text-secondary);
+}
+
+[data-theme="dark"] .footer {
+  background-color: #121212;
 }
 
 .footer_bottom_links {
