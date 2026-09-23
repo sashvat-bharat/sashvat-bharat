@@ -34,7 +34,7 @@ const HeroSection = () => {
           type='button'
           onClick={() => {
             alert(
-              'Accessing Event Horizon... Portal initialization is currently in progress. Please check back soon!',
+              'currently in progress. Please check back soon!',
             );
           }}
           className='event-horizon-btn'

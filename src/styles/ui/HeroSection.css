@@ -200,7 +200,7 @@
   cursor: pointer;
   font-size: clamp(15px, 3vw, 16px);
   margin-top: clamp(5px, 1.25vw, 16px);
-  border-radius: 16px;
+  border-radius: 8px;
   color: var(--btn-text-primary);
   background: var(--btn-bg-primary);
   font-family: var(--font-geist-sans), sans-serif;
