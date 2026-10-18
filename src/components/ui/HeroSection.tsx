@@ -7,11 +7,7 @@ import Link from 'next/link';
 const HeroSection = () => {
   return (
     <div className='hero-section'>
-      <Link
-        href='/articles/agent-accelerator'
-        className='promo-trigger'
-        style={{ textDecoration: 'none' }}
-      >
+      <Link href='/articles/agent-accelerator' className='promo-trigger' style={{ textDecoration: 'none' }}>
         <span className='promo-text'>Introducing Agent Accelerator</span>
 
         <div className='action-button'>
@@ -25,22 +21,11 @@ const HeroSection = () => {
 
       <div className='intro-text'>
         <h1 className='main-title'>Built for breakthroughs.</h1>
-
         <p className='support-title'>Built to last. Designed to lead. Engineered for the future.</p>
       </div>
 
       <center>
-        <button
-          type='button'
-          onClick={() => {
-            alert(
-              'currently in progress. Please check back soon!',
-            );
-          }}
-          className='event-horizon-btn'
-        >
-          Enter the Horizon
-        </button>
+        <button type='button' onClick={() => {alert('currently in progress. Please check back soon!',);}} className='event-horizon-btn'>Enter the Horizon</button>
       </center>
     </div>
   );
