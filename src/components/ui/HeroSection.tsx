@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <div className='hero-section'>
       <Link href='/articles/agent-accelerator' className='promo-trigger' style={{ textDecoration: 'none' }}>
-        <span className='promo-text'>Introducing Agent Accelerator</span>
+        <span className='promo-text'>Introducing Agent Accelerator.</span>
 
         <div className='action-button'>
           <svg className='arrow-svg' viewBox='0 0 32 32' role='img' aria-hidden='true'>
