@@ -5,7 +5,7 @@
  * extracts the YAML frontmatter, and writes lightweight JSON indexes
  * to content/research.json and content/articles.json.
  *
- * This runs automatically before `pnpm dev` and `pnpm build` via the
+ * This runs automatically before `bun dev` and `bun run build` via the
  * predev / prebuild hooks in package.json, so listing pages never
  * touch raw markdown files.
  */
