@@ -1,0 +1,59 @@
+/*
+ * Hero stage: a fixed-size box that wraps the hero section. The arc/node canvas and a soft
+ * violet haze are painted inside it, behind the hero. It is NOT a page background.
+ */
+
+.arcfield-stage {
+  position: relative;
+  width: 100%;
+  height: 640px;
+}
+
+.arcfield-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Fade every edge so the fixed-size box never reads as a box. */
+  mask-image:
+    linear-gradient(to bottom, transparent 0, #000 22%, #000 86%, transparent 100%),
+    linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0, #000 22%, #000 86%, transparent 100%),
+    linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+
+.arcfield-glow,
+.arcfield-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.arcfield-glow {
+  background:
+    radial-gradient(55% 60% at 86% 14%, rgba(120, 82, 255, 0.16), transparent 72%),
+    radial-gradient(45% 50% at 10% 12%, rgba(255, 110, 60, 0.12), transparent 72%);
+}
+
+[data-theme="dark"] .arcfield-glow {
+  background:
+    radial-gradient(55% 60% at 86% 14%, rgba(112, 64, 255, 0.34), transparent 72%),
+    radial-gradient(45% 50% at 10% 12%, rgba(180, 56, 150, 0.22), transparent 72%),
+    radial-gradient(60% 40% at 50% 100%, rgba(249, 80, 21, 0.1), transparent 70%);
+}
+
+/* Hero sits above the layer; flow-root keeps the hero's own top margin inside the stage. */
+.arcfield-content {
+  position: relative;
+  z-index: 1;
+  display: flow-root;
+}
+
+@media (max-width: 600px) {
+  .arcfield-stage {
+    height: 580px;
+  }
+}
