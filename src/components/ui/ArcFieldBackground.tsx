@@ -17,15 +17,16 @@ import '@/styles/ui/ArcField.css';
 
 // Labels come from the site's own vocabulary (focus areas / products / research).
 const LABELS = [
+  'BHARAT 2047',
+  'SOVEREIGN INFRA',
+  'AGENTIC HARNESS',
+  'OPEN-SOURCE CORE',
   'AGENT ACCELERATOR',
   'JIT TOOL SPAWNING',
-  'HARNESS ENGINEERING',
   'AUTONOMOUS AGENTS',
-  'SOVEREIGN INFRA',
-  'LOCAL-FIRST',
   'REASONING ENGINES',
-  'OPEN-SOURCE CORE',
-  'BHARAT 2047',
+  'RECURSIVE LANGUAGE MODELS',
+  'RECURSIVE SELF IMPROVEMENT'
 ] as const;
 
 interface Palette {
